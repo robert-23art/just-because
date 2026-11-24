@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Color — just because.</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="game-page">
+
+    <header class="header">
+        <a href="../index.html" class="logo">
+            just because<span>.</span>
+        </a>
+
+        <a href="../index.html" class="back-link">← back home</a>
+    </header>
+
+    <main class="game-main">
+
+        <section class="game-intro">
+            <p class="eyebrow">A LITTLE GAME · NO. 01</p>
+
+            <h1>
+                Guess <span>the color.</span>
+            </h1>
+
+            <p>
+                A little test for your eyes.
+                How well do you really know your colors?
+            </p>
+        </section>
+
+        <!-- SETUP SCREEN -->
+
+        <section class="setup-layout" id="setup-screen">
+
+            <div class="setup-left">
+
+                <button class="start-button" id="start-button">
+                    <span>START PLAYING</span>
+                    <span class="start-arrow">→</span>
+                </button>
+
+                <div class="category-box">
+
+                    <div class="category-title">
+                        <div>
+                            <p class="eyebrow">YOUR CHOICE</p>
+                            <h2>Pick a color family.</h2>
+                        </div>
+
+                        <span class="category-icon">🎨</span>
+                    </div>
+
+                    <div class="category-controls">
+
+                        <select id="category-select">
+                            <option value="all">All Families</option>
+                            <option value="greens">Greens</option>
+                            <option value="blues">Blues</option>
+                            <option value="reds">Reds</option>
+                            <option value="purples">Purples</option>
+                            <option value="yellows">Yellows</option>
+                            <option value="oranges">Oranges</option>
+                            <option value="pinks">Pinks</option>
+                            <option value="browns">Browns</option>
+                            <option value="grays">Grays</option>
+                        </select>
+
+                        <button
+                            class="random-category-button"
+                            id="random-button"
+                        >
+                            ↻ Random
+                        </button>
+
+                    </div>
+
+                    <p class="category-note">
+                        Pick your favorite or let fate decide.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <aside class="highscore-box">
+
+                <p class="eyebrow">YOUR PERSONAL BEST</p>
+
+                <div class="trophy">🏆</div>
+
+                <p class="highscore-number" id="highscore">0</p>
+
+                <p class="highscore-label">HIGH SCORE</p>
+
+                <div class="highscore-divider"></div>
+
+                <p class="highscore-category" id="highscore-category">
+                    All Families
+                </p>
+
+                <p class="highscore-note">
+                    Your best score on this device.
+                </p>
+
+            </aside>
+
+        </section>
+
+        <!-- GAME SCREEN -->
+
+        <section class="game-stage color-stage is-hidden" id="game-stage">
+
+            <div class="color-round-top">
+                <p class="eyebrow" id="round-category">GREEN FAMILY</p>
+
+                <p class="round-score">
+                    SCORE: <strong id="round-score">0</strong>
+                </p>
+            </div>
+
+            <div class="color-question">
+                <h2>Which color name is it?</h2>
+                <p>Choose the name that matches the color.</p>
+            </div>
+
+            <div class="color-swatch" id="target-color"></div>
+
+            <div class="color-options" id="answer-options">
+                <!-- Answer buttons are added with JavaScript -->
+            </div>
+
+            <p class="color-feedback" id="feedback" aria-live="polite"></p>
+
+            <div class="color-game-over is-hidden" id="game-over">
+
+                <h3 id="end-title">Game over!</h3>
+
+                <p id="end-message">
+                    Your final score: 0
+                </p>
+
+                <button
+                    class="start-button color-replay"
+                    id="play-again-button"
+                >
+                    <span>PLAY AGAIN</span>
+                    <span>↻</span>
+                </button>
+
+            </div>
+
+            <button class="back-button" id="back-button">
+                ← Back to settings
+            </button>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>made for no particular reason.</p>
+        <p>just because. © 2026</p>
+    </footer>
+
+    <script src="guess-color-data.js"></script>
+    <script src="guess-color.js"></script>
+
+</body>
+</html>
+<!-- Test uitgevoerd door Codex -->

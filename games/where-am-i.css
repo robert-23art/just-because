@@ -1,0 +1,107 @@
+.wai-main { width:min(1000px,92%); padding-top:48px; }
+.wai-intro { margin-bottom:34px; }
+.wai-intro h1 span { color:#6F8B75; }
+.wai-intro > p:last-child { max-width:540px; margin:0 auto; line-height:1.65; }
+.wai-setup,.wai-game,.wai-results { padding:clamp(18px,4vw,34px); border:1px solid #E1DDD2; border-radius:14px; background:rgba(251,249,244,.78); }
+.wai-section-heading,.wai-panel-heading,.wai-feedback-heading { display:flex; align-items:center; justify-content:space-between; gap:14px; }
+.wai-section-heading { margin-bottom:18px; }
+.wai-section-heading h2,.wai-instruction h2 { margin-top:6px; font:600 25px 'Space Grotesk',sans-serif; letter-spacing:-.8px; }
+.wai-section-heading > p,.wai-panel-heading > span:last-child { color:var(--muted); font-size:11px; }
+.wai-region-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }
+.wai-region-card { min-height:104px; display:flex; flex-direction:column; align-items:flex-start; justify-content:space-between; padding:12px 14px; border:1px solid #DEDACF; border-radius:10px; background:rgba(255,255,255,.46); color:var(--text); text-align:left; font-family:inherit; cursor:pointer; transition:background .16s,border-color .16s,transform .16s,box-shadow .16s; }
+.wai-region-card:hover { transform:translateY(-2px); background:#fff; }
+.wai-region-card.is-selected { border-color:#779078; background:#FBFCF8; box-shadow:inset 0 0 0 1px #779078; }
+.wai-region-card:focus-visible,.wai-difficulty-button:focus-visible,.wai-hint-button:focus-visible,.wai-submit:focus-visible,.wai-primary:focus-visible,.wai-secondary:focus-visible,.wai-next:focus-visible,.wai-quit:focus-visible { outline:3px solid rgba(101,132,103,.5); outline-offset:3px; }
+.wai-region-top { width:100%; display:flex; justify-content:space-between; align-items:flex-start; }
+.wai-region-art { width:43px; height:38px; color:#6B8872; }
+.wai-region-art svg { width:100%; height:100%; overflow:visible; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.wai-region-count { color:#858176; font-size:9px; font-weight:700; }
+.wai-region-card strong { font:600 13px 'Space Grotesk',sans-serif; }
+.wai-region-card.is-selected strong { color:#4F704F; }
+.wai-setup-controls { display:grid; grid-template-columns:minmax(0,1fr) 205px; gap:14px; margin-top:15px; }
+.wai-difficulty-panel,.wai-best-panel { padding:17px; border-radius:11px; background:#EFEBE1; }
+.wai-panel-heading { margin-bottom:11px; }
+#wai-difficulty-options { display:flex; flex-wrap:wrap; gap:7px; }
+.wai-difficulty-button { min-height:35px; padding:7px 12px; border:1px solid #D4CEC0; border-radius:999px; background:#F9F7F1; color:#555247; font:600 11px 'DM Sans',sans-serif; cursor:pointer; transition:background .15s,color .15s; }
+.wai-difficulty-button.is-selected { border-color:#627C65; background:#627C65; color:#fff; }
+.wai-best-panel { display:flex; flex-direction:column; justify-content:center; background:#E1E9DE; }
+.wai-best-panel strong { margin:4px 0 2px; font:700 34px/1 'Space Grotesk',sans-serif; }
+.wai-best-panel small { color:#697461; font-size:10px; }
+.wai-setup-message { min-height:17px; margin:12px 1px 8px; color:var(--muted); font-size:11px; }
+.wai-primary,.wai-next { width:100%; min-height:57px; display:flex; align-items:center; justify-content:space-between; gap:14px; padding:15px 20px; border:0; border-radius:10px; background:#637D67; color:#fff; font:700 15px 'Space Grotesk',sans-serif; cursor:pointer; transition:transform .16s,background .16s; }
+.wai-primary:hover,.wai-next:hover { transform:translateY(-2px); background:#506A54; }
+.wai-primary:disabled { opacity:.5; cursor:not-allowed; transform:none; }
+.wai-primary > span:last-child,.wai-next > span:last-child { font-size:21px; }
+.wai-data-note { margin-top:16px; color:#716D62; font-size:10px; line-height:1.55; }
+.wai-data-note summary { width:fit-content; cursor:pointer; font-weight:700; }
+.wai-data-note p { max-width:690px; margin-top:7px; }
+.wai-game-topline { display:flex; justify-content:space-between; align-items:center; gap:15px; }
+.wai-game-topline .eyebrow { margin-bottom:5px; }
+.wai-difficulty-pill { display:inline-block; padding:4px 7px; border-radius:5px; background:#E9E5DB; color:#656054; font-size:9px; font-weight:800; letter-spacing:.8px; }
+.wai-difficulty-pill[data-level="easy"] { background:#E1EBD9; color:#54704B; }
+.wai-difficulty-pill[data-level="hard"] { background:#F0DDD5; color:#9A5847; }
+.wai-stats { display:flex; gap:18px; }
+.wai-stats > span { color:var(--muted); font-size:8px; font-weight:800; letter-spacing:.9px; }
+.wai-stats strong { display:block; margin-top:4px; color:var(--text); font:600 16px 'Space Grotesk',sans-serif; letter-spacing:0; }
+.wai-instruction { margin:24px 0 12px; }
+.wai-instruction h2 { font-size:clamp(25px,4vw,32px); }
+.wai-map-stage { position:relative; min-height:330px; display:grid; place-items:center; overflow:hidden; border:1px solid #E2DED3; border-radius:12px; background:#F0EEE7; }
+.wai-map-stage::before,.wai-map-stage::after { position:absolute; content:""; pointer-events:none; }
+.wai-map-stage::before { inset:0; opacity:.22; background-image:radial-gradient(#C9C5B9 .65px,transparent .65px); background-size:14px 14px; }
+.wai-map-stage::after { width:clamp(260px,48vw,500px); aspect-ratio:1; border:1px solid rgba(124,144,126,.12); border-radius:50%; }
+#wai-map { position:relative; z-index:1; display:block; width:min(100%,760px); height:clamp(260px,48vw,420px); overflow:visible; }
+#wai-country-shape { fill:#708A74; fill-rule:evenodd; stroke:#526E58; stroke-width:1.15; stroke-linejoin:round; vector-effect:non-scaling-stroke; filter:drop-shadow(0 7px 8px rgba(61,81,62,.13)); transition:opacity .22s,transform .22s; }
+.wai-map-caption { position:absolute; z-index:2; right:15px; bottom:13px; color:#999588; font-size:8px; font-weight:800; letter-spacing:1.4px; }
+.wai-play-meta { display:flex; justify-content:space-between; gap:10px; margin:12px 1px; color:#777367; font-size:10px; font-weight:700; }
+.wai-hint-area { display:flex; align-items:flex-start; gap:13px; margin:12px 0 17px; }
+.wai-hint-button { min-height:38px; flex:0 0 auto; display:flex; align-items:center; gap:8px; padding:8px 11px; border:1px solid #D8D2C5; border-radius:7px; background:#F6F3EB; color:#59594F; font:600 11px 'DM Sans',sans-serif; cursor:pointer; }
+.wai-hint-button:hover:not(:disabled) { background:#ECE9DF; }
+.wai-hint-button:disabled { opacity:.5; cursor:default; }
+.wai-hint-button > span:first-child { color:#718B73; font-size:15px; }
+.wai-hint-button > span:last-child { color:#8A765B; font-size:9px; }
+.wai-hint-list { display:grid; gap:4px; padding-top:3px; color:#62755E; font-size:11px; line-height:1.4; }
+.wai-answer-form > label { display:block; margin-bottom:7px; font:600 12px 'Space Grotesk',sans-serif; }
+.wai-input-row { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:8px; }
+.wai-input-row input { width:100%; min-height:52px; padding:12px 15px; border:1px solid #D7D2C6; border-radius:8px; outline:none; background:#FBF9F4; color:var(--text); font:500 15px 'DM Sans',sans-serif; transition:border-color .15s,box-shadow .15s; }
+.wai-input-row input::placeholder { color:#9A968B; }
+.wai-input-row input:focus { border-color:#81957D; box-shadow:0 0 0 3px rgba(111,139,117,.13); }
+.wai-input-row input:disabled { opacity:.7; }
+.wai-submit { min-width:156px; display:flex; align-items:center; justify-content:space-between; gap:15px; padding:11px 14px; border:0; border-radius:8px; background:#30332D; color:#fff; font:600 12px 'Space Grotesk',sans-serif; cursor:pointer; }
+.wai-submit:hover { background:#484C43; }
+.wai-submit:disabled { opacity:.5; cursor:default; }
+.wai-submit span { font-size:17px; }
+.wai-answer-help { margin:7px 1px 0; color:#898477; font-size:10px; }
+.wai-feedback { margin-top:14px; padding:15px 17px; border:1px solid #B9CBB2; border-radius:9px; background:#EAF1E5; animation:wai-enter .2s ease-out; }
+.wai-feedback.is-wrong { border-color:#E0C1B7; background:#F5E9E3; }
+.wai-feedback-heading { justify-content:flex-start; }
+.wai-feedback-heading > span { width:26px; height:26px; display:grid; place-items:center; border-radius:50%; background:#6C8B63; color:#fff; font-weight:800; }
+.wai-feedback.is-wrong .wai-feedback-heading > span { background:#B76D59; }
+.wai-feedback-heading h3 { font:600 16px 'Space Grotesk',sans-serif; }
+.wai-feedback-heading > strong { margin-left:auto; color:#53724A; font-size:13px; }
+.wai-feedback.is-wrong .wai-feedback-heading > strong { color:#A35C49; }
+#wai-feedback-text { margin:7px 0 0; color:#58564B; font-size:12px; line-height:1.55; }
+.wai-next { margin-top:11px; background:#30332D; }
+.wai-next:hover { background:#484C43; }
+.wai-quit { display:block; margin:14px auto 0; padding:8px 12px; border:0; background:transparent; color:#858176; font:600 10px 'DM Sans',sans-serif; cursor:pointer; }
+.wai-quit:hover { color:var(--text); }
+.wai-results { text-align:center; padding:clamp(22px,6vw,48px); }
+.wai-results h2 { margin-top:8px; font:600 clamp(30px,6vw,48px) 'Space Grotesk',sans-serif; letter-spacing:-1.5px; }
+.wai-final-score { display:flex; flex-direction:column; margin:16px 0 22px; }
+.wai-final-score strong { font:600 62px/1 'Space Grotesk',sans-serif; letter-spacing:-3px; }
+.wai-final-score span { margin-top:5px; color:var(--muted); font-size:9px; font-weight:700; letter-spacing:1.5px; }
+.wai-result-stats { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid #E2DED3; border-bottom:1px solid #E2DED3; }
+.wai-result-stats div { display:flex; flex-direction:column; gap:5px; padding:14px 5px; }
+.wai-result-stats div+div { border-left:1px solid #E2DED3; }
+.wai-result-stats strong { font:600 17px 'Space Grotesk',sans-serif; }
+.wai-result-stats span { color:var(--muted); font-size:8px; font-weight:700; letter-spacing:.8px; }
+.wai-result-message { max-width:460px; margin:17px auto; color:#686257; font-size:13px; line-height:1.6; }
+.wai-result-actions { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.wai-result-actions .wai-primary { font-size:12px; }
+.wai-secondary { min-height:55px; border:1px solid #D3CEC2; border-radius:9px; background:transparent; color:#625E53; font:600 12px 'DM Sans',sans-serif; cursor:pointer; }
+.wai-secondary:hover { background:#F0EDE5; }
+.wai-footnote { margin:18px 0 0; color:#898477; text-align:center; font-size:9px; }
+@keyframes wai-enter { from { opacity:0; transform:translateY(5px); } to { opacity:1; transform:translateY(0); } }
+@media(max-width:800px) { .wai-region-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } .wai-setup-controls { grid-template-columns:minmax(0,1fr) 175px; } }
+@media(max-width:600px) { .wai-main { padding-top:30px; padding-bottom:45px; } .wai-intro { margin-bottom:24px; } .wai-section-heading { align-items:flex-start; flex-direction:column; gap:6px; } .wai-region-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; } .wai-region-card { min-height:92px; padding:10px; } .wai-region-art { width:38px;height:33px; } .wai-region-card strong { font-size:12px; } .wai-setup-controls { grid-template-columns:1fr; } .wai-best-panel { min-height:91px; } .wai-panel-heading { align-items:flex-start; flex-direction:column; gap:6px; } .wai-game-topline { align-items:flex-start; flex-direction:column; } .wai-stats { width:100%; justify-content:space-between; gap:9px; } .wai-map-stage { min-height:235px; } #wai-map { height:clamp(215px,62vw,300px); } .wai-play-meta { font-size:9px; } .wai-hint-area { flex-direction:column; gap:8px; } .wai-hint-list { padding-left:4px; } .wai-input-row { grid-template-columns:1fr; } .wai-input-row input { min-height:50px; } .wai-submit { min-height:48px; } .wai-result-stats { grid-template-columns:repeat(2,1fr); } .wai-result-stats div:nth-child(3) { border-left:0; border-top:1px solid #E2DED3; } .wai-result-stats div:nth-child(4) { border-top:1px solid #E2DED3; } .wai-result-actions { grid-template-columns:1fr; } .wai-results { padding:22px 15px; } }
+@media(max-width:350px) { .wai-region-grid { grid-template-columns:1fr; } }
+@media(prefers-reduced-motion:reduce) { .wai-region-card,.wai-primary,.wai-next,#wai-country-shape { transition:none; } .wai-feedback { animation:none; } }
