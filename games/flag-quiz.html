@@ -18,7 +18,7 @@
     </header>
 
     <main class="game-main flag-main">
-        <section class="game-intro flag-intro">
+        <section class="game-intro flag-intro" id="flag-intro">
             <p class="eyebrow">A LITTLE GAME · NO. 08</p>
             <h1>Flag <span>Quiz.</span></h1>
             <p>How well do you know the flags of the world?</p>
@@ -53,12 +53,21 @@
                         <button type="button" class="flag-mode-button" data-mode="endless" aria-pressed="false">Endless</button>
                     </div>
                 </div>
+
+                <div class="flag-field flag-difficulty-field">
+                    <span class="eyebrow">HOW TRICKY?</span>
+                    <div class="flag-difficulty-options" id="difficulty-mode" role="group" aria-label="Choose a difficulty">
+                        <button type="button" class="flag-difficulty-button is-selected" data-difficulty="easy" aria-pressed="true">Easy</button>
+                        <button type="button" class="flag-difficulty-button" data-difficulty="medium" aria-pressed="false">Medium</button>
+                        <button type="button" class="flag-difficulty-button" data-difficulty="hard" aria-pressed="false">Hard</button>
+                    </div>
+                </div>
             </div>
 
             <aside class="flag-best-panel">
                 <p class="eyebrow">PERSONAL BEST</p>
                 <strong id="flag-highscore">0</strong>
-                <span id="flag-highscore-region">All Regions</span>
+                <span id="flag-highscore-region">All Regions · Easy</span>
             </aside>
 
             <button class="flag-start-button" id="flag-start-button" type="button">
@@ -67,6 +76,7 @@
         </section>
 
         <section class="flag-game is-hidden" id="flag-game" aria-label="Flag Quiz question">
+            <button class="flag-compact-back" id="flag-compact-back" type="button">← <span>Back to settings</span></button>
             <div class="flag-game-topline">
                 <p class="eyebrow" id="flag-region-label">ALL REGIONS</p>
                 <div class="flag-live-stats">

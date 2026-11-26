@@ -84,3 +84,37 @@ const FLAG_QUIZ_DATA = [
     { code: "vn", region: "asia", names: { en: "Vietnam", nl: "Vietnam", de: "Vietnam", fr: "Viêt Nam", es: "Vietnam" } },
     { code: "zm", region: "africa-oceania", names: { en: "Zambia", nl: "Zambia", de: "Sambia", fr: "Zambie", es: "Zambia" } }
 ];
+
+const FLAG_QUIZ_EASY = new Set([
+    "ar", "au", "at", "bd", "be", "br", "ca", "cn", "dk", "eg", "fi", "fr", "de",
+    "gr", "in", "id", "ie", "it", "jp", "ke", "mx", "ma", "nl", "nz", "ng", "no",
+    "pk", "pe", "ph", "pl", "pt", "ro", "sa", "za", "kr", "es", "se", "ch", "th",
+    "tr", "ua", "gb", "us", "vn"
+]);
+
+const FLAG_QUIZ_HARD = new Set([
+    "al", "ad", "dz", "ao", "at", "bd", "ba", "bw", "bg", "kh", "cm", "co", "cr",
+    "hr", "cu", "cz", "ec", "ee", "gh", "gt", "is", "lv", "lt", "lu", "my", "np",
+    "ae", "pa", "py", "rs", "sg", "sk", "si", "lk", "sn", "tw", "uy", "ve", "zm"
+]);
+
+const FLAG_QUIZ_LOOKALIKES = [
+    ["id", "mc", "pl"],
+    ["ro", "td"],
+    ["ie", "ci"],
+    ["au", "nz"],
+    ["no", "is"],
+    ["nl", "lu"],
+    ["fr", "ci"],
+    ["it", "mx"],
+    ["ru", "py", "rs", "si"],
+    ["se", "fi", "dk"],
+    ["ar", "hn", "ni", "sv"],
+    ["co", "ec", "ve"],
+    ["in", "ne"],
+    ["be", "de", "td", "ro"],
+    ["sg", "id", "pl"],
+    ["ch", "dk"],
+    ["jp", "bd"],
+    ["cr", "th"]
+];

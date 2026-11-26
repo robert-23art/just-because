@@ -1,6 +1,8 @@
 const regionSelect = document.getElementById("region-select");
 const roundMode = document.getElementById("round-mode");
+const difficultyMode = document.getElementById("difficulty-mode");
 const startButton = document.getElementById("flag-start-button");
+const introScreen = document.getElementById("flag-intro");
 const setupScreen = document.getElementById("flag-setup");
 const gameScreen = document.getElementById("flag-game");
 const resultsScreen = document.getElementById("flag-results");
@@ -13,6 +15,7 @@ const answerOptions = document.getElementById("flag-options");
 const feedbackElement = document.getElementById("flag-feedback");
 const nextButton = document.getElementById("flag-next-button");
 const backButton = document.getElementById("flag-back-button");
+const compactBackButton = document.getElementById("flag-compact-back");
 const playAgainButton = document.getElementById("flag-play-again");
 const resultsBackButton = document.getElementById("flag-results-back");
 const highscoreElement = document.getElementById("flag-highscore");
@@ -21,6 +24,7 @@ const highscoreRegion = document.getElementById("flag-highscore-region");
 const state = {
     region: "all",
     mode: "10",
+    difficulty: "easy",
     pool: [],
     current: null,
     choices: [],
@@ -69,20 +73,26 @@ function shuffle(items) {
     return copy;
 }
 
-function getHighscore(region) {
-    return Number(localStorage.getItem(`jb_flag_quiz_highscore_${region}`)) || 0;
+function getHighscore(region, difficulty) {
+    return Number(localStorage.getItem(`jb_flag_quiz_highscore_${region}_${difficulty}`)) || 0;
 }
 
 function saveHighscore() {
-    const key = `jb_flag_quiz_highscore_${state.region}`;
-    const best = getHighscore(state.region);
+    const key = `jb_flag_quiz_highscore_${state.region}_${state.difficulty}`;
+    const best = getHighscore(state.region, state.difficulty);
     if (state.score > best) localStorage.setItem(key, String(state.score));
 }
 
 function updateHighscore() {
     const region = regionSelect.value;
-    highscoreElement.textContent = String(getHighscore(region));
-    highscoreRegion.textContent = regionName(region);
+    const difficulty = difficultyMode.querySelector(".is-selected")?.dataset.difficulty || "easy";
+    highscoreElement.textContent = String(getHighscore(region, difficulty));
+    highscoreRegion.textContent = `${regionName(region)} · ${difficultyName(difficulty)}`;
+}
+
+function difficultyName(difficulty) {
+    return text(difficulty === "easy" ? "Easy" : difficulty === "medium" ? "Medium" : "Hard",
+        difficulty === "easy" ? "Easy" : difficulty === "medium" ? "Medium" : "Hard");
 }
 
 function renderStaticUi() {
@@ -105,6 +115,7 @@ function renderStaticUi() {
 
     document.querySelector(".flag-settings label .eyebrow").textContent = text("REGION", "REGION");
     document.querySelector(".flag-settings .flag-field:nth-child(2) > .eyebrow").textContent = text("ROUNDS", "ROUNDS");
+    document.querySelector(".flag-difficulty-field > .eyebrow").textContent = text("HOW TRICKY?", "HOW TRICKY?");
     document.querySelector(".flag-best-panel .eyebrow").textContent = text("PERSONAL BEST", "PERSONAL BEST");
 
     const currentRegion = regionSelect.value;
@@ -119,6 +130,9 @@ function renderStaticUi() {
             : value === "15" ? text("15 questions", "15 questions")
             : text("Endless", "Endless");
     });
+    difficultyMode.querySelectorAll(".flag-difficulty-button").forEach(button => {
+        button.textContent = difficultyName(button.dataset.difficulty);
+    });
 
     document.querySelector("#flag-start-button span").textContent = text("START PLAYING", "START PLAYING");
     document.querySelector(".flag-question h2").textContent =
@@ -127,6 +141,7 @@ function renderStaticUi() {
         text("Choose one of the four answers.", "Choose one of the four answers.");
     nextButton.querySelector("span").textContent = text("Next Question", "Next Question");
     backButton.textContent = text("← Back to settings", "← Back to settings");
+    compactBackButton.querySelector("span").textContent = text("Back to settings", "Back to settings");
     playAgainButton.querySelector("span").textContent = text("PLAY AGAIN", "PLAY AGAIN");
     resultsBackButton.textContent = text("← Back to settings", "← Back to settings");
     document.querySelector(".flag-results > .eyebrow").textContent = text("THAT'S A WRAP", "THAT'S A WRAP");
@@ -152,12 +167,18 @@ function renderStaticUi() {
 }
 
 function filteredCountries(region) {
-    return region === "all" ? [...FLAG_QUIZ_DATA] : FLAG_QUIZ_DATA.filter(country => country.region === region);
+    const regional = region === "all" ? [...FLAG_QUIZ_DATA] : FLAG_QUIZ_DATA.filter(country => country.region === region);
+    return regional.filter(country => {
+        if (state.difficulty === "easy") return FLAG_QUIZ_EASY.has(country.code);
+        if (state.difficulty === "hard") return FLAG_QUIZ_HARD.has(country.code);
+        return !FLAG_QUIZ_EASY.has(country.code) && !FLAG_QUIZ_HARD.has(country.code);
+    });
 }
 
 function startGame() {
     state.region = regionSelect.value;
     state.mode = roundMode.querySelector(".is-selected").dataset.mode;
+    state.difficulty = difficultyMode.querySelector(".is-selected").dataset.difficulty;
     state.pool = shuffle(filteredCountries(state.region));
     state.score = 0;
     state.streak = 0;
@@ -166,6 +187,7 @@ function startGame() {
     state.correct = 0;
     state.wrong = 0;
 
+    introScreen.classList.add("is-hidden");
     setupScreen.classList.add("is-hidden");
     resultsScreen.classList.add("is-hidden");
     gameScreen.classList.remove("is-hidden");
@@ -177,10 +199,25 @@ function startGame() {
 
 function showQuestion() {
     state.answered = false;
+    state.selectedCode = "";
     if (!state.pool.length) state.pool = shuffle(filteredCountries(state.region));
 
     state.current = state.pool.pop();
-    const candidates = shuffle(filteredCountries(state.region).filter(country => country.code !== state.current.code));
+    let candidates = [];
+    if (state.difficulty === "hard") {
+        const lookalikeGroup = FLAG_QUIZ_LOOKALIKES.find(group => group.includes(state.current.code));
+        if (lookalikeGroup) {
+            candidates = shuffle(FLAG_QUIZ_DATA.filter(country =>
+                lookalikeGroup.includes(country.code) && country.code !== state.current.code
+            ));
+        }
+    }
+    if (candidates.length < 3) {
+        const regionalPool = filteredCountries(state.region).filter(country => country.code !== state.current.code);
+        candidates = shuffle([...candidates, ...regionalPool.filter(country =>
+            !candidates.some(candidate => candidate.code === country.code)
+        )]);
+    }
     state.choices = shuffle([state.current, ...candidates.slice(0, 3)]);
 
     flagImage.src = `https://flagcdn.com/w640/${state.current.code}.png`;
@@ -290,11 +327,22 @@ function showResults() {
 function backToSettings() {
     gameScreen.classList.add("is-hidden");
     resultsScreen.classList.add("is-hidden");
+    introScreen.classList.remove("is-hidden");
     setupScreen.classList.remove("is-hidden");
     state.answered = false;
 }
 
 regionSelect.addEventListener("change", updateHighscore);
+difficultyMode.addEventListener("click", event => {
+    const button = event.target.closest(".flag-difficulty-button");
+    if (!button) return;
+    difficultyMode.querySelectorAll(".flag-difficulty-button").forEach(option => {
+        option.classList.toggle("is-selected", option === button);
+        option.setAttribute("aria-pressed", String(option === button));
+    });
+    state.difficulty = button.dataset.difficulty;
+    updateHighscore();
+});
 roundMode.addEventListener("click", event => {
     const button = event.target.closest(".flag-mode-button");
     if (!button) return;
@@ -312,6 +360,7 @@ startButton.addEventListener("click", startGame);
 playAgainButton.addEventListener("click", startGame);
 nextButton.addEventListener("click", nextQuestion);
 backButton.addEventListener("click", backToSettings);
+compactBackButton.addEventListener("click", backToSettings);
 resultsBackButton.addEventListener("click", backToSettings);
 window.addEventListener("jb:languagechange", renderStaticUi);
 

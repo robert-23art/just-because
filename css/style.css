@@ -1571,6 +1571,34 @@ a.game-card {
     gap: 14px;
 }
 
+.flag-difficulty-field {
+    grid-column: 1 / -1;
+}
+
+.flag-difficulty-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+}
+
+.flag-difficulty-button {
+    min-height: 48px;
+    padding: 8px;
+    border: 1px solid #D6D1C6;
+    border-radius: 7px;
+    background: #FBF9F4;
+    color: var(--text);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.flag-difficulty-button.is-selected {
+    border-color: #ff6b00;
+    background: #fff2e8;
+    color: #b84d00;
+}
+
 .flag-field {
     display: flex;
     flex-direction: column;
@@ -1666,7 +1694,25 @@ a.game-card {
 }
 
 .flag-game {
+    position: relative;
     padding: 28px;
+}
+
+.flag-compact-back {
+    position: absolute;
+    left: 28px;
+    top: 22px;
+    z-index: 2;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.flag-game-topline {
+    padding-top: 18px;
 }
 
 .flag-game-topline {
@@ -1859,6 +1905,10 @@ a.game-card {
         grid-template-columns: 1fr;
     }
 
+    .flag-difficulty-options {
+        grid-template-columns: 1fr;
+    }
+
     .flag-panel-heading,
     .flag-game-topline {
         align-items: flex-start;
@@ -1878,6 +1928,15 @@ a.game-card {
 
     .flag-display {
         height: 190px;
+    }
+
+    .flag-compact-back {
+        left: 18px;
+        top: 16px;
+    }
+
+    .flag-game {
+        padding: 28px 18px 18px;
     }
 }
 
