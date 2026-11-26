@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flag Quiz — just because.</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="game-page flag-quiz-page">
+    <header class="header">
+        <a href="../index.html" class="logo">just because<span>.</span></a>
+        <div class="header-actions">
+            <a href="../index.html" class="back-link">← back home</a>
+            <div data-language-switcher></div>
+        </div>
+    </header>
+
+    <main class="game-main flag-main">
+        <section class="game-intro flag-intro">
+            <p class="eyebrow">A LITTLE GAME · NO. 08</p>
+            <h1>Flag <span>Quiz.</span></h1>
+            <p>How well do you know the flags of the world?</p>
+        </section>
+
+        <section class="flag-setup" id="flag-setup">
+            <div class="flag-panel-heading">
+                <div>
+                    <p class="eyebrow">SET UP YOUR GAME</p>
+                    <h2>Choose a region.</h2>
+                </div>
+                <p class="flag-setup-note">10 questions · no repeats</p>
+            </div>
+
+            <div class="flag-settings">
+                <label class="flag-field" for="region-select">
+                    <span class="eyebrow">REGION</span>
+                    <select id="region-select">
+                        <option value="all">All Regions</option>
+                        <option value="europe">Europe</option>
+                        <option value="asia">Asia</option>
+                        <option value="americas">Americas</option>
+                        <option value="africa-oceania">Africa &amp; Oceania</option>
+                    </select>
+                </label>
+
+                <div class="flag-field">
+                    <span class="eyebrow">ROUNDS</span>
+                    <div class="flag-mode-options" id="round-mode" role="group" aria-label="Choose round length">
+                        <button type="button" class="flag-mode-button is-selected" data-mode="10" aria-pressed="true">10 questions</button>
+                        <button type="button" class="flag-mode-button" data-mode="15" aria-pressed="false">15 questions</button>
+                        <button type="button" class="flag-mode-button" data-mode="endless" aria-pressed="false">Endless</button>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="flag-best-panel">
+                <p class="eyebrow">PERSONAL BEST</p>
+                <strong id="flag-highscore">0</strong>
+                <span id="flag-highscore-region">All Regions</span>
+            </aside>
+
+            <button class="flag-start-button" id="flag-start-button" type="button">
+                <span>START PLAYING</span><span aria-hidden="true">→</span>
+            </button>
+        </section>
+
+        <section class="flag-game is-hidden" id="flag-game" aria-label="Flag Quiz question">
+            <div class="flag-game-topline">
+                <p class="eyebrow" id="flag-region-label">ALL REGIONS</p>
+                <div class="flag-live-stats">
+                    <span>ROUND <strong id="flag-round">1 / 10</strong></span>
+                    <span>SCORE <strong id="flag-score">0</strong></span>
+                    <span>STREAK <strong id="flag-streak">0</strong></span>
+                </div>
+            </div>
+
+            <div class="flag-question">
+                <h2>Which country does this flag belong to?</h2>
+                <p>Choose one of the four answers.</p>
+            </div>
+
+            <div class="flag-display">
+                <img id="flag-image" src="" alt="">
+            </div>
+
+            <div class="flag-options" id="flag-options" role="group" aria-label="Four answer options"></div>
+
+            <p class="flag-feedback is-hidden" id="flag-feedback" aria-live="polite"></p>
+            <button class="flag-next-button is-hidden" id="flag-next-button" type="button">
+                <span>Next Question</span><span aria-hidden="true">→</span>
+            </button>
+            <button class="flag-back-button" id="flag-back-button" type="button">← Back to settings</button>
+        </section>
+
+        <section class="flag-results is-hidden" id="flag-results" aria-live="polite">
+            <p class="eyebrow">THAT'S A WRAP</p>
+            <h2 id="flag-result-title">Great job!</h2>
+            <p class="flag-final-score"><strong id="flag-final-score">0</strong><span>POINTS</span></p>
+            <div class="flag-result-stats">
+                <div><strong id="flag-correct-total">0</strong><span>CORRECT</span></div>
+                <div><strong id="flag-wrong-total">0</strong><span>WRONG</span></div>
+                <div><strong id="flag-accuracy">0%</strong><span>ACCURACY</span></div>
+                <div><strong id="flag-best-streak">0</strong><span>BEST STREAK</span></div>
+            </div>
+            <p class="flag-result-message" id="flag-result-message"></p>
+            <div class="flag-result-actions">
+                <button class="flag-start-button" id="flag-play-again" type="button"><span>PLAY AGAIN</span><span aria-hidden="true">↻</span></button>
+                <button class="flag-back-button" id="flag-results-back" type="button">← Back to settings</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>made for no particular reason.</p>
+        <p>just because. © 2026</p>
+    </footer>
+
+    <script src="../js/translations.js"></script>
+    <script src="flag-quiz-data.js"></script>
+    <script src="flag-quiz.js"></script>
+</body>
+</html>
