@@ -21,6 +21,8 @@ Belangrijke uitgangspunten:
 - Het ontwerp is modern, verzorgd en gebruiksvriendelijk en oogt niet als een typische AI-gegenereerde website.
 - De verschillende games werken goed samen binnen één website.
 - Behoud bestaande functionaliteit wanneer je code aanpast.
+- Elke nieuwe pagina, wijziging, knop, melding, speluitleg, vraag en antwoord ondersteunt standaard alle 5 talen (`en`, `nl`, `de`, `fr`, `es`) via `js/translations.js`, met de `localStorage`-sleutel `jb_lang`.
+- Elke pagina bevat altijd de wereldbol-taalkiezer rechtsboven in de navigatiebalk.
 
 # Vaste mappenstructuur
 
