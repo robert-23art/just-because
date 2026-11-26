@@ -21,3 +21,16 @@ Belangrijke uitgangspunten:
 - Het ontwerp is modern, verzorgd en gebruiksvriendelijk en oogt niet als een typische AI-gegenereerde website.
 - De verschillende games werken goed samen binnen één website.
 - Behoud bestaande functionaliteit wanneer je code aanpast.
+
+# Vaste mappenstructuur
+
+- Bewaar `index.html`, `favicon.svg`, `favicon.png`, `AGENTS.md` en `.gitattributes` uitsluitend in de hoofdmap.
+- Plaats algemene stylesheets in `css/`. De hoofdstylesheet is `css/style.css`.
+- Plaats algemene scripts in `js/`. Dit zijn onder andere `js/script.js` en `js/translations.js`.
+- Plaats alle HTML-pagina's voor spellen, spel-JavaScript en spelgegevens in `games/`.
+- Plaats spelafbeeldingen en overige losse spelassets in `assets/`, gegroepeerd per spel, bijvoorbeeld `assets/pixel-guess/` en `assets/where-am-i/`.
+- Verwijder uitgepakte archieven wanneer de inhoud al aanwezig is; bewaak geen dubbele `.zip`-kopieën.
+- Gebruik bij relatieve paden altijd het correcte bestand ten opzichte van de pagina:
+  - in `index.html`: `css/...`, `js/...` en `games/...`
+  - in pagina's onder `games/`: `../css/...`, `../js/...`, `../assets/...` en bestanden naast de pagina zelf
+- Behoud deze indeling bij toekomstige wijzigingen. Verplaats bestanden niet terug naar de hoofdmap.
