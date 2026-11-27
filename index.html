@@ -17,23 +17,35 @@
 
         <main>
             <section class="hero">
-                <p class="eyebrow">WELCOME TO THE INTERNET. SORT OF.</p>
+                <div class="hero-layout">
+                    <div class="hero-copy">
+                        <p class="eyebrow">WELCOME TO THE INTERNET. SORT OF.</p>
 
-                <h1>
-                    Bored?<br>
-                    <span>Do something stupid.</span>
-                </h1>
+                        <h1>
+                            Bored?<br>
+                            <span>Do something stupid.</span>
+                        </h1>
 
-                <p class="hero-description">
-                    Random games, weird ideas and absolutely no reason.
-                    Just pick something and have a go.
-                </p>
+                        <p class="hero-description">
+                            Random games, weird ideas and absolutely no reason.
+                            Just pick something and have a go.
+                        </p>
 
-                <a href="#games" class="main-button">
-                    Find something to do <span>↓</span>
-                </a>
+                        <div class="hero-actions">
+                            <a href="#games" class="main-button">
+                                Find something to do <span>↓</span>
+                            </a>
+                        </div>
 
-                <p class="little-note">No productivity guaranteed.</p>
+                        <p class="little-note">No productivity guaranteed.</p>
+                    </div>
+
+                    <aside class="donation-card">
+                        <span class="donation-icon" aria-hidden="true">🍪</span>
+                        <p class="donation-copy">Still too young for a real job, old enough to accept snacks &amp; small donations.</p>
+                        <button class="donation-button" id="donation-button" type="button">Leave a tiny tip ↗</button>
+                    </aside>
+                </div>
             </section>
 
             <section class="games-section" id="games">
@@ -203,6 +215,15 @@
                 </aside>
             </section>
         </main>
+
+        <dialog class="donation-dialog" id="donation-dialog" aria-labelledby="donation-dialog-title" aria-describedby="donation-dialog-message">
+            <div class="donation-dialog-card">
+                <span class="donation-dialog-icon" aria-hidden="true">🍪</span>
+                <h2 id="donation-dialog-title">A little note.</h2>
+                <p id="donation-dialog-message">The donation link will be added soon. Thanks so much for the support!</p>
+                <button class="donation-dialog-dismiss" id="donation-dialog-dismiss" type="button">Got it</button>
+            </div>
+        </dialog>
 
         <footer class="footer">
             <p>made for no particular reason.</p>

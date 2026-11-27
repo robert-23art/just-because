@@ -1,6 +1,8 @@
+const DONATION_URL = "";
+
 const gameCards = [...document.querySelectorAll(".games-grid .game-card")];
 
-const hero = document.querySelector(".hero");
+const heroActions = document.querySelector(".hero-actions");
 const randomButton = document.createElement("a");
 randomButton.href = "#games";
 randomButton.textContent = "Surprise me ↗";
@@ -52,7 +54,25 @@ randomButton.addEventListener("click", () => {
     }
 });
 
-hero.appendChild(randomButton);
+heroActions.appendChild(randomButton);
+
+const donationButton = document.querySelector("#donation-button");
+const donationDialog = document.querySelector("#donation-dialog");
+const donationDialogDismiss = document.querySelector("#donation-dialog-dismiss");
+
+donationButton.addEventListener("click", () => {
+    const donationUrl = DONATION_URL.trim();
+    if (donationUrl) {
+        window.open(donationUrl, "_blank", "noopener,noreferrer");
+        return;
+    }
+    donationDialog.showModal();
+});
+
+donationDialogDismiss.addEventListener("click", () => donationDialog.close());
+donationDialog.addEventListener("click", event => {
+    if (event.target === donationDialog) donationDialog.close();
+});
 
 const searchInput = document.querySelector("#game-search-input");
 const noGamesMessage = document.querySelector("#no-games-found");

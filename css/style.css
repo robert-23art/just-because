@@ -581,6 +581,162 @@ a.random-button { text-decoration: none; }
     transform: translateY(-3px);
 }
 
+.hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(270px, 350px);
+    align-items: center;
+    gap: clamp(36px, 7vw, 88px);
+}
+
+.hero-copy {
+    min-width: 0;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.hero-actions .main-button,
+.hero-actions .random-button {
+    margin: 0;
+}
+
+.hero-actions .random-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.donation-card {
+    padding: 26px;
+    background: #F8EDE0;
+    border: 1px solid #E6D8C6;
+    border-radius: 18px;
+    box-shadow: 0 12px 32px rgba(69, 54, 35, 0.06);
+}
+
+.donation-icon,
+.donation-dialog-icon {
+    display: grid;
+    width: 46px;
+    height: 46px;
+    place-items: center;
+    margin-bottom: 17px;
+    background: #FFF9F1;
+    border: 1px solid rgba(38, 37, 31, 0.06);
+    border-radius: 14px;
+    font-size: 23px;
+}
+
+.donation-copy {
+    max-width: 31ch;
+    color: #625D53;
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+.donation-button,
+.donation-dialog-dismiss {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 21px;
+    padding: 0 17px;
+    background: #ff6b00;
+    border: 1px solid #ff6b00;
+    border-radius: 8px;
+    color: #fff;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.donation-button:hover,
+.donation-dialog-dismiss:hover {
+    transform: translateY(-2px);
+    background: #e85f00;
+    border-color: #e85f00;
+}
+
+.donation-button:focus-visible,
+.donation-dialog-dismiss:focus-visible {
+    outline: 3px solid rgba(255, 107, 0, 0.35);
+    outline-offset: 3px;
+}
+
+.donation-dialog {
+    width: min(440px, calc(100vw - 32px));
+    max-width: none;
+    padding: 0;
+    border: 0;
+    border-radius: 20px;
+    background: transparent;
+    color: var(--text);
+}
+
+.donation-dialog::backdrop {
+    background: rgba(38, 37, 31, 0.48);
+    backdrop-filter: blur(3px);
+}
+
+.donation-dialog-card {
+    padding: clamp(26px, 6vw, 38px);
+    border: 1px solid #E0D9CC;
+    border-radius: 20px;
+    background: #FFFEFA;
+    box-shadow: 0 24px 70px rgba(27, 24, 18, 0.2);
+}
+
+.donation-dialog-icon {
+    margin: 0 auto 18px;
+}
+
+.donation-dialog-card h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    letter-spacing: -0.8px;
+}
+
+.donation-dialog-card p {
+    margin-top: 10px;
+    color: #77746B;
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+.donation-dialog-dismiss {
+    width: 100%;
+}
+
+@media (max-width: 760px) {
+    .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .hero-actions .main-button,
+    .hero-actions .random-button {
+        width: min(100%, 390px);
+        justify-content: space-between;
+    }
+
+    .donation-card {
+        width: min(100%, 460px);
+    }
+}
+
 /* =========================================================
    HIGHER OR LOWER — GAME PAGE
 ========================================================= */
