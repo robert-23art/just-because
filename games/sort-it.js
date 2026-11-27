@@ -357,6 +357,7 @@ function loadNextTask() {
 }
 
 function startGame() {
+    window.JustBecauseProfile?.recordGame("sort-it");
     state.difficulty = selectedDifficulty();
     state.score = 0;
     state.completedTasks = 0;

@@ -296,6 +296,7 @@
 
     function startGame() {
         const available=shuffle(pool());if(!available.length)return;
+        window.JustBecauseProfile?.recordGame("where-am-i");
         run=available.slice(0,Math.min(10,available.length));roundIndex=0;score=0;streak=0;bestStreak=0;correctCount=0;
         el.setup.classList.add("is-hidden");el.results.classList.add("is-hidden");el.game.classList.remove("is-hidden");renderRound();
         el.game.scrollIntoView({behavior:"smooth",block:"start"});

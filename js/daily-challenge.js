@@ -257,6 +257,7 @@
             progressGameId: challenge.id,
             progressValue: bestProgress
         })) return false;
+        window.JustBecauseProfile?.recordDailyChallenge(today);
         render();
         return true;
     }

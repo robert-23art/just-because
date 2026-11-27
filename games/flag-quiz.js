@@ -186,6 +186,7 @@ function countriesForDifficulty(difficulty) {
 }
 
 function startGame() {
+    window.JustBecauseProfile?.recordGame("flag-quiz");
     state.region = regionSelect.value;
     state.mode = roundMode.querySelector(".is-selected").dataset.mode;
     state.difficulty = difficultyMode.querySelector(".is-selected").dataset.difficulty;

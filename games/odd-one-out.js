@@ -276,6 +276,7 @@
             );
             return;
         }
+        window.JustBecauseProfile?.recordGame("odd-one-out");
         roundIndex = 0;
         score = 0;
         streak = 0;

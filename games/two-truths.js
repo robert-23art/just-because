@@ -127,6 +127,7 @@
     }
     function startGame(){
         const pool=matchingQuestions(); if(!pool.length) return;
+        window.JustBecauseProfile?.recordGame("two-truths");
         run=shuffle(pool).slice(0,Math.min(10,pool.length)); index=0; score=0; streak=0; bestStreak=0; correctCount=0;
         els.setup.classList.add("is-hidden"); els.results.classList.add("is-hidden"); els.game.classList.remove("is-hidden"); renderRound();
     }

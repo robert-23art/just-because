@@ -256,6 +256,7 @@ function shuffleItems(items) {
 // START THE GAME
 
 function startGame() {
+    window.JustBecauseProfile?.recordGame("higher-lower");
 
     activeMode = categorySelect.value;
 

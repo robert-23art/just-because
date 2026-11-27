@@ -351,6 +351,7 @@ function handleTileClick(tileIndex) {
 }
 
 function startGame() {
+    window.JustBecauseProfile?.recordGame("sequence");
     cancelPlayback();
     state.level = 0;
     state.sequence = [];

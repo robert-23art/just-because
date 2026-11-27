@@ -174,6 +174,7 @@
         );
         if (!validateData() || pool.length < data.roundsPerGame) return;
 
+        window.JustBecauseProfile?.recordGame("whats-next");
         run = shuffle(pool).slice(0, data.roundsPerGame);
         roundIndex = 0;
         score = 0;

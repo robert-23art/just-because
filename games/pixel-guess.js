@@ -386,6 +386,7 @@
             setupFeedback.textContent = tr("emptyCategory", "There are no pictures in this category yet.");
             return;
         }
+        window.JustBecauseProfile?.recordGame("pixel-guess");
 
         setupFeedbackType = "";
         const numberOfRounds = Math.min(roundsPerGame, available.length);

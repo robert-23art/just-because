@@ -364,6 +364,7 @@ function renderResults() {
 }
 
 function startGame() {
+    window.JustBecauseProfile?.recordGame("reflex");
     clearSignalTimer();
     state.mode = selectedMode();
     state.phase = "idle";

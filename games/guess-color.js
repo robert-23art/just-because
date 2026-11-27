@@ -213,6 +213,7 @@ function updateHighScore() {
 // START THE GAME
 
 function startGame() {
+    window.JustBecauseProfile?.recordGame("guess-color");
 
     activeMode = categorySelect.value;
 
