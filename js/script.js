@@ -76,38 +76,58 @@ donationDialog.addEventListener("click", event => {
 
 const searchInput = document.querySelector("#game-search-input");
 const noGamesMessage = document.querySelector("#no-games-found");
+const categoryButtons = [...document.querySelectorAll("[data-category-filter]")];
+let activeCategory = "all";
 
-if (searchInput && noGamesMessage) {
-    searchInput.addEventListener("input", () => {
-        const rawQuery = searchInput.value.trim();
-        const query = rawQuery
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .toLocaleLowerCase()
-            .replace(/[^\p{L}\p{N}]+/gu, " ")
-            .trim();
-        const isGameNumber = /^\d{1,2}$/.test(rawQuery);
-        const normalizedNumber = isGameNumber ? rawQuery.padStart(2, "0") : "";
-        const queryWords = query ? query.split(/\s+/) : [];
-        let visibleGames = 0;
-
-        for (const card of gameCards) {
-            const searchableText = [
-                card.dataset.gameNumber,
-                card.querySelector("h3")?.textContent,
-                card.dataset.keywords
-            ].filter(Boolean).join(" ")
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "")
-                .toLocaleLowerCase()
-                .replace(/[^\p{L}\p{N}]+/gu, " ");
-            const matches = isGameNumber
-                ? card.dataset.gameNumber === normalizedNumber
-                : queryWords.every(word => searchableText.includes(word));
-            card.hidden = !matches;
-            if (matches) visibleGames++;
-        }
-
-        noGamesMessage.hidden = visibleGames !== 0;
-    });
+function normalizeSearchText(value) {
+    return value
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLocaleLowerCase()
+        .replace(/[^\p{L}\p{N}]+/gu, " ")
+        .trim();
 }
+
+function filterGames() {
+    if (!noGamesMessage) return;
+
+    const rawQuery = searchInput?.value.trim() || "";
+    const queryWords = normalizeSearchText(rawQuery).split(/\s+/).filter(Boolean);
+    const isGameNumber = /^\d{1,2}$/.test(rawQuery);
+    const normalizedNumber = isGameNumber ? rawQuery.padStart(2, "0") : "";
+    let visibleGames = 0;
+
+    for (const card of gameCards) {
+        const categoryMatches = activeCategory === "all" || card.dataset.category === activeCategory;
+        const searchableText = [
+            card.dataset.gameNumber,
+            card.querySelector("h3")?.textContent,
+            card.querySelector(".card-bottom p")?.textContent,
+            card.dataset.keywords
+        ].filter(Boolean).join(" ");
+        const normalizedText = normalizeSearchText(searchableText);
+        const searchMatches = isGameNumber
+            ? card.dataset.gameNumber === normalizedNumber
+            : queryWords.every(word => normalizedText.includes(word));
+        const isVisible = categoryMatches && searchMatches;
+        card.hidden = !isVisible;
+        if (isVisible) visibleGames++;
+    }
+
+    noGamesMessage.hidden = visibleGames !== 0;
+}
+
+categoryButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        activeCategory = button.dataset.categoryFilter;
+        categoryButtons.forEach(categoryButton => {
+            categoryButton.setAttribute("aria-pressed", String(categoryButton === button));
+            categoryButton.classList.toggle("is-active", categoryButton === button);
+        });
+        filterGames();
+    });
+});
+
+searchInput?.addEventListener("input", filterGames);
+window.addEventListener("jb:languagechange", filterGames);
+filterGames();
