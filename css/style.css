@@ -2439,6 +2439,567 @@ a.game-card {
 }
 
 /* =========================================================
+   SORT IT
+========================================================= */
+
+.sort-it-main {
+    width: min(900px, 90%);
+}
+
+.sort-it-intro {
+    margin-bottom: 34px;
+}
+
+.sort-it-intro h1 span {
+    color: #ff6b00;
+}
+
+.sort-it-setup-card,
+.sort-it-game-card,
+.sort-it-results-card {
+    padding: clamp(20px, 4vw, 34px);
+    border: 1px solid #DEDACF;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 12px 34px rgba(53, 48, 37, 0.045);
+}
+
+.sort-it-panel-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.sort-it-panel-heading h2,
+.sort-it-game-heading h2,
+.sort-it-results-card h2 {
+    margin-top: 6px;
+    font: 600 clamp(25px, 4vw, 32px)/1.15 'Space Grotesk', sans-serif;
+    letter-spacing: -1px;
+}
+
+.sort-it-panel-heading > span {
+    color: #ff6b00;
+    font-size: 28px;
+}
+
+.sort-it-difficulty-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.sort-it-difficulty-card {
+    min-width: 0;
+    min-height: 92px;
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 15px;
+    align-items: center;
+    gap: 10px;
+    padding: 11px;
+    border: 1px solid #E1DDD3;
+    border-radius: 11px;
+    background: #F8F6F0;
+    color: var(--text);
+    text-align: left;
+    cursor: pointer;
+    transition: border-color .16s, background .16s, transform .16s;
+}
+
+.sort-it-difficulty-card:hover {
+    transform: translateY(-2px);
+    background: #fff;
+}
+
+.sort-it-difficulty-card.is-selected {
+    border-color: #ff6b00;
+    background: #FFF4EB;
+    box-shadow: inset 0 0 0 1px #ff6b00;
+}
+
+.sort-it-difficulty-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: #F5E7D9;
+    color: #A95316;
+    font: 700 20px 'Space Grotesk', sans-serif;
+}
+
+.sort-it-difficulty-card[data-difficulty="medium"] .sort-it-difficulty-icon {
+    background: #E3EBDD;
+    color: #506947;
+}
+
+.sort-it-difficulty-card[data-difficulty="hard"] .sort-it-difficulty-icon {
+    background: #F1DEDA;
+    color: #A34C3E;
+}
+
+.sort-it-difficulty-copy {
+    min-width: 0;
+    display: grid;
+    gap: 5px;
+}
+
+.sort-it-difficulty-copy strong {
+    font: 700 14px 'Space Grotesk', sans-serif;
+}
+
+.sort-it-difficulty-copy small {
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.35;
+}
+
+.sort-it-selected-mark {
+    color: #ff6b00;
+    font-size: 14px;
+    font-weight: 800;
+    opacity: 0;
+}
+
+.sort-it-difficulty-card.is-selected .sort-it-selected-mark {
+    opacity: 1;
+}
+
+.sort-it-setup-bottom {
+    display: grid;
+    grid-template-columns: minmax(160px, .7fr) minmax(0, 1.3fr);
+    align-items: stretch;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.sort-it-best-panel,
+.sort-it-game-over-best {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px;
+    border-radius: 10px;
+    background: #F4F1E9;
+    text-align: center;
+}
+
+.sort-it-best-panel strong,
+.sort-it-live-stat strong,
+.sort-it-game-over-best strong {
+    font: 700 30px/1.1 'Space Grotesk', sans-serif;
+    font-variant-numeric: tabular-nums;
+}
+
+.sort-it-best-panel small {
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+.sort-it-record-badge {
+    width: fit-content;
+    padding: 4px 9px;
+    border-radius: 999px;
+    background: #E5F2DF;
+    color: #356A37;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.sort-it-start-button,
+.sort-it-check-button,
+.sort-it-next-button {
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 14px 18px;
+    border: 0;
+    border-radius: 9px;
+    background: #ff6b00;
+    color: #fff;
+    font: 700 14px 'Space Grotesk', sans-serif;
+    cursor: pointer;
+    transition: background .16s, transform .16s;
+}
+
+.sort-it-start-button:hover,
+.sort-it-check-button:hover,
+.sort-it-next-button:hover {
+    transform: translateY(-2px);
+    background: #E45F00;
+}
+
+.sort-it-start-button > span:last-child {
+    font-size: 20px;
+}
+
+.sort-it-game-card {
+    padding: clamp(18px, 4vw, 32px);
+}
+
+.sort-it-game-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.sort-it-game-heading-main {
+    display: grid;
+    justify-items: start;
+    gap: 7px;
+}
+
+.sort-it-game-heading h2 {
+    margin-top: 0;
+}
+
+.sort-it-back-button,
+.sort-it-secondary-button {
+    min-height: 38px;
+    padding: 8px 11px;
+    border: 1px solid #D9D4C9;
+    border-radius: 8px;
+    background: #fff;
+    color: #5B574D;
+    font: 600 11px 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: background .15s, border-color .15s, color .15s;
+}
+
+.sort-it-back-button:hover,
+.sort-it-secondary-button:hover {
+    border-color: #ff6b00;
+    background: #FFF4EB;
+    color: #A95316;
+}
+
+.sort-it-game-stats {
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+}
+
+.sort-it-game-stats > div {
+    display: grid;
+    justify-items: end;
+    gap: 4px;
+}
+
+.sort-it-game-stats .eyebrow {
+    color: var(--muted);
+}
+
+.sort-it-live-stat strong {
+    font-size: 20px;
+}
+
+.sort-it-question {
+    margin: 28px 0 20px;
+    text-align: center;
+}
+
+.sort-it-question h2 {
+    margin: 6px 0 8px;
+    font: 600 clamp(23px, 4vw, 32px)/1.2 'Space Grotesk', sans-serif;
+    letter-spacing: -.8px;
+}
+
+.sort-it-question > p:last-child {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.sort-it-direction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #A95316;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.sort-it-direction span {
+    color: #ff6b00;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.sort-it-direction-top {
+    margin-bottom: 9px;
+}
+
+.sort-it-direction-bottom {
+    margin-top: 9px;
+}
+
+.sort-it-items {
+    width: min(620px, 100%);
+    margin: 0 auto;
+    display: grid;
+    gap: 8px;
+    list-style: none;
+}
+
+.sort-it-item {
+    min-width: 0;
+    min-height: 65px;
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr) 76px;
+    align-items: center;
+    gap: 11px;
+    padding: 9px 10px;
+    border: 1px solid #E0DCD2;
+    border-radius: 10px;
+    background: #FBFAF7;
+    transition: border-color .15s, background .15s, transform .15s, opacity .15s;
+}
+
+.sort-it-item[draggable="true"] {
+    cursor: grab;
+}
+
+.sort-it-item.is-dragging {
+    opacity: .48;
+}
+
+.sort-it-item.is-drop-target {
+    border-color: #ff6b00;
+    transform: translateY(-2px);
+}
+
+.sort-it-item.is-correct {
+    border-color: #65A46D;
+    background: #E9F4E7;
+}
+
+.sort-it-item.is-wrong {
+    border-color: #CF7568;
+    background: #F9E9E5;
+}
+
+.sort-it-position {
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #EFECE4;
+    color: #6A655A;
+    font: 700 12px 'Space Grotesk', sans-serif;
+}
+
+.sort-it-item-copy {
+    min-width: 0;
+    display: grid;
+    gap: 3px;
+}
+
+.sort-it-item-copy strong {
+    overflow-wrap: anywhere;
+    font: 700 13px 'Space Grotesk', sans-serif;
+}
+
+.sort-it-item-copy small {
+    color: #687F56;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.sort-it-item.is-wrong .sort-it-item-copy small {
+    color: #A34C3E;
+}
+
+.sort-it-item-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.sort-it-move-button {
+    width: 32px;
+    height: 34px;
+    border: 1px solid #D9D4C9;
+    border-radius: 7px;
+    background: #fff;
+    color: #514D44;
+    font: 700 17px 'DM Sans', sans-serif;
+    cursor: pointer;
+}
+
+.sort-it-move-button:hover:not(:disabled) {
+    border-color: #ff6b00;
+    color: #A95316;
+}
+
+.sort-it-move-button:focus-visible,
+.sort-it-start-button:focus-visible,
+.sort-it-check-button:focus-visible,
+.sort-it-next-button:focus-visible,
+.sort-it-secondary-button:focus-visible,
+.sort-it-back-button:focus-visible {
+    outline: 2px solid #ff6b00;
+    outline-offset: 2px;
+}
+
+.sort-it-move-button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.sort-it-attempts {
+    width: min(620px, 100%);
+    margin: 14px auto 0;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.sort-it-attempts strong {
+    color: var(--text);
+}
+
+.sort-it-feedback {
+    min-height: 22px;
+    margin: 10px 0 3px;
+    color: #5F6F4E;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.sort-it-feedback.is-wrong {
+    color: #A34C3E;
+}
+
+.sort-it-game-actions {
+    width: min(620px, 100%);
+    margin: 0 auto;
+}
+
+.sort-it-check-button,
+.sort-it-next-button {
+    width: 100%;
+    justify-content: center;
+}
+
+.sort-it-results-card {
+    width: min(560px, 100%);
+    margin: 0 auto;
+    padding: clamp(24px, 5vw, 42px);
+    text-align: center;
+}
+
+.sort-it-results-card h2 {
+    margin: 8px 0 18px;
+}
+
+.sort-it-final-score {
+    display: grid;
+    gap: 4px;
+    margin: 20px 0;
+}
+
+.sort-it-final-score strong {
+    color: #ff6b00;
+    font: 700 clamp(64px, 11vw, 88px)/1 'Space Grotesk', sans-serif;
+    font-variant-numeric: tabular-nums;
+}
+
+.sort-it-final-score span {
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.sort-it-results-copy {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.sort-it-results-best {
+    width: fit-content;
+    min-width: 170px;
+    margin: 20px auto;
+    display: grid;
+    justify-items: center;
+    gap: 6px;
+    padding: 14px 20px;
+    border-radius: 10px;
+    background: #F4F1E9;
+}
+
+.sort-it-results-best strong {
+    font: 700 28px/1.1 'Space Grotesk', sans-serif;
+}
+
+.sort-it-results-actions {
+    width: min(360px, 100%);
+    margin: 20px auto 0;
+    display: grid;
+    gap: 8px;
+}
+
+.sort-it-results-actions .sort-it-start-button {
+    width: 100%;
+}
+
+.sort-it-secondary-button {
+    min-height: 48px;
+}
+
+@media (max-width: 700px) {
+    .sort-it-difficulty-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .sort-it-difficulty-card {
+        min-height: 72px;
+    }
+
+    .sort-it-setup-bottom {
+        grid-template-columns: 1fr;
+    }
+
+    .sort-it-game-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .sort-it-game-stats {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .sort-it-game-stats > div {
+        justify-items: start;
+    }
+
+    .sort-it-item {
+        grid-template-columns: 29px minmax(0, 1fr) 70px;
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .sort-it-item-copy strong {
+        font-size: 12px;
+    }
+}
+
+/* =========================================================
    FLAG QUIZ
 ========================================================= */
 

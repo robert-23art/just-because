@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort It — just because.</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="game-page sort-it-page">
+    <header class="header">
+        <a href="../index.html" class="logo">just because<span>.</span></a>
+        <div class="header-actions">
+            <a href="../index.html" class="back-link">← back home</a>
+            <div data-language-switcher></div>
+        </div>
+    </header>
+
+    <main class="game-main sort-it-main">
+        <section id="setup-screen">
+            <div class="game-intro sort-it-intro">
+                <p class="eyebrow" id="sort-it-kicker">A LITTLE GAME · NO. 11</p>
+                <h1 id="sort-it-title">Sort It<span>.</span></h1>
+                <p id="sort-it-intro-copy">Put things in the right order.</p>
+            </div>
+
+            <section class="sort-it-setup-card">
+                <div class="sort-it-panel-heading">
+                    <div>
+                        <p class="eyebrow" id="setup-eyebrow">YOUR CHOICE</p>
+                        <h2 id="setup-heading">Choose your difficulty.</h2>
+                    </div>
+                    <span aria-hidden="true">↕</span>
+                </div>
+
+                <div class="sort-it-difficulty-grid" id="difficulty-options" role="group" aria-label="Choose your difficulty">
+                    <button class="sort-it-difficulty-card is-selected" type="button" data-difficulty="easy" aria-pressed="true">
+                        <span class="sort-it-difficulty-icon" aria-hidden="true">4</span>
+                        <span class="sort-it-difficulty-copy"><strong>Easy</strong><small>4 items · relaxed</small></span>
+                        <span class="sort-it-selected-mark" aria-hidden="true">✓</span>
+                    </button>
+                    <button class="sort-it-difficulty-card" type="button" data-difficulty="medium" aria-pressed="false">
+                        <span class="sort-it-difficulty-icon" aria-hidden="true">5</span>
+                        <span class="sort-it-difficulty-copy"><strong>Medium</strong><small>5 items · steady</small></span>
+                        <span class="sort-it-selected-mark" aria-hidden="true">✓</span>
+                    </button>
+                    <button class="sort-it-difficulty-card" type="button" data-difficulty="hard" aria-pressed="false">
+                        <span class="sort-it-difficulty-icon" aria-hidden="true">6</span>
+                        <span class="sort-it-difficulty-copy"><strong>Hard</strong><small>6 items · subtle differences</small></span>
+                        <span class="sort-it-selected-mark" aria-hidden="true">✓</span>
+                    </button>
+                </div>
+
+                <div class="sort-it-setup-bottom">
+                    <aside class="sort-it-best-panel">
+                        <span class="eyebrow" id="setup-best-label">PERSONAL BEST</span>
+                        <strong id="setup-best">—</strong>
+                        <span class="sort-it-record-badge" id="setup-new-record" role="status" aria-live="polite" hidden>New record!</span>
+                        <small id="best-note">Best score on this device.</small>
+                    </aside>
+                    <button class="sort-it-start-button" id="start-button" type="button">
+                        <span>START PLAYING</span><span aria-hidden="true">→</span>
+                    </button>
+                </div>
+            </section>
+        </section>
+
+        <section class="sort-it-screen" id="game-screen" aria-label="Sorting puzzle" hidden>
+            <section class="sort-it-game-card">
+                <div class="sort-it-game-heading">
+                    <div class="sort-it-game-heading-main">
+                        <button class="sort-it-back-button" id="back-to-setup" type="button">← Back to settings</button>
+                        <p class="eyebrow" id="active-difficulty">Easy</p>
+                        <h2 id="round-label">Question 1 / 8</h2>
+                    </div>
+                    <div class="sort-it-game-stats">
+                        <div>
+                            <span class="eyebrow" id="score-label">SCORE</span>
+                            <strong id="score">0</strong>
+                        </div>
+                        <div>
+                            <span class="eyebrow" id="game-best-label">PERSONAL BEST</span>
+                            <strong id="game-best">—</strong>
+                            <span class="sort-it-record-badge" id="game-new-record" role="status" aria-live="polite" hidden>New record!</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sort-it-question">
+                    <p class="eyebrow" id="question-number">QUESTION 1</p>
+                    <h2 id="task-prompt">Sort these items.</h2>
+                    <p id="sort-instructions">Drag cards or use the arrows to sort them.</p>
+                </div>
+
+                <div class="sort-it-direction sort-it-direction-top">
+                    <span aria-hidden="true">↓</span><strong id="low-label">Smallest</strong>
+                </div>
+                <ol class="sort-it-items" id="sort-items" aria-label="Items to sort"></ol>
+                <div class="sort-it-direction sort-it-direction-bottom">
+                    <span aria-hidden="true">↑</span><strong id="high-label">Largest</strong>
+                </div>
+
+                <div class="sort-it-attempts">
+                    <span id="attempts-label">Chances left</span>
+                    <strong id="attempts-left">2</strong>
+                </div>
+                <p class="sort-it-feedback" id="feedback" role="status" aria-live="polite"></p>
+                <div class="sort-it-game-actions">
+                    <button class="sort-it-check-button" id="check-order" type="button">Check Order</button>
+                    <button class="sort-it-next-button" id="next-task" type="button" hidden>Next task</button>
+                </div>
+            </section>
+        </section>
+
+        <section class="sort-it-screen" id="results-screen" aria-live="polite" hidden>
+            <section class="sort-it-results-card">
+                <p class="eyebrow" id="results-kicker">THAT'S A WRAP</p>
+                <h2 id="results-title">Nicely sorted.</h2>
+                <p class="sort-it-final-score"><strong id="final-score">0</strong><span id="final-score-label">POINTS</span></p>
+                <p class="sort-it-results-copy" id="results-copy"></p>
+                <div class="sort-it-results-best">
+                    <span class="eyebrow" id="results-best-label">PERSONAL BEST</span>
+                    <strong id="results-best">—</strong>
+                    <span class="sort-it-record-badge" id="results-new-record" role="status" aria-live="polite" hidden>New record!</span>
+                </div>
+                <div class="sort-it-results-actions">
+                    <button class="sort-it-start-button" id="play-again" type="button">
+                        <span>Play Again</span><span aria-hidden="true">↻</span>
+                    </button>
+                    <button class="sort-it-secondary-button" id="results-back" type="button">Change difficulty</button>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>made for no particular reason.</p>
+        <p>just because. © 2026</p>
+    </footer>
+
+    <script src="../js/translations.js"></script>
+    <script src="sort-it-data.js"></script>
+    <script src="sort-it.js"></script>
+</body>
+</html>
