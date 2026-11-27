@@ -207,6 +207,7 @@ function saveHighScore() {
             `jb-hl-score-${activeMode}`,
             score
         );
+        window.JustBecauseLeaderboard?.refresh();
     }
 
     updateHighScore();

@@ -596,7 +596,10 @@
     function saveHighScore() {
         const key = highScoreKey(selectedCategory);
         const stored = Number(readStorage(key)) || 0;
-        if (score > stored) writeStorage(key, score);
+        if (score > stored) {
+            writeStorage(key, score);
+            window.JustBecauseLeaderboard?.refresh();
+        }
         updateBestScore();
     }
 

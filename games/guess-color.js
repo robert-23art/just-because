@@ -194,6 +194,7 @@ function saveHighScore() {
             `jb-color-score-${activeMode}`,
             score
         );
+        window.JustBecauseLeaderboard?.refresh();
     }
 
     updateHighScore();

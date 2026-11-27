@@ -397,6 +397,7 @@
         renderFeedback();
         if (score > (Number(readStorage(highScoreKey())) || 0)) {
             writeStorage(highScoreKey(), score);
+            window.JustBecauseLeaderboard?.refresh();
         }
         updateBestScore();
     }

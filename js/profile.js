@@ -87,6 +87,7 @@
         try {
             localStorage.setItem(profileStorageKey, JSON.stringify(profile));
             storageError = false;
+            window.dispatchEvent(new CustomEvent("jb:profile-updated"));
             return true;
         } catch {
             storageError = true;

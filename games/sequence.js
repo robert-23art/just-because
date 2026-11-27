@@ -80,6 +80,7 @@ function updatePersonalBest() {
     const best = bestLevel(state.difficulty);
     if (best === null || state.level > best) {
         localStorage.setItem(bestStorageKey(state.difficulty), String(state.level));
+        window.JustBecauseLeaderboard?.refresh();
         state.newRecordFor = state.difficulty;
     }
     updateBestDisplays();

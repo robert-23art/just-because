@@ -292,6 +292,7 @@ function saveBest(reaction) {
     const currentBest = bestTimeMs(state.mode);
     if (currentBest === null || reaction < currentBest) {
         localStorage.setItem(`${bestStoragePrefix}${state.mode}`, String(reaction));
+        window.JustBecauseLeaderboard?.refresh();
         state.newRecordMode = state.mode;
         return true;
     }

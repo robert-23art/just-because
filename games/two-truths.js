@@ -162,7 +162,7 @@
         else { streakNote=streak?`${tr("ttl.ui.streakEnds","Your streak ends here.")}` : tr("ttl.ui.streakResets","Your streak resets. The next one is yours."); streak=0; }
         answerIndex=choiceIndex;
         renderStatements();
-        if(score>readScore(scoreKey()))writeScore(scoreKey(),score); els.best.textContent=readScore(scoreKey());
+        if(score>readScore(scoreKey())){writeScore(scoreKey(),score);window.JustBecauseLeaderboard?.refresh();} els.best.textContent=readScore(scoreKey());
     }
     function renderFeedback(){
         const isCorrect=answerIndex===current.statements.findIndex(s=>!s.truth);

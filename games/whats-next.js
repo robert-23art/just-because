@@ -308,6 +308,7 @@
         const previousBest = getHighScore();
         if (score > previousBest) {
             try { localStorage.setItem(highScoreKey(), String(score)); } catch { /* Scores are optional when storage is blocked. */ }
+            window.JustBecauseLeaderboard?.refresh();
             ui.resultTitle.textContent = "A new personal best!";
         } else if (correctCount === run.length) {
             ui.resultTitle.textContent = "Pattern pro.";

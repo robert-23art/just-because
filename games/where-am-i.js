@@ -357,7 +357,7 @@
         if(correct){const award=[100,70,40,20][hintsUsed];score+=award;correctCount++;window.DailyChallenge?.report("where-am-i", correctCount);streak++;bestStreak=Math.max(bestStreak,streak);el.score.textContent=score;el.streak.textContent=streak;}
         else{streak=0;el.streak.textContent=0;}
         if(correct||finalAnswer){
-            if(score>storageRead(scoreKey()))storageWrite(scoreKey(),score);el.best.textContent=storageRead(scoreKey());
+            if(score>storageRead(scoreKey())){storageWrite(scoreKey(),score);window.JustBecauseLeaderboard?.refresh();}el.best.textContent=storageRead(scoreKey());
             el.next.classList.remove("is-hidden");
         }
         paintFeedback();

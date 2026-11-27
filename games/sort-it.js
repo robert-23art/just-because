@@ -96,6 +96,7 @@ function saveBestScore() {
     const best = bestScore(state.difficulty);
     if (best === null || state.score > best) {
         localStorage.setItem(bestStorageKey(state.difficulty), String(state.score));
+        window.JustBecauseLeaderboard?.refresh();
         state.newRecordFor = state.difficulty;
     }
     updateBestDisplays();

@@ -80,7 +80,10 @@ function getHighscore(region, difficulty) {
 function saveHighscore() {
     const key = `jb_flag_quiz_highscore_${state.region}_${state.difficulty}`;
     const best = getHighscore(state.region, state.difficulty);
-    if (state.score > best) localStorage.setItem(key, String(state.score));
+    if (state.score > best) {
+        localStorage.setItem(key, String(state.score));
+        window.JustBecauseLeaderboard?.refresh();
+    }
 }
 
 function updateHighscore() {
