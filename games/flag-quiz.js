@@ -284,6 +284,7 @@ function answerQuestion(country, button) {
 
     if (isCorrect) {
         state.correct++;
+        window.DailyChallenge?.report("flag-quiz", state.correct);
         state.score += 100 + state.streak * 25;
         state.streak++;
         state.bestStreak = Math.max(state.bestStreak, state.streak);

@@ -312,6 +312,7 @@ function startRound() {
     applyTileLayout();
     enableTiles(false);
     updatePersonalBest();
+    window.DailyChallenge?.report("sequence", state.level);
     renderLevel();
     renderStatus();
     renderProgress();

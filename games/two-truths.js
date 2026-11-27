@@ -157,7 +157,7 @@
     function chooseAnswer(choiceIndex){
         if(answered||!current)return; answered=true;
         const lieIndex=current.statements.findIndex(s=>!s.truth); const isCorrect=choiceIndex===lieIndex;
-        if(isCorrect){ streak++; correctCount++; bestStreak=Math.max(bestStreak,streak); earnedPoints=100+Math.min((streak-1)*10,50); score+=earnedPoints; streakNote=streak===2?tr("ttl.ui.streakTwo","A streak is taking shape!"):streak>=3?`${streak} ${tr("ttl.ui.streakMany","in a row — nicely spotted!")}`:""; }
+        if(isCorrect){ streak++; correctCount++; window.DailyChallenge?.report("two-truths", correctCount); bestStreak=Math.max(bestStreak,streak); earnedPoints=100+Math.min((streak-1)*10,50); score+=earnedPoints; streakNote=streak===2?tr("ttl.ui.streakTwo","A streak is taking shape!"):streak>=3?`${streak} ${tr("ttl.ui.streakMany","in a row — nicely spotted!")}`:""; }
         else { streakNote=streak?`${tr("ttl.ui.streakEnds","Your streak ends here.")}` : tr("ttl.ui.streakResets","Your streak resets. The next one is yours."); streak=0; }
         answerIndex=choiceIndex;
         renderStatements();

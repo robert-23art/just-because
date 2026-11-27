@@ -351,6 +351,7 @@ function checkAnswer(selectedColor, selectedButton) {
         });
 
         score++;
+        window.DailyChallenge?.report("guess-color", score);
 
         roundScore.textContent = score;
 

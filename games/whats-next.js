@@ -250,6 +250,7 @@
 
         if (isCorrect) {
             correctCount++;
+            window.DailyChallenge?.report("whats-next", correctCount);
             streak++;
             bestStreak = Math.max(bestStreak, streak);
             earned = hintUsed ? 50 : 100;

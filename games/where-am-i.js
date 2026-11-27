@@ -141,7 +141,7 @@
     function catalogFromRows() {
         const catalog = {};
         const add = (key, values) => { catalog[key] = { en:values[0], nl:values[1], de:values[2], fr:values[3], es:values[4] }; };
-        for (const [key, ...values] of Object.entries(uiRows)) {
+        for (const [key, values] of Object.entries(uiRows)) {
             add(`wai.${key}`, values);
             if (!key.startsWith("region.") && !key.startsWith("regionDescription.") && !key.startsWith("difficulty.") && !key.startsWith("caption.")) {
                 add(`wai.ui.${key.replace(/^ui\./, "")}`, values);
@@ -353,7 +353,7 @@
     }
     function showFeedback(correct,finalAnswer=false) {
         answered=correct||finalAnswer;feedbackType=correct?"correct":finalAnswer?"final":"wrong";
-        if(correct){const award=[100,70,40,20][hintsUsed];score+=award;correctCount++;streak++;bestStreak=Math.max(bestStreak,streak);el.score.textContent=score;el.streak.textContent=streak;}
+        if(correct){const award=[100,70,40,20][hintsUsed];score+=award;correctCount++;window.DailyChallenge?.report("where-am-i", correctCount);streak++;bestStreak=Math.max(bestStreak,streak);el.score.textContent=score;el.streak.textContent=streak;}
         else{streak=0;el.streak.textContent=0;}
         if(correct||finalAnswer){
             if(score>storageRead(scoreKey()))storageWrite(scoreKey(),score);el.best.textContent=storageRead(scoreKey());

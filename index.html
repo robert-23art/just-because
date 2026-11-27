@@ -59,6 +59,20 @@
                 </div>
             </section>
 
+            <article class="daily-challenge-card" id="daily-challenge-card" aria-label="Today's Challenge">
+                <div class="daily-challenge-copy">
+                    <p class="daily-challenge-kicker" data-daily-title></p>
+                    <p class="daily-challenge-date" data-daily-date></p>
+                    <strong class="daily-challenge-game" data-daily-game></strong>
+                    <p class="daily-challenge-goal" data-daily-goal></p>
+                    <p class="daily-challenge-progress" data-daily-progress></p>
+                </div>
+                <div class="daily-challenge-action">
+                    <div class="daily-challenge-streak"><span data-daily-streak-label></span><strong data-daily-streak></strong></div>
+                    <a class="daily-challenge-link" data-daily-link></a>
+                </div>
+            </article>
+
             <section class="games-section" id="games">
                 <div class="section-heading">
                     <div>
@@ -242,6 +256,7 @@
         </footer>
 
         <script src="js/translations.js"></script>
+        <script src="js/daily-challenge.js"></script>
         <script src="js/script.js"></script>
     </body>
     </html>

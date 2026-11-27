@@ -291,6 +291,7 @@ function updateAttemptCount() {
 function finishCurrentTask() {
     state.roundComplete = true;
     state.completedTasks++;
+    window.DailyChallenge?.report("sort-it", state.completedTasks);
     const points = state.bestCorrectPositions * 2;
     state.score += points;
     updateScoreDisplay();

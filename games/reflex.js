@@ -302,6 +302,9 @@ function handleTargetClick() {
     clearSignalTimer();
     const reaction = Math.round(performance.now() - state.greenAt);
     state.times.push(reaction);
+    if (state.times.length === 5) {
+        window.DailyChallenge?.report("reflex", averageTimeMs());
+    }
     state.lastReaction = reaction;
     state.ratingKey = ratingFor(reaction);
     state.phase = "result";

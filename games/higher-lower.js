@@ -347,6 +347,7 @@ function checkAnswer(guess) {
     if (isCorrect) {
 
         score++;
+        window.DailyChallenge?.report("higher-lower", score);
 
         roundScore.textContent = score;
         saveHighScore();

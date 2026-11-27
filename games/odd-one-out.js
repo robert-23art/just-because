@@ -379,6 +379,7 @@
         if (isCorrect) {
             streak++;
             correctCount++;
+            window.DailyChallenge?.report("odd-one-out", correctCount);
             bestStreak = Math.max(bestStreak, streak);
             earnedPoints = 100 + Math.min(Math.max(streak - 1, 0) * 10, 50);
             score += earnedPoints;

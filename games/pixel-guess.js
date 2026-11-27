@@ -569,6 +569,7 @@
             roundPoints = Math.max(10, 100 - revealStep * 18);
             score += roundPoints;
             correctCount++;
+            window.DailyChallenge?.report("pixel-guess", correctCount);
             scoreElement.textContent = score;
             correctCountElement.textContent = correctCount;
             saveHighScore();

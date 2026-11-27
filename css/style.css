@@ -4538,6 +4538,164 @@ a.game-card {
     color: var(--text);
 }
 
+.daily-challenge-card,
+.daily-challenge-banner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 20px;
+    width: min(1100px, 90%);
+    margin: 0 auto 46px;
+    padding: 22px 26px;
+    border: 1px solid color-mix(in srgb, #ff6b00 32%, var(--border));
+    border-radius: 14px;
+    background: linear-gradient(115deg, var(--surface), var(--accent-soft));
+    box-shadow: 0 10px 28px var(--shadow);
+    color: var(--text);
+}
+
+.daily-challenge-banner {
+    width: min(1100px, calc(100% - 40px));
+    margin-bottom: 28px;
+}
+
+.daily-challenge-copy {
+    display: grid;
+    gap: 5px;
+}
+
+.daily-challenge-kicker {
+    color: #b94d00;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+:root[data-theme="dark"] .daily-challenge-kicker,
+:root[data-theme="midnight-blue"] .daily-challenge-kicker {
+    color: #ff9a52;
+}
+
+.daily-challenge-date,
+.daily-challenge-progress {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.daily-challenge-game {
+    color: var(--text);
+    font: 700 20px 'Space Grotesk', sans-serif;
+}
+
+.daily-challenge-goal {
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.daily-challenge-action {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.daily-challenge-streak {
+    display: grid;
+    gap: 3px;
+    color: var(--muted);
+    font-size: 11px;
+    text-align: center;
+}
+
+.daily-challenge-streak strong {
+    color: var(--text);
+    font-size: 16px;
+}
+
+.daily-challenge-link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 16px;
+    border: 0;
+    border-radius: 8px;
+    background: #ff6b00;
+    color: #111827;
+    font-size: 13px;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform .16s ease, filter .16s ease;
+}
+
+.daily-challenge-link:hover,
+.daily-challenge-link:focus-visible {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+}
+
+.daily-challenge-link:focus-visible {
+    outline: 3px solid color-mix(in srgb, #ff6b00 45%, transparent);
+    outline-offset: 3px;
+}
+
+.daily-challenge-card.is-completed .daily-challenge-link,
+.daily-challenge-banner.is-completed .daily-challenge-link {
+    background: var(--success-bg, #E5F3E5);
+    color: var(--text);
+}
+
+.daily-challenge-celebration {
+    color: #26713a;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+:root[data-theme="dark"] .daily-challenge-celebration,
+:root[data-theme="midnight-blue"] .daily-challenge-celebration {
+    color: #86efac;
+}
+
+@media (max-width: 650px) {
+    .daily-challenge-card,
+    .daily-challenge-banner {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 20px;
+    }
+
+    .daily-challenge-action {
+        justify-content: space-between;
+    }
+
+    .daily-challenge-link {
+        flex: 1;
+    }
+}
+
+@media (max-width: 380px) {
+    .daily-challenge-card,
+    .daily-challenge-banner {
+        width: calc(100% - 28px);
+        padding: 17px;
+    }
+
+    .daily-challenge-action {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .daily-challenge-streak {
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+}
+
 :root[data-theme="dark"] body.game-page .wai-map-stage,
 :root[data-theme="midnight-blue"] body.game-page .wai-map-stage {
     border-color: var(--border);
