@@ -843,6 +843,10 @@ a.game-card {
     display: none;
 }
 
+[hidden] {
+    display: none !important;
+}
+
 /* MOBILE */
 
 @media (max-width: 700px) {
@@ -1527,6 +1531,10 @@ a.game-card {
     width: min(900px, 90%);
 }
 
+.flag-setup-screen {
+    display: contents;
+}
+
 .flag-intro h1 span {
     color: #ff6b00;
 }
@@ -1941,7 +1949,6 @@ a.game-card {
 }
 
 @media (max-width: 420px) {
-    .flag-options,
     .flag-result-stats {
         grid-template-columns: 1fr;
     }

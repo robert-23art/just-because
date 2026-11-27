@@ -82,7 +82,28 @@ const FLAG_QUIZ_DATA = [
     { code: "uy", region: "americas", names: { en: "Uruguay", nl: "Uruguay", de: "Uruguay", fr: "Uruguay", es: "Uruguay" } },
     { code: "ve", region: "americas", names: { en: "Venezuela", nl: "Venezuela", de: "Venezuela", fr: "Vénézuéla", es: "Venezuela" } },
     { code: "vn", region: "asia", names: { en: "Vietnam", nl: "Vietnam", de: "Vietnam", fr: "Viêt Nam", es: "Vietnam" } },
-    { code: "zm", region: "africa-oceania", names: { en: "Zambia", nl: "Zambia", de: "Sambia", fr: "Zambie", es: "Zambia" } }
+    { code: "zm", region: "africa-oceania", names: { en: "Zambia", nl: "Zambia", de: "Sambia", fr: "Zambie", es: "Zambia" } },
+    { code: "ci", region: "africa-oceania", names: { en: "Côte d’Ivoire", nl: "Ivoorkust", de: "Elfenbeinküste", fr: "Côte d’Ivoire", es: "Costa de Marfil" } },
+    { code: "td", region: "africa-oceania", names: { en: "Chad", nl: "Tsjaad", de: "Tschad", fr: "Tchad", es: "Chad" } },
+    { code: "mc", region: "europe", names: { en: "Monaco", nl: "Monaco", de: "Monaco", fr: "Monaco", es: "Mónaco" } },
+    { code: "hn", region: "americas", names: { en: "Honduras", nl: "Honduras", de: "Honduras", fr: "Honduras", es: "Honduras" } },
+    { code: "ni", region: "americas", names: { en: "Nicaragua", nl: "Nicaragua", de: "Nicaragua", fr: "Nicaragua", es: "Nicaragua" } },
+    { code: "sv", region: "americas", names: { en: "El Salvador", nl: "El Salvador", de: "El Salvador", fr: "Salvador", es: "El Salvador" } },
+    { code: "ru", region: "asia", names: { en: "Russia", nl: "Rusland", de: "Russland", fr: "Russie", es: "Rusia" } },
+    { code: "ne", region: "africa-oceania", names: { en: "Niger", nl: "Niger", de: "Niger", fr: "Niger", es: "Níger" } },
+    { code: "kz", region: "asia", names: { en: "Kazakhstan", nl: "Kazachstan", de: "Kasachstan", fr: "Kazakhstan", es: "Kazajistán" } },
+    { code: "et", region: "africa-oceania", names: { en: "Ethiopia", nl: "Ethiopië", de: "Äthiopien", fr: "Éthiopie", es: "Etiopía" } },
+    { code: "tz", region: "africa-oceania", names: { en: "Tanzania", nl: "Tanzania", de: "Tansania", fr: "Tanzanie", es: "Tanzania" } },
+    { code: "mg", region: "africa-oceania", names: { en: "Madagascar", nl: "Madagaskar", de: "Madagaskar", fr: "Madagascar", es: "Madagascar" } },
+    { code: "tn", region: "africa-oceania", names: { en: "Tunisia", nl: "Tunesië", de: "Tunesien", fr: "Tunisie", es: "Túnez" } },
+    { code: "qa", region: "asia", names: { en: "Qatar", nl: "Qatar", de: "Katar", fr: "Qatar", es: "Catar" } },
+    { code: "jo", region: "asia", names: { en: "Jordan", nl: "Jordanië", de: "Jordanien", fr: "Jordanie", es: "Jordania" } },
+    { code: "lb", region: "asia", names: { en: "Lebanon", nl: "Libanon", de: "Libanon", fr: "Liban", es: "Líbano" } },
+    { code: "jm", region: "americas", names: { en: "Jamaica", nl: "Jamaica", de: "Jamaika", fr: "Jamaïque", es: "Jamaica" } },
+    { code: "kw", region: "asia", names: { en: "Kuwait", nl: "Koeweit", de: "Kuwait", fr: "Koweït", es: "Kuwait" } },
+    { code: "om", region: "asia", names: { en: "Oman", nl: "Oman", de: "Oman", fr: "Oman", es: "Omán" } },
+    { code: "ir", region: "asia", names: { en: "Iran", nl: "Iran", de: "Iran", fr: "Iran", es: "Irán" } },
+    { code: "iq", region: "asia", names: { en: "Iraq", nl: "Irak", de: "Irak", fr: "Irak", es: "Irak" } }
 ];
 
 const FLAG_QUIZ_EASY = new Set([
@@ -95,7 +116,8 @@ const FLAG_QUIZ_EASY = new Set([
 const FLAG_QUIZ_HARD = new Set([
     "al", "ad", "dz", "ao", "at", "bd", "ba", "bw", "bg", "kh", "cm", "co", "cr",
     "hr", "cu", "cz", "ec", "ee", "gh", "gt", "is", "lv", "lt", "lu", "my", "np",
-    "ae", "pa", "py", "rs", "sg", "sk", "si", "lk", "sn", "tw", "uy", "ve", "zm"
+    "ae", "pa", "py", "rs", "sg", "sk", "si", "lk", "sn", "tw", "uy", "ve", "zm",
+    "mc", "td", "ci", "ne"
 ]);
 
 const FLAG_QUIZ_LOOKALIKES = [

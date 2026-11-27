@@ -3,9 +3,9 @@ const roundMode = document.getElementById("round-mode");
 const difficultyMode = document.getElementById("difficulty-mode");
 const startButton = document.getElementById("flag-start-button");
 const introScreen = document.getElementById("flag-intro");
-const setupScreen = document.getElementById("flag-setup");
-const gameScreen = document.getElementById("flag-game");
-const resultsScreen = document.getElementById("flag-results");
+const setupScreen = document.getElementById("setup-screen");
+const gameScreen = document.getElementById("game-screen");
+const resultsScreen = document.getElementById("results-screen");
 const regionLabel = document.getElementById("flag-region-label");
 const roundElement = document.getElementById("flag-round");
 const scoreElement = document.getElementById("flag-score");
@@ -25,7 +25,7 @@ const state = {
     region: "all",
     mode: "10",
     difficulty: "easy",
-    pool: [],
+    questionQueue: [],
     current: null,
     choices: [],
     answered: false,
@@ -166,11 +166,21 @@ function renderStaticUi() {
     renderAnswers();
 }
 
-function filteredCountries(region) {
+function filteredCountries(region, difficulty = state.difficulty) {
     const regional = region === "all" ? [...FLAG_QUIZ_DATA] : FLAG_QUIZ_DATA.filter(country => country.region === region);
-    return regional.filter(country => {
-        if (state.difficulty === "easy") return FLAG_QUIZ_EASY.has(country.code);
-        if (state.difficulty === "hard") return FLAG_QUIZ_HARD.has(country.code);
+    const globalDifficultyPool = countriesForDifficulty(difficulty);
+    const countries = regional.filter(country => globalDifficultyPool.some(item => item.code === country.code));
+    for (const country of shuffle(globalDifficultyPool.filter(item => !countries.some(selected => selected.code === item.code)))) {
+        if (countries.length >= 20) break;
+        countries.push(country);
+    }
+    return countries;
+}
+
+function countriesForDifficulty(difficulty) {
+    return FLAG_QUIZ_DATA.filter(country => {
+        if (difficulty === "easy") return FLAG_QUIZ_EASY.has(country.code);
+        if (difficulty === "hard") return FLAG_QUIZ_HARD.has(country.code) && !FLAG_QUIZ_EASY.has(country.code);
         return !FLAG_QUIZ_EASY.has(country.code) && !FLAG_QUIZ_HARD.has(country.code);
     });
 }
@@ -179,7 +189,7 @@ function startGame() {
     state.region = regionSelect.value;
     state.mode = roundMode.querySelector(".is-selected").dataset.mode;
     state.difficulty = difficultyMode.querySelector(".is-selected").dataset.difficulty;
-    state.pool = shuffle(filteredCountries(state.region));
+    state.questionQueue = shuffle(filteredCountries(state.region, state.difficulty));
     state.score = 0;
     state.streak = 0;
     state.bestStreak = 0;
@@ -188,9 +198,9 @@ function startGame() {
     state.wrong = 0;
 
     introScreen.classList.add("is-hidden");
-    setupScreen.classList.add("is-hidden");
-    resultsScreen.classList.add("is-hidden");
-    gameScreen.classList.remove("is-hidden");
+    setupScreen.hidden = true;
+    resultsScreen.hidden = true;
+    gameScreen.hidden = false;
     regionLabel.textContent = regionName(state.region, true);
     scoreElement.textContent = "0";
     streakElement.textContent = "0";
@@ -200,30 +210,39 @@ function startGame() {
 function showQuestion() {
     state.answered = false;
     state.selectedCode = "";
-    if (!state.pool.length) state.pool = shuffle(filteredCountries(state.region));
+    if (!state.questionQueue.length) {
+        showResults();
+        return;
+    }
+    state.current = state.questionQueue.shift();
+    const candidateCodes = new Set([state.current.code]);
+    const candidates = [];
+    const addCandidates = countries => {
+        if (candidates.length >= 3) return;
+        for (const country of shuffle(countries)) {
+            if (candidateCodes.has(country.code)) continue;
+            candidateCodes.add(country.code);
+            candidates.push(country);
+            if (candidates.length >= 3) break;
+        }
+    };
 
-    state.current = state.pool.pop();
-    let candidates = [];
     if (state.difficulty === "hard") {
         const lookalikeGroup = FLAG_QUIZ_LOOKALIKES.find(group => group.includes(state.current.code));
         if (lookalikeGroup) {
-            candidates = shuffle(FLAG_QUIZ_DATA.filter(country =>
+            addCandidates(FLAG_QUIZ_DATA.filter(country =>
                 lookalikeGroup.includes(country.code) && country.code !== state.current.code
             ));
         }
     }
-    if (candidates.length < 3) {
-        const regionalPool = filteredCountries(state.region).filter(country => country.code !== state.current.code);
-        candidates = shuffle([...candidates, ...regionalPool.filter(country =>
-            !candidates.some(candidate => candidate.code === country.code)
-        )]);
-    }
-    state.choices = shuffle([state.current, ...candidates.slice(0, 3)]);
+    addCandidates(countriesForDifficulty(state.difficulty));
+    if (candidates.length < 3) addCandidates(FLAG_QUIZ_DATA);
+    state.choices = shuffle([state.current, ...candidates]);
 
     flagImage.src = `https://flagcdn.com/w640/${state.current.code}.png`;
     flagImage.alt = text("Country flag", "Country flag");
-    feedbackElement.classList.add("is-hidden");
-    nextButton.classList.add("is-hidden");
+    feedbackElement.hidden = true;
+    nextButton.hidden = true;
     renderAnswers();
     updateRoundStats();
 }
@@ -281,8 +300,8 @@ function answerQuestion(country, button) {
         )}`;
     }
 
-    feedbackElement.classList.remove("is-hidden");
-    nextButton.classList.remove("is-hidden");
+    feedbackElement.hidden = false;
+    nextButton.hidden = false;
     scoreElement.textContent = String(state.score);
     streakElement.textContent = String(state.streak);
     saveHighscore();
@@ -299,7 +318,7 @@ function updateRoundStats() {
 function nextQuestion() {
     if (!state.answered) return;
     state.roundIndex++;
-    if (state.mode !== "endless" && state.roundIndex >= Number(state.mode)) {
+    if ((state.mode !== "endless" && state.roundIndex >= Number(state.mode)) || !state.questionQueue.length) {
         showResults();
         return;
     }
@@ -307,8 +326,8 @@ function nextQuestion() {
 }
 
 function showResults() {
-    gameScreen.classList.add("is-hidden");
-    resultsScreen.classList.remove("is-hidden");
+    gameScreen.hidden = true;
+    resultsScreen.hidden = false;
     const total = state.correct + state.wrong;
     const accuracy = total ? Math.round((state.correct / total) * 100) : 0;
     document.getElementById("flag-final-score").textContent = String(state.score);
@@ -325,10 +344,10 @@ function showResults() {
 }
 
 function backToSettings() {
-    gameScreen.classList.add("is-hidden");
-    resultsScreen.classList.add("is-hidden");
+    gameScreen.hidden = true;
+    resultsScreen.hidden = true;
     introScreen.classList.remove("is-hidden");
-    setupScreen.classList.remove("is-hidden");
+    setupScreen.hidden = false;
     state.answered = false;
 }
 
