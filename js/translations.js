@@ -526,7 +526,12 @@
         ["You cleared the whole list!", "Je hebt de hele lijst gehaald!", "Du hast die ganze Liste geschafft!", "Tu as terminé toute la liste !", "¡Completaste toda la lista!"],
         ["Game over!", "Spel afgelopen!", "Spiel vorbei!", "Fin de la partie !", "¡Fin de la partida!"],
         ["You scored {score} points.", "Je scoorde {score} punten.", "Du hast {score} Punkte erzielt.", "Tu as marqué {score} points.", "Conseguiste {score} puntos."],
-        ["You got {score} points.", "Je haalde {score} punten.", "Du hast {score} Punkte erreicht.", "Tu as obtenu {score} points.", "Conseguiste {score} puntos."]
+        ["You got {score} points.", "Je haalde {score} punten.", "Du hast {score} Punkte erreicht.", "Tu as obtenu {score} points.", "Conseguiste {score} puntos."],
+        ["Theme", "Thema", "Design", "Thème", "Tema"],
+        ["Light", "Licht", "Hell", "Clair", "Claro"],
+        ["Dark Mode", "Donkere modus", "Dunkelmodus", "Mode sombre", "Modo oscuro"],
+        ["Warm Paper", "Warm papier", "Warmes Papier", "Papier chaud", "Papel cálido"],
+        ["Midnight Blue", "Middernachtblauw", "Mitternachtsblau", "Bleu nuit", "Azul medianoche"]
     ];
     const languageCodes = languages.map(language => language.code);
     const messages = Object.fromEntries(languageCodes.map((code, index) => [

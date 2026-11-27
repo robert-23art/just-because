@@ -5,10 +5,50 @@
     --background: #F5F2EA;
     --text: #26251F;
     --muted: #858176;
+    --surface: #FFFFFF;
+    --surface-soft: #FBF9F4;
+    --control-bg: #F8F6F0;
+    --border: #DEDACF;
+    --shadow: rgba(38, 37, 31, 0.12);
     --orange: #F2B36C;
     --green: #C5D9AD;
     --purple: #D7C4E8;
     --blue: #B9D5E4;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --background: #181A20;
+    --text: #F3F0E8;
+    --muted: #B4B1A9;
+    --surface: #22252D;
+    --surface-soft: #292D36;
+    --control-bg: #1D2027;
+    --border: #3A3E49;
+    --shadow: rgba(0, 0, 0, 0.32);
+}
+
+:root[data-theme="warm-paper"] {
+    --background: #F0E2C6;
+    --text: #382D21;
+    --muted: #796D5C;
+    --surface: #FFF9EC;
+    --surface-soft: #F8EEDB;
+    --control-bg: #FFF9EC;
+    --border: #D9C6A5;
+    --shadow: rgba(74, 52, 27, 0.12);
+}
+
+:root[data-theme="midnight-blue"] {
+    color-scheme: dark;
+    --background: #101B2B;
+    --text: #ECF2F9;
+    --muted: #A7B5C8;
+    --surface: #17263A;
+    --surface-soft: #1E3048;
+    --control-bg: #142237;
+    --border: #344861;
+    --shadow: rgba(0, 0, 0, 0.35);
 }
 
 * {
@@ -68,6 +108,89 @@ body {
     position: relative;
     z-index: 30;
     flex: 0 0 auto;
+}
+
+.theme-switcher {
+    position: relative;
+    z-index: 31;
+    flex: 0 0 auto;
+}
+
+.theme-trigger {
+    display: flex;
+    min-width: 46px;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 5px 3px;
+    border: 0;
+    background: transparent;
+    color: #4B4A45;
+    cursor: pointer;
+}
+
+.theme-trigger:hover,
+.theme-trigger:focus-visible {
+    color: #ff6b00;
+}
+
+.theme-trigger:focus-visible,
+.theme-option:focus-visible {
+    outline: 2px solid #ff6b00;
+    outline-offset: 3px;
+}
+
+.theme-icon {
+    width: 21px;
+    height: 21px;
+}
+
+.theme-caption {
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.theme-menu {
+    position: absolute;
+    top: calc(100% + 9px);
+    right: 0;
+    width: 180px;
+    padding: 6px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    box-shadow: 0 10px 28px var(--shadow);
+}
+
+.theme-option {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 10px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text);
+    font: 600 12px 'DM Sans', sans-serif;
+    text-align: left;
+    cursor: pointer;
+}
+
+.theme-option:hover,
+.theme-option[aria-checked="true"] {
+    background: color-mix(in srgb, #ff6b00 12%, var(--surface));
+}
+
+.theme-swatch {
+    width: 15px;
+    height: 15px;
+    flex: 0 0 15px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--swatch-color);
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.22);
 }
 
 .language-trigger {
@@ -4216,6 +4339,201 @@ a.game-card {
     .wn-answer-button { min-height:54px; }
     .wn-live-stat small { font-size:8px; }
     .wn-result-stats strong { font-size:14px; }
+}
+
+/* SITE THEMES */
+
+:root[data-theme="dark"] body,
+:root[data-theme="midnight-blue"] body {
+    color: var(--text);
+}
+
+:root[data-theme="dark"] .logo,
+:root[data-theme="dark"] .back-link,
+:root[data-theme="midnight-blue"] .logo,
+:root[data-theme="midnight-blue"] .back-link,
+:root[data-theme="dark"] .theme-trigger,
+:root[data-theme="dark"] .language-trigger,
+:root[data-theme="midnight-blue"] .theme-trigger,
+:root[data-theme="midnight-blue"] .language-trigger {
+    color: var(--text);
+}
+
+:root[data-theme="dark"] .theme-option,
+:root[data-theme="dark"] .language-option,
+:root[data-theme="midnight-blue"] .theme-option,
+:root[data-theme="midnight-blue"] .language-option {
+    color: var(--text);
+}
+
+:root[data-theme="dark"] .language-menu,
+:root[data-theme="midnight-blue"] .language-menu {
+    border-color: var(--border);
+    background: var(--surface);
+    box-shadow: 0 10px 28px var(--shadow);
+}
+
+:root[data-theme="dark"] .language-option:hover,
+:root[data-theme="dark"] .language-option[aria-checked="true"],
+:root[data-theme="midnight-blue"] .language-option:hover,
+:root[data-theme="midnight-blue"] .language-option[aria-checked="true"] {
+    background: color-mix(in srgb, #ff6b00 12%, var(--surface));
+}
+
+:root[data-theme="dark"] .donation-card,
+:root[data-theme="midnight-blue"] .donation-card,
+:root[data-theme="dark"] .game-search,
+:root[data-theme="midnight-blue"] .game-search {
+    border-color: var(--border);
+    background: var(--surface);
+    box-shadow: 0 10px 30px var(--shadow);
+    color: var(--text);
+}
+
+:root[data-theme="dark"] .game-search input,
+:root[data-theme="midnight-blue"] .game-search input {
+    border-color: var(--border);
+    background: var(--control-bg);
+    color: var(--text);
+}
+
+:root[data-theme="dark"] .game-search input::placeholder,
+:root[data-theme="midnight-blue"] .game-search input::placeholder {
+    color: var(--muted);
+}
+
+:root[data-theme="dark"] body.game-page :is([class*="box"], [class*="card"], [class*="panel"], [class*="setup"], [class*="results"], [class*="stage"], [class*="game-screen"], [class*="game-over"], [class*="play"], [class*="item"]):not(.is-correct):not(.is-wrong):not(.game-art):not(.pg-category-art):not(.sequence-tile):not(.wai-country-shape),
+:root[data-theme="midnight-blue"] body.game-page :is([class*="box"], [class*="card"], [class*="panel"], [class*="setup"], [class*="results"], [class*="stage"], [class*="game-screen"], [class*="game-over"], [class*="play"], [class*="item"]):not(.is-correct):not(.is-wrong):not(.game-art):not(.pg-category-art):not(.sequence-tile):not(.wai-country-shape) {
+    border-color: var(--border);
+    background-color: var(--surface);
+    color: var(--text);
+    box-shadow: none;
+}
+
+:root[data-theme="dark"] body.game-page :is(.flag-display, .pg-image-frame, .sequence-best-panel, .sequence-live-best, .sequence-game-over-best, .reflex-best-panel, .reflex-live-stats div, .reflex-results-best),
+:root[data-theme="midnight-blue"] body.game-page :is(.flag-display, .pg-image-frame, .sequence-best-panel, .sequence-live-best, .sequence-game-over-best, .reflex-best-panel, .reflex-live-stats div, .reflex-results-best) {
+    border-color: var(--border);
+    background-color: var(--surface-soft);
+    color: var(--text);
+}
+
+:root[data-theme="dark"] body.game-page :is(.category-controls select, input, select, textarea, .sequence-sound-button, .sequence-back-button, .sequence-secondary-button, .ttl-secondary, .wai-hint-button, .wai-secondary),
+:root[data-theme="midnight-blue"] body.game-page :is(.category-controls select, input, select, textarea, .sequence-sound-button, .sequence-back-button, .sequence-secondary-button, .ttl-secondary, .wai-hint-button, .wai-secondary) {
+    border-color: var(--border);
+    background-color: var(--control-bg);
+    color: var(--text);
+}
+
+:root[data-theme="dark"] body.game-page :where(button:not([class*="start"]):not([class*="primary"]):not([class*="next"]):not([class*="submit"]):not([class*="replay"]):not([class*="continue"]):not([class*="answer"]):not([class*="tile"]):not([class*="pad"]):not([class*="color"]):not(.is-correct):not(.is-wrong)),
+:root[data-theme="midnight-blue"] body.game-page :where(button:not([class*="start"]):not([class*="primary"]):not([class*="next"]):not([class*="submit"]):not([class*="replay"]):not([class*="continue"]):not([class*="answer"]):not([class*="tile"]):not([class*="pad"]):not([class*="color"]):not(.is-correct):not(.is-wrong)) {
+    border-color: var(--border);
+    background-color: var(--surface-soft);
+    color: var(--text);
+}
+
+:root[data-theme="dark"] body.game-page :is(.category-box, .highscore-box, .game-stage, .game-over, .sort-it-item, .pg-image-panel),
+:root[data-theme="midnight-blue"] body.game-page :is(.category-box, .highscore-box, .game-stage, .game-over, .sort-it-item, .pg-image-panel) {
+    border-color: var(--border);
+    background-color: var(--surface);
+    color: var(--text);
+}
+
+:root[data-theme="dark"] body.game-page :is(h1, h2, h3, h4, strong, li, label, summary),
+:root[data-theme="midnight-blue"] body.game-page :is(h1, h2, h3, h4, strong, li, label, summary) {
+    color: var(--text);
+}
+
+:root[data-theme="dark"] body.game-page :is(p, small, .eyebrow, [class*="note"], [class*="label"], [class*="meta"], [class*="caption"], [class*="copy"]),
+:root[data-theme="midnight-blue"] body.game-page :is(p, small, .eyebrow, [class*="note"], [class*="label"], [class*="meta"], [class*="caption"], [class*="copy"]) {
+    color: var(--muted);
+}
+
+:root[data-theme="dark"] body.game-page button[class*="card"]:not(.is-correct):not(.is-wrong),
+:root[data-theme="midnight-blue"] body.game-page button[class*="card"]:not(.is-correct):not(.is-wrong),
+:root[data-theme="dark"] body.game-page .flag-answer:not(.is-correct):not(.is-wrong),
+:root[data-theme="midnight-blue"] body.game-page .flag-answer:not(.is-correct):not(.is-wrong) {
+    border-color: var(--border);
+    background-color: var(--surface-soft);
+    color: var(--text);
+}
+
+:root[data-theme="dark"] body.game-page :is(button.is-selected, [class*="card"].is-selected),
+:root[data-theme="midnight-blue"] body.game-page :is(button.is-selected, [class*="card"].is-selected) {
+    border-color: #ff6b00;
+    background-color: color-mix(in srgb, #ff6b00 14%, var(--surface));
+    box-shadow: inset 0 0 0 1px #ff6b00;
+    color: var(--text);
+}
+
+:root[data-theme="dark"] body.game-page :is(.is-correct, .is-lie, .is-picked-correct),
+:root[data-theme="midnight-blue"] body.game-page :is(.is-correct, .is-lie, .is-picked-correct) {
+    border-color: #4D8A5E;
+    background-color: #203D2A;
+    color: #E1F4E5;
+}
+
+:root[data-theme="dark"] body.game-page :is(.is-wrong),
+:root[data-theme="midnight-blue"] body.game-page :is(.is-wrong) {
+    border-color: #99584E;
+    background-color: #482B2B;
+    color: #FFE8E3;
+}
+
+:root[data-theme="dark"] body.game-page .game-intro h1 span,
+:root[data-theme="dark"] body.game-page .pg-intro h1 span,
+:root[data-theme="dark"] body.game-page .reflex-intro h1 span,
+:root[data-theme="dark"] body.game-page .sequence-intro h1 span,
+:root[data-theme="dark"] body.game-page .sort-it-intro h1 span,
+:root[data-theme="dark"] body.game-page .flag-intro h1 span,
+:root[data-theme="dark"] body.game-page .wai-intro h1 span,
+:root[data-theme="dark"] body.game-page .ooo-intro h1 span,
+:root[data-theme="dark"] body.game-page .ttl-intro h1 span,
+:root[data-theme="dark"] body.game-page .wn-intro h1 span,
+:root[data-theme="midnight-blue"] body.game-page .game-intro h1 span,
+:root[data-theme="midnight-blue"] body.game-page .pg-intro h1 span,
+:root[data-theme="midnight-blue"] body.game-page .reflex-intro h1 span,
+:root[data-theme="midnight-blue"] body.game-page .sequence-intro h1 span,
+:root[data-theme="midnight-blue"] body.game-page .sort-it-intro h1 span,
+:root[data-theme="midnight-blue"] body.game-page .flag-intro h1 span,
+:root[data-theme="midnight-blue"] body.game-page .wai-intro h1 span,
+:root[data-theme="midnight-blue"] body.game-page .ooo-intro h1 span,
+:root[data-theme="midnight-blue"] body.game-page .ttl-intro h1 span,
+:root[data-theme="midnight-blue"] body.game-page .wn-intro h1 span {
+    color: #ff6b00;
+}
+
+:root[data-theme="dark"] body.game-page .sequence-tile,
+:root[data-theme="midnight-blue"] body.game-page .sequence-tile,
+:root[data-theme="dark"] body.game-page .reflex-pad,
+:root[data-theme="midnight-blue"] body.game-page .reflex-pad {
+    color: #fff;
+}
+
+:root[data-theme="dark"] body.game-page .reflex-pad:not(.is-target):not(.is-fake-red):not(.is-fake-orange):not(.is-fake-shape):not(.is-early),
+:root[data-theme="midnight-blue"] body.game-page .reflex-pad:not(.is-target):not(.is-fake-red):not(.is-fake-orange):not(.is-fake-shape):not(.is-early) {
+    border-color: var(--border);
+    background: var(--surface-soft);
+    color: var(--text);
+}
+
+:root[data-theme="dark"] body.game-page .wai-map-stage,
+:root[data-theme="midnight-blue"] body.game-page .wai-map-stage {
+    border-color: var(--border);
+    background: var(--surface-soft);
+}
+
+@media (max-width: 520px) {
+    .header-actions {
+        gap: 8px;
+    }
+
+    .header-actions .back-link {
+        font-size: 11px;
+    }
+
+    .theme-menu {
+        right: -52px;
+    }
 }
 
 /* TWO TRUTHS, ONE LIE */
