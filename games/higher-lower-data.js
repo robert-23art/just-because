@@ -141,3 +141,173 @@ const HIGHER_LOWER_DATA = {
     }
 
 };
+
+const HIGHER_LOWER_CATALOG = {};
+const higherLowerTranslations = {
+    nl: {
+        category: {
+            mixed: "Van alles een beetje", animals: "Diergewicht", countries: "Bevolking van landen",
+            everyday: "Gewicht van voorwerpen", gaming: "Gameverkoop", sport: "Stadioncapaciteit",
+            internet: "Gebruikers van sociale media"
+        },
+        metric: {
+            animals: "Lichaamsgewicht van volwassen dieren", countries: "Bevolking",
+            everyday: "Gemiddeld gewicht", gaming: "Verkochte exemplaren",
+            sport: "Stadioncapaciteit", internet: "Maandelijks actieve gebruikers"
+        },
+        question: {
+            animals: "Welk dier weegt meer?", countries: "In welk land wonen meer mensen?",
+            everyday: "Welk voorwerp weegt meer?", gaming: "Van welk spel zijn meer exemplaren verkocht?",
+            sport: "In welk stadion passen meer mensen?",
+            internet: "Welk platform heeft meer maandelijks actieve gebruikers?"
+        },
+        item: {
+            animals: ["Aziatische olifant", "Witte neushoorn", "Zwarte neushoorn", "Giraf", "Amerikaanse bizon", "Eland", "IJsbeer", "Bruine beer", "Laaglandtapir", "Tijger", "Leeuw", "Reuzenpanda", "Westelijke gorilla", "Amerikaanse zwarte beer", "Rendier", "Aziatische zwarte beer"],
+            countries: ["India", "China", "Verenigde Staten", "Indonesië", "Pakistan", "Nigeria", "Brazilië", "Bangladesh", "Rusland", "Ethiopië", "Mexico", "Japan", "Egypte"],
+            everyday: ["Autoaccu", "Autoband", "Baksteen", "Laptop", "Tablet", "Boek", "Smartphone", "Munt van 2 euro", "A4-vel papier", "Munt van 1 cent", "Eurobankbiljet"],
+            gaming: ["Minecraft", "Grand Theft Auto V", "Red Dead Redemption 2", "Wii Sports", "Mario Kart 8 / Deluxe", "PUBG: Battlegrounds", "Terraria", "The Elder Scrolls V: Skyrim", "Human: Fall Flat", "Animal Crossing: New Horizons"],
+            sport: ["Narendra Modi Stadium", "Rungrado 1st of May Stadium", "Michigan Stadium", "Beaver Stadium", "Ohio Stadium", "Kyle Field", "Tiger Stadium", "Neyland Stadium", "Darrell K Royal–Texas Memorial Stadium", "Bryant–Denny Stadium", "Melbourne Cricket Ground", "Wembley Stadium", "Old Trafford", "Camp Nou"],
+            internet: ["Facebook", "Instagram", "WeChat", "Telegram", "Snapchat", "Douyin", "Kuaishou", "Weibo", "Pinterest", "QQ"]
+        }
+    },
+    de: {
+        category: {
+            mixed: "Von allem etwas", animals: "Tiergewicht", countries: "Einwohnerzahl",
+            everyday: "Gewicht von Gegenständen", gaming: "Spielverkäufe", sport: "Stadionkapazität",
+            internet: "Nutzer sozialer Medien"
+        },
+        metric: {
+            animals: "Körpergewicht ausgewachsener Tiere", countries: "Einwohnerzahl",
+            everyday: "Typisches Gewicht", gaming: "Verkaufte Exemplare",
+            sport: "Stadionkapazität", internet: "Monatlich aktive Nutzer"
+        },
+        question: {
+            animals: "Welches Tier wiegt mehr?", countries: "In welchem Land leben mehr Menschen?",
+            everyday: "Welcher Gegenstand wiegt mehr?", gaming: "Von welchem Spiel wurden mehr Exemplare verkauft?",
+            sport: "In welches Stadion passen mehr Menschen?",
+            internet: "Welche Plattform hat mehr monatlich aktive Nutzer?"
+        },
+        item: {
+            animals: ["Asiatischer Elefant", "Breitmaulnashorn", "Spitzmaulnashorn", "Giraffe", "Amerikanischer Bison", "Elch", "Eisbär", "Braunbär", "Flachlandtapir", "Tiger", "Löwe", "Großer Panda", "Westlicher Gorilla", "Amerikanischer Schwarzbär", "Rentier", "Asiatischer Schwarzbär"],
+            countries: ["Indien", "China", "Vereinigte Staaten", "Indonesien", "Pakistan", "Nigeria", "Brasilien", "Bangladesch", "Russland", "Äthiopien", "Mexiko", "Japan", "Ägypten"],
+            everyday: ["Autobatterie", "Autoreifen", "Ziegelstein", "Laptop", "Tablet", "Buch", "Smartphone", "2-Euro-Münze", "A4-Blatt Papier", "1-Cent-Münze", "Eurobanknote"],
+            gaming: ["Minecraft", "Grand Theft Auto V", "Red Dead Redemption 2", "Wii Sports", "Mario Kart 8 / Deluxe", "PUBG: Battlegrounds", "Terraria", "The Elder Scrolls V: Skyrim", "Human: Fall Flat", "Animal Crossing: New Horizons"],
+            sport: ["Narendra Modi Stadium", "Rungrado 1st of May Stadium", "Michigan Stadium", "Beaver Stadium", "Ohio Stadium", "Kyle Field", "Tiger Stadium", "Neyland Stadium", "Darrell K Royal–Texas Memorial Stadium", "Bryant–Denny Stadium", "Melbourne Cricket Ground", "Wembley Stadium", "Old Trafford", "Camp Nou"],
+            internet: ["Facebook", "Instagram", "WeChat", "Telegram", "Snapchat", "Douyin", "Kuaishou", "Weibo", "Pinterest", "QQ"]
+        }
+    },
+    fr: {
+        category: {
+            mixed: "Un peu de tout", animals: "Poids des animaux", countries: "Population des pays",
+            everyday: "Poids des objets", gaming: "Ventes de jeux", sport: "Capacité des stades",
+            internet: "Utilisateurs des réseaux sociaux"
+        },
+        metric: {
+            animals: "Poids adulte", countries: "Population",
+            everyday: "Poids habituel", gaming: "Exemplaires vendus",
+            sport: "Capacité du stade", internet: "Utilisateurs actifs mensuels"
+        },
+        question: {
+            animals: "Quel animal pèse le plus ?", countries: "Dans quel pays y a-t-il le plus d’habitants ?",
+            everyday: "Quel objet pèse le plus ?", gaming: "Quel jeu a vendu le plus d’exemplaires ?",
+            sport: "Quel stade peut accueillir le plus de personnes ?",
+            internet: "Quelle plateforme compte le plus d’utilisateurs actifs mensuels ?"
+        },
+        item: {
+            animals: ["Éléphant d’Asie", "Rhinocéros blanc", "Rhinocéros noir", "Girafe", "Bison d’Amérique", "Élan", "Ours polaire", "Ours brun", "Tapir des plaines", "Tigre", "Lion", "Panda géant", "Gorille de l’Ouest", "Ours noir d’Amérique", "Renne", "Ours noir d’Asie"],
+            countries: ["Inde", "Chine", "États-Unis", "Indonésie", "Pakistan", "Nigeria", "Brésil", "Bangladesh", "Russie", "Éthiopie", "Mexique", "Japon", "Égypte"],
+            everyday: ["Batterie de voiture", "Pneu de voiture", "Brique", "Ordinateur portable", "Tablette", "Livre", "Smartphone", "Pièce de 2 euros", "Feuille A4", "Pièce de 1 centime", "Billet en euros"],
+            gaming: ["Minecraft", "Grand Theft Auto V", "Red Dead Redemption 2", "Wii Sports", "Mario Kart 8 / Deluxe", "PUBG: Battlegrounds", "Terraria", "The Elder Scrolls V: Skyrim", "Human: Fall Flat", "Animal Crossing: New Horizons"],
+            sport: ["Narendra Modi Stadium", "Rungrado 1st of May Stadium", "Michigan Stadium", "Beaver Stadium", "Ohio Stadium", "Kyle Field", "Tiger Stadium", "Neyland Stadium", "Darrell K Royal–Texas Memorial Stadium", "Bryant–Denny Stadium", "Melbourne Cricket Ground", "Wembley Stadium", "Old Trafford", "Camp Nou"],
+            internet: ["Facebook", "Instagram", "WeChat", "Telegram", "Snapchat", "Douyin", "Kuaishou", "Weibo", "Pinterest", "QQ"]
+        }
+    },
+    es: {
+        category: {
+            mixed: "Un poco de todo", animals: "Peso de los animales", countries: "Población de los países",
+            everyday: "Peso de objetos", gaming: "Ventas de videojuegos", sport: "Aforo de estadios",
+            internet: "Usuarios de redes sociales"
+        },
+        metric: {
+            animals: "Peso corporal adulto", countries: "Población",
+            everyday: "Peso habitual", gaming: "Copias vendidas",
+            sport: "Aforo del estadio", internet: "Usuarios activos mensuales"
+        },
+        question: {
+            animals: "¿Qué animal pesa más?", countries: "¿En qué país vive más gente?",
+            everyday: "¿Qué objeto pesa más?", gaming: "¿Qué juego ha vendido más copias?",
+            sport: "¿Qué estadio puede acoger a más personas?",
+            internet: "¿Qué plataforma tiene más usuarios activos mensuales?"
+        },
+        item: {
+            animals: ["Elefante asiático", "Rinoceronte blanco", "Rinoceronte negro", "Jirafa", "Bisonte americano", "Alce", "Oso polar", "Oso pardo", "Tapir de tierras bajas", "Tigre", "León", "Panda gigante", "Gorila occidental", "Oso negro americano", "Reno", "Oso negro asiático"],
+            countries: ["India", "China", "Estados Unidos", "Indonesia", "Pakistán", "Nigeria", "Brasil", "Bangladés", "Rusia", "Etiopía", "México", "Japón", "Egipto"],
+            everyday: ["Batería de coche", "Neumático", "Ladrillo", "Portátil", "Tableta", "Libro", "Teléfono inteligente", "Moneda de 2 euros", "Hoja A4", "Moneda de 1 céntimo", "Billete de euro"],
+            gaming: ["Minecraft", "Grand Theft Auto V", "Red Dead Redemption 2", "Wii Sports", "Mario Kart 8 / Deluxe", "PUBG: Battlegrounds", "Terraria", "The Elder Scrolls V: Skyrim", "Human: Fall Flat", "Animal Crossing: New Horizons"],
+            sport: ["Narendra Modi Stadium", "Rungrado 1st of May Stadium", "Michigan Stadium", "Beaver Stadium", "Ohio Stadium", "Kyle Field", "Tiger Stadium", "Neyland Stadium", "Darrell K Royal–Texas Memorial Stadium", "Bryant–Denny Stadium", "Melbourne Cricket Ground", "Wembley Stadium", "Old Trafford", "Camp Nou"],
+            internet: ["Facebook", "Instagram", "WeChat", "Telegram", "Snapchat", "Douyin", "Kuaishou", "Weibo", "Pinterest", "QQ"]
+        }
+    }
+};
+
+const higherLowerCategoryIds = Object.keys(HIGHER_LOWER_DATA);
+for (const [language, translations] of Object.entries(higherLowerTranslations)) {
+    for (const [id, label] of Object.entries(translations.category)) {
+        HIGHER_LOWER_CATALOG[`hl.category.${id}`] ||= {};
+        HIGHER_LOWER_CATALOG[`hl.category.${id}`][language] = label;
+    }
+    for (const id of higherLowerCategoryIds) {
+        HIGHER_LOWER_CATALOG[`hl.metric.${id}`] ||= {};
+        HIGHER_LOWER_CATALOG[`hl.metric.${id}`][language] = translations.metric[id];
+        HIGHER_LOWER_CATALOG[`hl.question.${id}`] ||= {};
+        HIGHER_LOWER_CATALOG[`hl.question.${id}`][language] = translations.question[id];
+        translations.item[id].forEach((label, index) => {
+            const key = `hl.item.${id}.${index}`;
+            HIGHER_LOWER_CATALOG[key] ||= {};
+            HIGHER_LOWER_CATALOG[key][language] = label;
+        });
+    }
+}
+
+const higherLowerUiTranslations = {
+    "hl.ui.backHome": ["← Terug naar start", "← Zur Startseite", "← Retour à l’accueil", "← Volver al inicio"],
+    "hl.ui.eyebrow": ["EEN KLEIN SPEL · NR. 02", "EIN KLEINES SPIEL · NR. 02", "UN PETIT JEU · N° 02", "UN JUEGO PEQUEÑO · N.º 02"],
+    "hl.ui.title": ["Hoger of lager?", "Höher oder niedriger?", "Plus ou moins ?", "¿Más o menos?"],
+    "hl.ui.intro": ["Denk je dat je goed bent met getallen? Laten we dat testen.", "Kennst du dich mit Zahlen aus? Finden wir es heraus.", "Tu connais les nombres ? Vérifions ça.", "¿Se te dan bien los números? Vamos a comprobarlo."],
+    "hl.ui.start": ["BEGIN MET SPELEN", "SPIEL STARTEN", "JOUER", "EMPEZAR A JUGAR"],
+    "hl.ui.yourChoice": ["JOUW KEUZE", "DEINE WAHL", "TON CHOIX", "TU ELECCIÓN"],
+    "hl.ui.pickCategory": ["Kies een categorie.", "Wähle eine Kategorie.", "Choisis une catégorie.", "Elige una categoría."],
+    "hl.ui.random": ["↻ Willekeurig", "↻ Zufall", "↻ Au hasard", "↻ Aleatorio"],
+    "hl.ui.categoryNote": ["Kun je niet kiezen? Laat het lot beslissen.", "Du kannst dich nicht entscheiden? Überlass es dem Zufall.", "Indécis ? Laisse le hasard choisir.", "¿No te decides? Deja que el azar elija."],
+    "hl.ui.personalBest": ["JOUW PERSOONLIJK RECORD", "DEIN PERSÖNLICHER REKORD", "TON RECORD PERSONNEL", "TU RÉCORD PERSONAL"],
+    "hl.ui.highScore": ["TOPSCORE", "HIGHSCORE", "RECORD", "RÉCORD"],
+    "hl.ui.highScoreNote": ["Je beste score op dit apparaat.", "Dein bester Punktestand auf diesem Gerät.", "Ton meilleur score sur cet appareil.", "Tu mejor puntuación en este dispositivo."],
+    "hl.ui.score": ["SCORE:", "PUNKTE:", "SCORE :", "PUNTOS:"],
+    "hl.ui.current": ["HUIDIG", "AKTUELL", "ACTUEL", "ACTUAL"],
+    "hl.ui.next": ["VOLGENDE", "ALS NÄCHSTES", "SUIVANT", "SIGUIENTE"],
+    "hl.ui.versus": ["TEGEN", "GEGEN", "CONTRE", "CONTRA"],
+    "hl.ui.higher": ["Hoger ↑", "Höher ↑", "Plus ↑", "Más ↑"],
+    "hl.ui.lower": ["Lager ↓", "Niedriger ↓", "Moins ↓", "Menos ↓"],
+    "hl.ui.playAgain": ["OPNIEUW SPELEN", "NOCHMAL SPIELEN", "REJOUER", "VOLVER A JUGAR"],
+    "hl.ui.backSettings": ["← Terug naar instellingen", "← Zurück zu den Einstellungen", "← Retour aux réglages", "← Volver a los ajustes"],
+    "hl.ui.randomPick": ["WILLEKEURIGE KEUZE", "ZUFALLSAUSWAHL", "CHOIX AU HASARD", "ELECCIÓN ALEATORIA"],
+    "hl.ui.correct": ["Goed! {item} is {direction}.", "Richtig! {item} liegt {direction}.", "Bien ! {item} est {direction}.", "¡Correcto! {item} es {direction}."],
+    "hl.ui.incorrect": ["Niet helemaal! Het juiste antwoord was {direction}.", "Nicht ganz! Die richtige Antwort war {direction}.", "Pas tout à fait ! La bonne réponse était {direction}.", "¡No exactamente! La respuesta correcta era {direction}."],
+    "hl.ui.directionHigher": ["hoger", "höher", "plus élevé", "más alto"],
+    "hl.ui.directionLower": ["lager", "niedriger", "moins élevé", "más bajo"],
+    "hl.ui.clearedTitle": ["Je hebt de hele lijst gehaald!", "Du hast die ganze Liste geschafft!", "Vous avez terminé toute la liste !", "¡Has completado toda la lista!"],
+    "hl.ui.clearedMessage": ["Geweldig! Je had alle {score} vergelijkingen goed.", "Fantastisch! Du hast alle {score} Vergleiche richtig beantwortet.", "Incroyable ! Vous avez réussi les {score} comparaisons.", "¡Increíble! Has acertado las {score} comparaciones."],
+    "hl.ui.gameOver": ["Game over!", "Spiel vorbei!", "Fin de la partie !", "¡Fin de la partida!"],
+    "hl.ui.finalSingular": ["Je scoorde {score} punt. Volgende keer beter!", "Du hast {score} Punkt erzielt. Viel Glück beim nächsten Mal!", "Vous avez marqué {score} point. Bonne chance la prochaine fois !", "Conseguiste {score} punto. ¡Más suerte la próxima vez!"],
+    "hl.ui.finalPlural": ["Je scoorde {score} punten. Volgende keer beter!", "Du hast {score} Punkte erzielt. Viel Glück beim nächsten Mal!", "Vous avez marqué {score} points. Bonne chance la prochaine fois !", "Conseguiste {score} puntos. ¡Más suerte la próxima vez!"],
+    "hl.ui.madeForNoReason": ["gemaakt zonder bijzondere reden.", "ohne besonderen Grund gemacht.", "créé sans raison particulière.", "hecho sin ningún motivo en particular."]
+};
+
+const higherLowerLanguages = ["nl", "de", "fr", "es"];
+for (const [key, translations] of Object.entries(higherLowerUiTranslations)) {
+    HIGHER_LOWER_CATALOG[key] = Object.fromEntries(
+        higherLowerLanguages.map((language, index) => [language, translations[index]])
+    );
+}
+
+if (window.JB_I18N) window.JB_I18N.registerCatalog(HIGHER_LOWER_CATALOG);

@@ -167,3 +167,175 @@ const GUESS_COLOR_DATA = {
         ]
     }
 };
+
+const GUESS_COLOR_TRANSLATIONS = {
+    greens: {
+        family: { nl: "Groenfamilie", de: "Grüne Familie", fr: "Famille verte", es: "Familia verde" },
+        colors: [
+            ["Limoengroen", "Limettengrün", "Vert citron vert", "Verde lima"],
+            ["Mintgroen", "Mintgrün", "Vert menthe", "Verde menta"],
+            ["Saliegroen", "Salbeigrün", "Vert sauge", "Verde salvia"],
+            ["Zeegroen", "Seegrün", "Vert de mer", "Verde mar"],
+            ["Bosgroen", "Waldgrün", "Vert forêt", "Verde bosque"],
+            ["Olijfgroen", "Olivgrün", "Vert olive", "Verde oliva"],
+            ["Smaragdgroen", "Smaragdgrün", "Vert émeraude", "Verde esmeralda"],
+            ["Jadegroen", "Jadegrün", "Vert jade", "Verde jade"],
+            ["Mosgroen", "Moosgrün", "Vert mousse", "Verde musgo"],
+            ["Pistachegroen", "Pistaziengrün", "Vert pistache", "Verde pistacho"],
+            ["Jagersgroen", "Jägergrün", "Vert chasseur", "Verde cazador"],
+            ["Kellygroen", "Kellygrün", "Vert Kelly", "Verde Kelly"]
+        ]
+    },
+    blues: {
+        family: { nl: "Blauwe familie", de: "Blaue Familie", fr: "Famille bleue", es: "Familia azul" },
+        colors: [
+            ["Hemelsblauw", "Himmelblau", "Bleu ciel", "Azul cielo"],
+            ["Poederblauw", "Puderblau", "Bleu poudré", "Azul polvo"],
+            ["Korenbloemblauw", "Kornblumenblau", "Bleu bleuet", "Azul aciano"],
+            ["Koningsblauw", "Königsblau", "Bleu roi", "Azul real"],
+            ["Marineblauw", "Marineblau", "Bleu marine", "Azul marino"],
+            ["Staalblauw", "Stahlblau", "Bleu acier", "Azul acero"],
+            ["Ceruleumblauw", "Zerulblau", "Bleu céruléen", "Azul cerúleo"],
+            ["Saffierblauw", "Saphirblau", "Bleu saphir", "Azul zafiro"],
+            ["Maagdenpalmblauw", "Immergrünblau", "Bleu pervenche", "Azul bígaro"],
+            ["Azuurblauw", "Azurblau", "Bleu azur", "Azul azure"],
+            ["Petrolblauw", "Blaugrün", "Bleu sarcelle", "Azul cerceta"],
+            ["Middernachtblauw", "Mitternachtsblau", "Bleu nuit", "Azul medianoche"]
+        ]
+    },
+    reds: {
+        family: { nl: "Rode familie", de: "Rote Familie", fr: "Famille rouge", es: "Familia roja" },
+        colors: [
+            ["Karmozijnrood", "Karmesinrot", "Rouge cramoisi", "Rojo carmesí"],
+            ["Scharlakenrood", "Scharlachrot", "Rouge écarlate", "Rojo escarlata"],
+            ["Robijnrood", "Rubinrot", "Rouge rubis", "Rojo rubí"],
+            ["Kersenrood", "Kirschrot", "Rouge cerise", "Rojo cereza"],
+            ["Bordeauxrood", "Burgunderrot", "Rouge bordeaux", "Rojo burdeos"],
+            ["Kastanjebruin", "Kastanienbraun", "Rouge marron", "Rojo granate"],
+            ["Baksteenrood", "Ziegelrot", "Rouge brique", "Rojo ladrillo"],
+            ["Brandweerrood", "Feuerwehrrot", "Rouge pompier", "Rojo bombero"],
+            ["Koraalrood", "Korallenrot", "Rouge corail", "Rojo coral"],
+            ["Kardinaalrood", "Kardinalrot", "Rouge cardinal", "Rojo cardenal"],
+            ["Karmijnrood", "Karminrot", "Rouge carmin", "Rojo carmín"],
+            ["Tomaatrood", "Tomatenrot", "Rouge tomate", "Rojo tomate"]
+        ]
+    },
+    purples: {
+        family: { nl: "Paarse familie", de: "Violette Familie", fr: "Famille violette", es: "Familia violeta" },
+        colors: [
+            ["Lavendel", "Lavendel", "Lavande", "Lavanda"],
+            ["Sering", "Flieder", "Lilas", "Lila"],
+            ["Violet", "Violett", "Violet", "Violeta"],
+            ["Indigo", "Indigo", "Indigo", "Índigo"],
+            ["Pruimenpaars", "Pflaumenlila", "Prune", "Morado ciruela"],
+            ["Orchidee-paars", "Orchideenlila", "Violet orchidée", "Morado orquídea"],
+            ["Amethistpaars", "Amethystlila", "Violet améthyste", "Morado amatista"],
+            ["Mauve", "Malve", "Mauve", "Malva"],
+            ["Druivenpaars", "Traubenlila", "Violet raisin", "Morado uva"],
+            ["Auberginepaars", "Aubergine", "Violet aubergine", "Morado berenjena"],
+            ["Blauweregenpaars", "Blauregenlila", "Violet glycine", "Morado glicinia"],
+            ["Koningspaars", "Königsviolett", "Violet royal", "Violeta real"]
+        ]
+    },
+    yellows: {
+        family: { nl: "Gele familie", de: "Gelbe Familie", fr: "Famille jaune", es: "Familia amarilla" },
+        colors: [
+            ["Citroengeel", "Zitronengelb", "Jaune citron", "Amarillo limón"],
+            ["Goudgeel", "Goldgelb", "Jaune doré", "Amarillo dorado"],
+            ["Mosterdgeel", "Senfgelb", "Jaune moutarde", "Amarillo mostaza"],
+            ["Botergeel", "Buttergelb", "Jaune beurre", "Amarillo mantequilla"],
+            ["Kanariegeel", "Kanariengelb", "Jaune canari", "Amarillo canario"],
+            ["Zonnebloemgeel", "Sonnenblumengelb", "Jaune tournesol", "Amarillo girasol"],
+            ["Maïsgeel", "Maisgelb", "Jaune maïs", "Amarillo maíz"],
+            ["Narcisgeel", "Narzissengelb", "Jaune jonquille", "Amarillo narciso"],
+            ["Barnsteengeel", "Bernsteingelb", "Jaune ambre", "Amarillo ámbar"],
+            ["Vlasgeel", "Flachsgelb", "Jaune lin", "Amarillo lino"],
+            ["Chartreusegeel", "Chartreusegelb", "Jaune chartreuse", "Amarillo chartreuse"],
+            ["Saffraangeel", "Safrangelb", "Jaune safran", "Amarillo azafrán"]
+        ]
+    },
+    oranges: {
+        family: { nl: "Oranje familie", de: "Orangefarbene Familie", fr: "Famille orange", es: "Familia naranja" },
+        colors: [
+            ["Mandarijnoranje", "Mandarinenorange", "Orange mandarine", "Naranja mandarina"],
+            ["Abrikoosoranje", "Aprikosenorange", "Orange abricot", "Naranja albaricoque"],
+            ["Gebrand oranje", "Gebranntes Orange", "Orange brûlé", "Naranja quemado"],
+            ["Pompoenoranje", "Kürbisorange", "Orange citrouille", "Naranja calabaza"],
+            ["Perzikoranje", "Pfirsichorange", "Orange pêche", "Naranja melocotón"],
+            ["Koperoranje", "Kupferorange", "Orange cuivre", "Naranja cobrizo"],
+            ["Dadelpruimoranje", "Kaki-Orange", "Orange kaki", "Naranja caqui"],
+            ["Barnsteenoranje", "Bernsteinorange", "Orange ambré", "Naranja ámbar"],
+            ["Worteloranje", "Karottenorange", "Orange carotte", "Naranja zanahoria"],
+            ["Roestoranje", "Rostorange", "Orange rouille", "Naranja óxido"],
+            ["Papajawit", "Papayaweiß", "Blanc papaye", "Papaya claro"],
+            ["Veiligheidsoranje", "Sicherheitsorange", "Orange sécurité", "Naranja seguridad"]
+        ]
+    },
+    pinks: {
+        family: { nl: "Roze familie", de: "Rosa Familie", fr: "Famille rose", es: "Familia rosa" },
+        colors: [
+            ["Felroze", "Knallpink", "Rose vif", "Rosa intenso"],
+            ["Rozenroze", "Rosenrosa", "Rose", "Rosa"],
+            ["Blushroze", "Rouge-Rosa", "Rose blush", "Rosa rubor"],
+            ["Oudroze", "Altrosa", "Rose poudré", "Rosa empolvado"],
+            ["Fuchsia", "Fuchsia", "Fuchsia", "Fucsia"],
+            ["Zalmroze", "Lachsrosa", "Rose saumon", "Rosa salmón"],
+            ["Kauwgomroze", "Kaugummirosa", "Rose chewing-gum", "Rosa chicle"],
+            ["Koraalroze", "Korallenrosa", "Rose corail", "Rosa coral"],
+            ["Balletschoenroze", "Ballettschuhrosa", "Rose chausson de danse", "Rosa zapatilla de ballet"],
+            ["Frambozenroze", "Himbeerrosa", "Rose framboise", "Rosa frambuesa"],
+            ["Anjerroze", "Nelkenrosa", "Rose œillet", "Rosa clavel"],
+            ["Magenta", "Magenta", "Magenta", "Magenta"]
+        ]
+    },
+    browns: {
+        family: { nl: "Bruine familie", de: "Braune Familie", fr: "Famille brune", es: "Familia marrón" },
+        colors: [
+            ["Chocoladebruin", "Schokoladenbraun", "Brun chocolat", "Marrón chocolate"],
+            ["Kastanjebruin", "Kastanienbraun", "Brun châtaigne", "Marrón castaño"],
+            ["Koffiebruin", "Kaffeebraun", "Brun café", "Marrón café"],
+            ["Karamelbruin", "Karamellbraun", "Brun caramel", "Marrón caramelo"],
+            ["Taupebruin", "Taupebraun", "Brun taupe", "Marrón topo"],
+            ["Cacaobruin", "Kakaobraun", "Brun cacao", "Marrón cacao"],
+            ["Omberbruin", "Umbra", "Brun ombre", "Marrón sombra"],
+            ["Mahoniebruin", "Mahagonibraun", "Brun acajou", "Marrón caoba"],
+            ["Siennabruin", "Sienabraun", "Brun sienne", "Marrón siena"],
+            ["Walnootbruin", "Walnussbraun", "Brun noix", "Marrón nogal"],
+            ["Sepiabruin", "Sepiabraun", "Brun sépia", "Marrón sepia"],
+            ["Zandbruin", "Sandbraun", "Brun sable", "Marrón arena"]
+        ]
+    },
+    grays: {
+        family: { nl: "Grijze familie", de: "Graue Familie", fr: "Famille grise", es: "Familia gris" },
+        colors: [
+            ["Houtskoolgrijs", "Kohlegrau", "Gris charbon", "Gris carbón"],
+            ["Leigrijs", "Schiefergrau", "Gris ardoise", "Gris pizarra"],
+            ["Zilvergrijs", "Silbergrau", "Gris argent", "Gris plata"],
+            ["Asgrijs", "Aschgrau", "Gris cendré", "Gris ceniza"],
+            ["Grafietgrijs", "Graphitgrau", "Gris graphite", "Gris grafito"],
+            ["Parelgrijs", "Perlgrau", "Gris perle", "Gris perla"],
+            ["Steengrijs", "Steingrau", "Gris pierre", "Gris piedra"],
+            ["Duifgrijs", "Taubengrau", "Gris tourterelle", "Gris paloma"],
+            ["Rookgrijs", "Rauchgrau", "Gris fumée", "Gris humo"],
+            ["Wapenmetaalgrijs", "Waffengrau", "Gris canon", "Gris metal"],
+            ["Platinagrijs", "Platingrau", "Gris platine", "Gris platino"],
+            ["Warmgrijs", "Warmgrau", "Gris chaud", "Gris cálido"]
+        ]
+    }
+};
+
+if (window.JB_I18N) {
+    const colorCatalog = {};
+    for (const [familyId, translations] of Object.entries(GUESS_COLOR_TRANSLATIONS)) {
+        colorCatalog[`color.family.${familyId}`] = translations.family;
+        translations.colors.forEach((names, index) => {
+            colorCatalog[`color.name.${familyId}.${index}`] = {
+                nl: names[0],
+                de: names[1],
+                fr: names[2],
+                es: names[3]
+            };
+        });
+    }
+    window.JB_I18N.registerCatalog(colorCatalog);
+}

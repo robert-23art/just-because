@@ -1,4 +1,4 @@
-﻿const PIXEL_GUESS_DATA = {
+const PIXEL_GUESS_DATA = {
     "categories":  [
                        {
                            "id":  "famous-people",
@@ -55,7 +55,7 @@
                                           "Ronaldo"
                                       ],
                       "clue":  "Cristiano Ronaldo is a Portuguese football star.",
-                      "image":  "games/pixel-guess-assets/images/famous-people/cristiano-ronaldo.jpg",
+                      "image":  "../assets/pixel-guess/images/famous-people/cristiano-ronaldo.jpg",
                       "sourceFile":  "File:Argentine - Portugal - Cristiano Ronaldo.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Argentine_-_Portugal_-_Cristiano_Ronaldo.jpg",
                       "creator":  "Ludovic PÃ©ron",
@@ -76,7 +76,7 @@
                                           "Swift"
                                       ],
                       "clue":  "She is an American singer-songwriter known for narrative pop songs.",
-                      "image":  "games/pixel-guess-assets/images/famous-people/taylor-swift.png",
+                      "image":  "../assets/pixel-guess/images/famous-people/taylor-swift.png",
                       "sourceFile":  "File:Taylor Swift at the 2023 MTV Video Music Awards 4.png",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_4.png",
                       "creator":  "iHeartRadioCA",
@@ -97,7 +97,7 @@
                                           "Einstein"
                                       ],
                       "clue":  "This German-born physicist developed the theory of relativity.",
-                      "image":  "games/pixel-guess-assets/images/famous-people/albert-einstein.jpg",
+                      "image":  "../assets/pixel-guess/images/famous-people/albert-einstein.jpg",
                       "sourceFile":  "File:Albert Einstein Head cleaned.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Albert_Einstein_Head_cleaned.jpg",
                       "creator":  "Oren Jack Turner",
@@ -119,7 +119,7 @@
                                           "Messi"
                                       ],
                       "clue":  "He is an Argentine footballer who has won multiple Ballon d\u0027Or awards.",
-                      "image":  "games/pixel-guess-assets/images/famous-people/lionel-messi.jpg",
+                      "image":  "../assets/pixel-guess/images/famous-people/lionel-messi.jpg",
                       "sourceFile":  "File:Suisse vs Argentine - Granit Xhaka \u0026 Lionel Messi.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Suisse_vs_Argentine_-_Granit_Xhaka_%26_Lionel_Messi.jpg",
                       "creator":  "Ludovic PÃ©ron",
@@ -140,7 +140,7 @@
                                           "Obama"
                                       ],
                       "clue":  "He was the 44th president of the United States.",
-                      "image":  "games/pixel-guess-assets/images/famous-people/barack-obama.jpg",
+                      "image":  "../assets/pixel-guess/images/famous-people/barack-obama.jpg",
                       "sourceFile":  "File:President Barack Obama.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:President_Barack_Obama.jpg",
                       "creator":  "Official White House Photo by Pete Souza",
@@ -161,7 +161,7 @@
                                           "Williams"
                                       ],
                       "clue":  "She is an American tennis champion with 23 Grand Slam singles titles.",
-                      "image":  "games/pixel-guess-assets/images/famous-people/serena-williams.jpg",
+                      "image":  "../assets/pixel-guess/images/famous-people/serena-williams.jpg",
                       "sourceFile":  "File:Serena Williams at 2013 US Open.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Serena_Williams_at_2013_US_Open.jpg",
                       "creator":  "Edwin Martinez",
@@ -183,7 +183,7 @@
                                           "Presley"
                                       ],
                       "clue":  "He was an American singer known as the King of Rock and Roll.",
-                      "image":  "games/pixel-guess-assets/images/famous-people/elvis-presley.jpg",
+                      "image":  "../assets/pixel-guess/images/famous-people/elvis-presley.jpg",
                       "sourceFile":  "File:Elvis Presley, Modern Screen, June 1958.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Elvis_Presley,_Modern_Screen,_June_1958.jpg",
                       "creator":  "Unknown author Unknown author",
@@ -204,7 +204,7 @@
                                           "Bolt"
                                       ],
                       "clue":  "This Jamaican sprinter is an eight-time Olympic gold medalist.",
-                      "image":  "games/pixel-guess-assets/images/famous-people/usain-bolt.jpg",
+                      "image":  "../assets/pixel-guess/images/famous-people/usain-bolt.jpg",
                       "sourceFile":  "File:Usain Bolt Olympics Celebration.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Usain_Bolt_Olympics_Celebration.jpg",
                       "creator":  "Richard Giles",
@@ -224,7 +224,7 @@
                                           "Adele"
                                       ],
                       "clue":  "She is an English singer known for powerful ballads.",
-                      "image":  "games/pixel-guess-assets/images/famous-people/adele.jpg",
+                      "image":  "../assets/pixel-guess/images/famous-people/adele.jpg",
                       "sourceFile":  "File:Adele \u0027Adele Live 2016\u0027 - Nashville DSC04804 (30114379680) (cropped).jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Adele_%27Adele_Live_2016%27_-_Nashville_DSC04804_(30114379680)_(cropped).jpg",
                       "creator":  "Kristopher Harris from Charlotte, NC",
@@ -245,7 +245,7 @@
 
                                       ],
                       "clue":  "This sandwich usually has a cooked patty inside a bun.",
-                      "image":  "games/pixel-guess-assets/images/food-drinks/hamburger.jpg",
+                      "image":  "../assets/pixel-guess/images/food-drinks/hamburger.jpg",
                       "sourceFile":  "File:NCI Visuals Food Hamburger.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:NCI_Visuals_Food_Hamburger.jpg",
                       "creator":  "Len Rizzi (photographer)",
@@ -265,7 +265,7 @@
 
                                       ],
                       "clue":  "This Japanese dish is built around vinegared rice.",
-                      "image":  "games/pixel-guess-assets/images/food-drinks/sushi.jpg",
+                      "image":  "../assets/pixel-guess/images/food-drinks/sushi.jpg",
                       "sourceFile":  "File:Sushi plate.JPG",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Sushi_plate.JPG",
                       "creator":  "Schomynv",
@@ -285,7 +285,7 @@
 
                                       ],
                       "clue":  "This green fruit has a large stone and creamy flesh.",
-                      "image":  "games/pixel-guess-assets/images/food-drinks/avocado.jpg",
+                      "image":  "../assets/pixel-guess/images/food-drinks/avocado.jpg",
                       "sourceFile":  "File:Avocado Hass - single and halved.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Avocado_Hass_-_single_and_halved.jpg",
                       "creator":  "Ivar Leidus",
@@ -305,7 +305,7 @@
 
                                       ],
                       "clue":  "This large summer fruit has a green rind and juicy red flesh.",
-                      "image":  "games/pixel-guess-assets/images/food-drinks/watermelon.jpg",
+                      "image":  "../assets/pixel-guess/images/food-drinks/watermelon.jpg",
                       "sourceFile":  "File:Watermelon yellow 2024 G1.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Watermelon_yellow_2024_G1.jpg",
                       "creator":  "George Chernilevsky",
@@ -325,7 +325,7 @@
 
                                       ],
                       "clue":  "This Mexican dish folds a tortilla around a filling.",
-                      "image":  "games/pixel-guess-assets/images/food-drinks/taco.jpg",
+                      "image":  "../assets/pixel-guess/images/food-drinks/taco.jpg",
                       "sourceFile":  "File:001 Tacos de carnitas, carne asada y al pastor.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:001_Tacos_de_carnitas,_carne_asada_y_al_pastor.jpg",
                       "creator":  "Larry Miller",
@@ -345,7 +345,7 @@
 
                                       ],
                       "clue":  "This small individual cake is often topped with frosting.",
-                      "image":  "games/pixel-guess-assets/images/food-drinks/cupcake.jpg",
+                      "image":  "../assets/pixel-guess/images/food-drinks/cupcake.jpg",
                       "sourceFile":  "File:Meta Dessert Cupcake! (4613611222).jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Meta_Dessert_Cupcake!_(4613611222).jpg",
                       "creator":  "Clever Cupcakes from Montreal, Canada",
@@ -365,7 +365,7 @@
 
                                       ],
                       "clue":  "This tropical fruit has a spiky crown and patterned skin.",
-                      "image":  "games/pixel-guess-assets/images/food-drinks/pineapple.jpg",
+                      "image":  "../assets/pixel-guess/images/food-drinks/pineapple.jpg",
                       "sourceFile":  "File:à´•àµˆà´¤à´šàµà´šà´•àµà´•.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:%E0%B4%95%E0%B5%88%E0%B4%A4%E0%B4%9A%E0%B5%8D%E0%B4%9A%E0%B4%95%E0%B5%8D%E0%B4%95.jpg",
                       "creator":  "Suniltg at Malayalam Wikipedia",
@@ -386,7 +386,7 @@
 
                                       ],
                       "clue":  "This sweet fried pastry is often ring-shaped and glazed.",
-                      "image":  "games/pixel-guess-assets/images/food-drinks/doughnut.jpg",
+                      "image":  "../assets/pixel-guess/images/food-drinks/doughnut.jpg",
                       "sourceFile":  "File:Doughnut 1.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Doughnut_1.jpg",
                       "creator":  "Gaurav Dhwaj Khadka",
@@ -406,7 +406,7 @@
 
                                       ],
                       "clue":  "This tall African mammal has a very long neck and spotted coat.",
-                      "image":  "games/pixel-guess-assets/images/animals/giraffe.jpg",
+                      "image":  "../assets/pixel-guess/images/animals/giraffe.jpg",
                       "sourceFile":  "File:Three giraffes 01.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Three_giraffes_01.jpg",
                       "creator":  "Byrdyak",
@@ -426,7 +426,7 @@
 
                                       ],
                       "clue":  "This large cat lives in prides and is often called a king of the savanna.",
-                      "image":  "games/pixel-guess-assets/images/animals/lion.jpg",
+                      "image":  "../assets/pixel-guess/images/animals/lion.jpg",
                       "sourceFile":  "File:Lion (Panthera leo) male 6y.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Lion_(Panthera_leo)_male_6y.jpg",
                       "creator":  "Charles J. Sharp",
@@ -447,7 +447,7 @@
 
                                       ],
                       "clue":  "This is the largest living land animal, with tusks and a trunk.",
-                      "image":  "games/pixel-guess-assets/images/animals/african-elephant.jpg",
+                      "image":  "../assets/pixel-guess/images/animals/african-elephant.jpg",
                       "sourceFile":  "File:African bush elephants (Loxodonta africana) female with six-week-old baby.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:African_bush_elephants_(Loxodonta_africana)_female_with_six-week-old_baby.jpg",
                       "creator":  "Charles J. Sharp",
@@ -468,7 +468,7 @@
 
                                       ],
                       "clue":  "This clever canid has reddish fur and a bushy tail.",
-                      "image":  "games/pixel-guess-assets/images/animals/red-fox.jpg",
+                      "image":  "../assets/pixel-guess/images/animals/red-fox.jpg",
                       "sourceFile":  "File:Alaska Red Fox (Vulpes vulpes).jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Alaska_Red_Fox_(Vulpes_vulpes).jpg",
                       "creator":  "Gregory \"Slobirdr\" Smith",
@@ -488,7 +488,7 @@
 
                                       ],
                       "clue":  "This black-and-white bear is strongly associated with bamboo.",
-                      "image":  "games/pixel-guess-assets/images/animals/giant-panda.jpg",
+                      "image":  "../assets/pixel-guess/images/animals/giant-panda.jpg",
                       "sourceFile":  "File:Ailuropoda melanoleuca (Panda gÃ©ant) - 445.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Ailuropoda_melanoleuca_(Panda_g%C3%A9ant)_-_445.jpg",
                       "creator":  "Â© William Crochot / Wikimedia Commons",
@@ -508,7 +508,7 @@
 
                                       ],
                       "clue":  "This flightless seabird waddles on land and swims expertly.",
-                      "image":  "games/pixel-guess-assets/images/animals/penguin.jpg",
+                      "image":  "../assets/pixel-guess/images/animals/penguin.jpg",
                       "sourceFile":  "File:Eudyptula novaehollandiae family exiting burrow.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Eudyptula_novaehollandiae_family_exiting_burrow.jpg",
                       "creator":  "JJ Harrison ( https://www.jjharrison.com.au/ )",
@@ -528,7 +528,7 @@
 
                                       ],
                       "clue":  "This enormous marine mammal is known for its songs and long pectoral fins.",
-                      "image":  "games/pixel-guess-assets/images/animals/humpback-whale.jpg",
+                      "image":  "../assets/pixel-guess/images/animals/humpback-whale.jpg",
                       "sourceFile":  "File:Humpback whale (Megaptera novaeangliae) calf Moorea 2.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Humpback_whale_(Megaptera_novaeangliae)_calf_Moorea_2.jpg",
                       "creator":  "Charles J. Sharp",
@@ -548,7 +548,7 @@
 
                                       ],
                       "clue":  "This striped big cat is the largest member of the cat family.",
-                      "image":  "games/pixel-guess-assets/images/animals/tiger.jpg",
+                      "image":  "../assets/pixel-guess/images/animals/tiger.jpg",
                       "sourceFile":  "File:Tiger Zoo Vienna.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Tiger_Zoo_Vienna.jpg",
                       "creator":  "Alexander Leisser",
@@ -568,7 +568,7 @@
 
                                       ],
                       "clue":  "This Australian marsupial spends much of its life in eucalyptus trees.",
-                      "image":  "games/pixel-guess-assets/images/animals/koala.jpg",
+                      "image":  "../assets/pixel-guess/images/animals/koala.jpg",
                       "sourceFile":  "File:Koala in Zoo Duisburg.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Koala_in_Zoo_Duisburg.jpg",
                       "creator":  "Till Niermann",
@@ -588,7 +588,7 @@
 
                                       ],
                       "clue":  "This ocean reptile has flippers and a protective shell.",
-                      "image":  "games/pixel-guess-assets/images/animals/sea-turtle.jpg",
+                      "image":  "../assets/pixel-guess/images/animals/sea-turtle.jpg",
                       "sourceFile":  "File:Green Sea Turtle grazing seagrass.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Green_Sea_Turtle_grazing_seagrass.jpg",
                       "creator":  "P.Lindgren",
@@ -608,7 +608,7 @@
 
                                       ],
                       "clue":  "This nocturnal bird of prey has large forward-facing eyes.",
-                      "image":  "games/pixel-guess-assets/images/animals/owl.jpg",
+                      "image":  "../assets/pixel-guess/images/animals/owl.jpg",
                       "sourceFile":  "File:Tyto alba (Scopoli, 1769).jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Tyto_alba_(Scopoli,_1769).jpg",
                       "creator":  "Michael GÃ¤bler",
@@ -628,7 +628,7 @@
 
                                       ],
                       "clue":  "This intelligent sea animal has eight arms and no bones.",
-                      "image":  "games/pixel-guess-assets/images/animals/octopus.jpg",
+                      "image":  "../assets/pixel-guess/images/animals/octopus.jpg",
                       "sourceFile":  "File:Octopus vulgaris Merculiano.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Octopus_vulgaris_Merculiano.jpg",
                       "creator":  "Comingio Merculiano (1845-1915) in Jatta Giuseppe (1860-1903)",
@@ -649,7 +649,7 @@
 
                                       ],
                       "clue":  "The male of this bird displays a large fan of iridescent feathers.",
-                      "image":  "games/pixel-guess-assets/images/animals/peacock.jpg",
+                      "image":  "../assets/pixel-guess/images/animals/peacock.jpg",
                       "sourceFile":  "File:White Peacock, Palmitos Park, May 2018.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:White_Peacock,_Palmitos_Park,_May_2018.jpg",
                       "creator":  "Martin Falbisoner",
@@ -669,7 +669,7 @@
 
                                       ],
                       "clue":  "This small rainforest amphibian has bright red eyes and green skin.",
-                      "image":  "games/pixel-guess-assets/images/animals/red-eyed-tree-frog.jpg",
+                      "image":  "../assets/pixel-guess/images/animals/red-eyed-tree-frog.jpg",
                       "sourceFile":  "File:Red eyed tree frog edit2.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Red_eyed_tree_frog_edit2.jpg",
                       "creator":  "Careyjamesbalboa (Carey James Balboa)",
@@ -690,7 +690,7 @@
 
                                       ],
                       "clue":  "These colorful interlocking plastic pieces are made by a Danish toy company.",
-                      "image":  "games/pixel-guess-assets/images/brands-products/lego-bricks.jpg",
+                      "image":  "../assets/pixel-guess/images/brands-products/lego-bricks.jpg",
                       "sourceFile":  "File:Pile of light gray LEGO bricks at a LEGO store.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Pile_of_light_gray_LEGO_bricks_at_a_LEGO_store.jpg",
                       "creator":  "Grendelkhan",
@@ -711,7 +711,7 @@
 
                                       ],
                       "clue":  "This twistable puzzle has six colored faces to solve.",
-                      "image":  "games/pixel-guess-assets/images/brands-products/rubiks-cube.jpg",
+                      "image":  "../assets/pixel-guess/images/brands-products/rubiks-cube.jpg",
                       "sourceFile":  "File:Rubik\u0027s cube, CN II.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Rubik%27s_cube,_CN_II.jpg",
                       "creator":  "kaÊstn Disk / Cat",
@@ -732,7 +732,7 @@
 
                                       ],
                       "clue":  "This gray handheld console made portable gaming famous.",
-                      "image":  "games/pixel-guess-assets/images/brands-products/game-boy.jpg",
+                      "image":  "../assets/pixel-guess/images/brands-products/game-boy.jpg",
                       "sourceFile":  "File:Game-Boy-Original.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Game-Boy-Original.jpg",
                       "creator":  "Evan-Amos",
@@ -752,7 +752,7 @@
 
                                       ],
                       "clue":  "This Italian motor scooter brand is known for its step-through design.",
-                      "image":  "games/pixel-guess-assets/images/brands-products/vespa-scooter.jpg",
+                      "image":  "../assets/pixel-guess/images/brands-products/vespa-scooter.jpg",
                       "sourceFile":  "File:Red Vespa scooter in front of Rocca Maggiore, Assisi.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Red_Vespa_scooter_in_front_of_Rocca_Maggiore,_Assisi.jpg",
                       "creator":  "Marco Ober",
@@ -772,7 +772,7 @@
 
                                       ],
                       "clue":  "These classic sneakers have a rubber shell toe and three stripes.",
-                      "image":  "games/pixel-guess-assets/images/brands-products/adidas-superstar.jpg",
+                      "image":  "../assets/pixel-guess/images/brands-products/adidas-superstar.jpg",
                       "sourceFile":  "File:Adidas Superstar shoes pair.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Adidas_Superstar_shoes_pair.jpg",
                       "creator":  "Yahoo! Blog from Sunnyvale, California, USA",
@@ -794,7 +794,7 @@
 
                                       ],
                       "clue":  "These canvas high-tops have a circular ankle patch.",
-                      "image":  "games/pixel-guess-assets/images/brands-products/converse-chuck-taylor.jpg",
+                      "image":  "../assets/pixel-guess/images/brands-products/converse-chuck-taylor.jpg",
                       "sourceFile":  "File:Red and blue Chuck Taylor All-Stars sneakers, 2010.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Red_and_blue_Chuck_Taylor_All-Stars_sneakers,_2010.jpg",
                       "creator":  "Mikko LautamÃ¤ki",
@@ -814,7 +814,7 @@
 
                                       ],
                       "clue":  "This fashion doll was introduced by the toy company Mattel.",
-                      "image":  "games/pixel-guess-assets/images/brands-products/barbie-doll.jpg",
+                      "image":  "../assets/pixel-guess/images/brands-products/barbie-doll.jpg",
                       "sourceFile":  "File:Charlotte Johnson with 1965 Barbie doll.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Charlotte_Johnson_with_1965_Barbie_doll.jpg",
                       "creator":  "Nelson Tiffany, Los Angeles Times",
@@ -834,7 +834,7 @@
 
                                       ],
                       "clue":  "This camera brand became famous for instant photographs.",
-                      "image":  "games/pixel-guess-assets/images/brands-products/polaroid-camera.jpg",
+                      "image":  "../assets/pixel-guess/images/brands-products/polaroid-camera.jpg",
                       "sourceFile":  "File:2023 Aparat Polaroid Land Camera Supercolor 1000 (5).jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:2023_Aparat_Polaroid_Land_Camera_Supercolor_1000_(5).jpg",
                       "creator":  "Jacek Halicki",
@@ -854,7 +854,7 @@
 
                                       ],
                       "clue":  "This portable cassette player changed how people listened to music.",
-                      "image":  "games/pixel-guess-assets/images/brands-products/sony-walkman.jpg",
+                      "image":  "../assets/pixel-guess/images/brands-products/sony-walkman.jpg",
                       "sourceFile":  "File:2015 Sony Walkman NWZ-S765.JPG",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:2015_Sony_Walkman_NWZ-S765.JPG",
                       "creator":  "Jacek Halicki",
@@ -876,7 +876,7 @@
 
                                       ],
                       "clue":  "This 16-bit home console followed the original NES in the 1990s.",
-                      "image":  "games/pixel-guess-assets/images/brands-products/nintendo-nes.jpg",
+                      "image":  "../assets/pixel-guess/images/brands-products/nintendo-nes.jpg",
                       "sourceFile":  "File:Nintendo-Super-NES-Console-101-FL.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Nintendo-Super-NES-Console-101-FL.jpg",
                       "creator":  "Evan-Amos",
@@ -897,7 +897,7 @@
 
                                       ],
                       "clue":  "This game controller is made for Sony\u0027s PlayStation console.",
-                      "image":  "games/pixel-guess-assets/images/brands-products/playstation-controller.jpg",
+                      "image":  "../assets/pixel-guess/images/brands-products/playstation-controller.jpg",
                       "sourceFile":  "File:PlayStation-SCPH-1000-with-Controller.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:PlayStation-SCPH-1000-with-Controller.jpg",
                       "creator":  "Evan-Amos",
@@ -918,7 +918,7 @@
 
                                       ],
                       "clue":  "These iconic sunglasses have thick, angular frames.",
-                      "image":  "games/pixel-guess-assets/images/brands-products/ray-ban-wayfarer.jpg",
+                      "image":  "../assets/pixel-guess/images/brands-products/ray-ban-wayfarer.jpg",
                       "sourceFile":  "File:Ray-Ban, New Wayfarer - 4.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Ray-Ban,_New_Wayfarer_-_4.jpg",
                       "creator":  "DYVER",
@@ -939,7 +939,7 @@
 
                                       ],
                       "clue":  "This famous mouse starred in the 1928 short Steamboat Willie.",
-                      "image":  "games/pixel-guess-assets/images/movies-tv/steamboat-willie.jpg",
+                      "image":  "../assets/pixel-guess/images/movies-tv/steamboat-willie.jpg",
                       "sourceFile":  "File:Earlypete.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Earlypete.jpg",
                       "creator":  "Walt Disney / Ub Iwerks",
@@ -959,7 +959,7 @@
 
                                       ],
                       "clue":  "This iron lattice landmark stands beside the Seine in Paris.",
-                      "image":  "games/pixel-guess-assets/images/countries-places/eiffel-tower.jpg",
+                      "image":  "../assets/pixel-guess/images/countries-places/eiffel-tower.jpg",
                       "sourceFile":  "File:Tour Eiffel Wikimedia Commons.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Tour_Eiffel_Wikimedia_Commons.jpg",
                       "creator":  "Benh LIEU SONG",
@@ -979,7 +979,7 @@
 
                                       ],
                       "clue":  "This white-marble mausoleum in Agra was built by Shah Jahan.",
-                      "image":  "games/pixel-guess-assets/images/countries-places/taj-mahal.jpg",
+                      "image":  "../assets/pixel-guess/images/countries-places/taj-mahal.jpg",
                       "sourceFile":  "File:Taj Mahal, Agra, India edit2.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Taj_Mahal,_Agra,_India_edit2.jpg",
                       "creator":  "This file is not in the public domain. Therefore you are requested to use the following next to the image if you reuse this file: Â© Yann Forget / Wikimedia Commons",
@@ -1000,7 +1000,7 @@
 
                                       ],
                       "clue":  "This copper statue stands on Liberty Island in New York Harbor.",
-                      "image":  "games/pixel-guess-assets/images/countries-places/statue-of-liberty.jpg",
+                      "image":  "../assets/pixel-guess/images/countries-places/statue-of-liberty.jpg",
                       "sourceFile":  "File:National Park Service 9-11 Statue of Liberty and WTC fire.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:National_Park_Service_9-11_Statue_of_Liberty_and_WTC_fire.jpg",
                       "creator":  "National Park Service",
@@ -1020,7 +1020,7 @@
 
                                       ],
                       "clue":  "This ancient fortification stretches across northern China.",
-                      "image":  "games/pixel-guess-assets/images/countries-places/great-wall-china.jpg",
+                      "image":  "../assets/pixel-guess/images/countries-places/great-wall-china.jpg",
                       "sourceFile":  "File:Badaling China Great-Wall-of-China-01.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Badaling_China_Great-Wall-of-China-01.jpg",
                       "creator":  "Photo by CEphoto, Uwe Aranas or alternatively Â© CEphoto, Uwe Aranas",
@@ -1040,7 +1040,7 @@
 
                                       ],
                       "clue":  "This ancient Roman amphitheater hosted public spectacles.",
-                      "image":  "games/pixel-guess-assets/images/countries-places/colosseum.jpg",
+                      "image":  "../assets/pixel-guess/images/countries-places/colosseum.jpg",
                       "sourceFile":  "File:Colosseum and Via Sacra (Rome).jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Colosseum_and_Via_Sacra_(Rome).jpg",
                       "creator":  "Livioandronico2013",
@@ -1060,7 +1060,7 @@
 
                                       ],
                       "clue":  "This Inca citadel sits high in the Andes of Peru.",
-                      "image":  "games/pixel-guess-assets/images/countries-places/machu-picchu.jpg",
+                      "image":  "../assets/pixel-guess/images/countries-places/machu-picchu.jpg",
                       "sourceFile":  "File:Machu Picchu, PerÃº, 2015-07-30, DD 47.JPG",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Machu_Picchu,_Per%C3%BA,_2015-07-30,_DD_47.JPG",
                       "creator":  "Diego Delso",
@@ -1080,7 +1080,7 @@
 
                                       ],
                       "clue":  "This is Earth\u0027s highest mountain above sea level.",
-                      "image":  "games/pixel-guess-assets/images/countries-places/mount-everest.jpg",
+                      "image":  "../assets/pixel-guess/images/countries-places/mount-everest.jpg",
                       "sourceFile":  "File:Everest, Himalayas.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Everest,_Himalayas.jpg",
                       "creator":  "Â© Vyacheslav Argenberg",
@@ -1100,7 +1100,7 @@
 
                                       ],
                       "clue":  "This performing-arts venue has sail-shaped roofs beside Sydney Harbour.",
-                      "image":  "games/pixel-guess-assets/images/countries-places/sydney-opera-house.jpg",
+                      "image":  "../assets/pixel-guess/images/countries-places/sydney-opera-house.jpg",
                       "sourceFile":  "File:Sydney Opera House - Dec 2008.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Sydney_Opera_House_-_Dec_2008.jpg",
                       "creator":  "Diliff",
@@ -1121,7 +1121,7 @@
 
                                       ],
                       "clue":  "This famous clock tower stands beside the River Thames in London.",
-                      "image":  "games/pixel-guess-assets/images/countries-places/big-ben.jpg",
+                      "image":  "../assets/pixel-guess/images/countries-places/big-ben.jpg",
                       "sourceFile":  "File:Big Ben at sunset - 2014-10-27 17-30.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Big_Ben_at_sunset_-_2014-10-27_17-30.jpg",
                       "creator":  "Â© User:Colin / Wikimedia Commons",
@@ -1141,7 +1141,7 @@
 
                                       ],
                       "clue":  "This Greek island is known for white buildings and blue domes.",
-                      "image":  "games/pixel-guess-assets/images/countries-places/santorini.jpg",
+                      "image":  "../assets/pixel-guess/images/countries-places/santorini.jpg",
                       "sourceFile":  "File:1000 Three domes of Oia in Santorini Photo by Giles Laurent.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:1000_Three_domes_of_Oia_in_Santorini_Photo_by_Giles_Laurent.jpg",
                       "creator":  "Giles Laurent",
@@ -1161,7 +1161,7 @@
 
                                       ],
                       "clue":  "These powerful waterfalls lie on the border of Canada and the United States.",
-                      "image":  "games/pixel-guess-assets/images/countries-places/niagara-falls.jpg",
+                      "image":  "../assets/pixel-guess/images/countries-places/niagara-falls.jpg",
                       "sourceFile":  "File:Niagara Falls 001.JPG",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Niagara_Falls_001.JPG",
                       "creator":  "Nandaro",
@@ -1181,7 +1181,7 @@
 
                                       ],
                       "clue":  "This orange suspension bridge crosses the entrance to San Francisco Bay.",
-                      "image":  "games/pixel-guess-assets/images/countries-places/golden-gate-bridge.jpg",
+                      "image":  "../assets/pixel-guess/images/countries-places/golden-gate-bridge.jpg",
                       "sourceFile":  "File:San Francisco (CA, USA), Golden Gate Bridge -- 2022 -- 3023 (bw).jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:San_Francisco_(CA,_USA),_Golden_Gate_Bridge_--_2022_--_3023_(bw).jpg",
                       "creator":  "Dietmar Rabich",
@@ -1201,7 +1201,7 @@
 
                                       ],
                       "clue":  "This monumental statue overlooks Rio de Janeiro from Corcovado mountain.",
-                      "image":  "games/pixel-guess-assets/images/countries-places/christ-the-redeemer.jpg",
+                      "image":  "../assets/pixel-guess/images/countries-places/christ-the-redeemer.jpg",
                       "sourceFile":  "File:Unique Moment with the Moon and Christ the Redeemer 3.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Unique_Moment_with_the_Moon_and_Christ_the_Redeemer_3.jpg",
                       "creator":  "Donatas Dabravolskas",
@@ -1221,7 +1221,7 @@
 
                                       ],
                       "clue":  "This clock makes a sound to wake someone at a set time.",
-                      "image":  "games/pixel-guess-assets/images/objects/alarm-clock.jpg",
+                      "image":  "../assets/pixel-guess/images/objects/alarm-clock.jpg",
                       "sourceFile":  "File:Classic alarm clock 20180513.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Classic_alarm_clock_20180513.jpg",
                       "creator":  "Santeri ViinamÃ¤ki",
@@ -1241,7 +1241,7 @@
 
                                       ],
                       "clue":  "This mechanical machine prints letters as keys are pressed.",
-                      "image":  "games/pixel-guess-assets/images/objects/typewriter.jpg",
+                      "image":  "../assets/pixel-guess/images/objects/typewriter.jpg",
                       "sourceFile":  "File:Typewriter Taliesin West Arizona Mar23 R16 07176.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Typewriter_Taliesin_West_Arizona_Mar23_R16_07176.jpg",
                       "creator":  "This Photo was taken by Timothy A. Gonsalves . Feel free to use my photos, but please mention me as the author. I would much appreciate if you send me an email tagooty@yahoo.com or write on my talk page , for my information. Please contact me before commercial use. Please do not upload an edited image here without consulting me. I would like to make corrections only at my own source to ensure that the changes improve the image and are preserved. Otherwise you may upload an edited image with a new name. Please use one of the templates derivative or extract .",
@@ -1261,7 +1261,7 @@
 
                                       ],
                       "clue":  "This small timepiece is carried in a pocket and often has a chain.",
-                      "image":  "games/pixel-guess-assets/images/objects/pocket-watch.jpg",
+                      "image":  "../assets/pixel-guess/images/objects/pocket-watch.jpg",
                       "sourceFile":  "File:Longines 4 Grand Prix pocket watch - clockwork visible - enhanced resolution DSF3402-PSMS.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Longines_4_Grand_Prix_pocket_watch_-_clockwork_visible_-_enhanced_resolution_DSF3402-PSMS.jpg",
                       "creator":  "Franz van Duns",
@@ -1281,7 +1281,7 @@
 
                                       ],
                       "clue":  "This machine stitches fabric with thread.",
-                      "image":  "games/pixel-guess-assets/images/objects/sewing-machine.jpg",
+                      "image":  "../assets/pixel-guess/images/objects/sewing-machine.jpg",
                       "sourceFile":  "File:Vesta sewing machine IMGP0718.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Vesta_sewing_machine_IMGP0718.jpg",
                       "creator":  "Nikodem Nijaki",
@@ -1304,7 +1304,7 @@
                                           "Knowles"
                                       ],
                       "clue":  "This American singer first rose to fame with Destiny\u0027s Child.",
-                      "image":  "games/pixel-guess-assets/images/famous-people/beyonce.jpg",
+                      "image":  "../assets/pixel-guess/images/famous-people/beyonce.jpg",
                       "sourceFile":  "File:Beyonce 01.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Beyonce_01.jpg",
                       "creator":  "Alex Johnson",
@@ -1325,7 +1325,7 @@
                                           "Trump"
                                       ],
                       "clue":  "He is a well-known American political figure and former president.",
-                      "image":  "games/pixel-guess-assets/images/famous-people/donald-trump.jpg",
+                      "image":  "../assets/pixel-guess/images/famous-people/donald-trump.jpg",
                       "sourceFile":  "File:Donald Trump official portrait.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Donald_Trump_official_portrait.jpg",
                       "creator":  "Shealah Craighead / The White House",
@@ -1346,7 +1346,7 @@
                                           "Johnson"
                                       ],
                       "clue":  "He is an actor and former professional wrestler known as The Rock.",
-                      "image":  "games/pixel-guess-assets/images/famous-people/dwayne-johnson.jpg",
+                      "image":  "../assets/pixel-guess/images/famous-people/dwayne-johnson.jpg",
                       "sourceFile":  "File:Dwayne Johnson 2009.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Dwayne_Johnson_2009.jpg",
                       "creator":  "David Shankbone",
@@ -1366,7 +1366,7 @@
                                           "Musk"
                                       ],
                       "clue":  "He is a technology entrepreneur associated with Tesla and SpaceX.",
-                      "image":  "games/pixel-guess-assets/images/famous-people/elon-musk.jpg",
+                      "image":  "../assets/pixel-guess/images/famous-people/elon-musk.jpg",
                       "sourceFile":  "File:Elon Musk.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Elon_Musk.jpg",
                       "creator":  "Daniel Oberhaus",
@@ -1385,7 +1385,7 @@
 
                                       ],
                       "clue":  "This tall pink wading bird has a distinctive curved bill.",
-                      "image":  "games/pixel-guess-assets/images/animals/flamingo.jpg",
+                      "image":  "../assets/pixel-guess/images/animals/flamingo.jpg",
                       "sourceFile":  "File:Flamingo closeup (Unsplash).jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Flamingo_closeup_(Unsplash).jpg",
                       "creator":  "Carlota Vidal / charlottephoto",
@@ -1406,7 +1406,7 @@
 
                                       ],
                       "clue":  "These golden potato strips are often served as a side dish.",
-                      "image":  "games/pixel-guess-assets/images/food-drinks/french-fries.jpg",
+                      "image":  "../assets/pixel-guess/images/food-drinks/french-fries.jpg",
                       "sourceFile":  "File:French Fries.JPG",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:French_Fries.JPG",
                       "creator":  "StockSnap",
@@ -1426,7 +1426,7 @@
 
                                       ],
                       "clue":  "This twisted baked bread is often topped with coarse salt.",
-                      "image":  "games/pixel-guess-assets/images/food-drinks/pretzel.jpg",
+                      "image":  "../assets/pixel-guess/images/food-drinks/pretzel.jpg",
                       "sourceFile":  "File:Pretzel (1).jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Pretzel_(1).jpg",
                       "creator":  "Renee Comet",
@@ -1445,7 +1445,7 @@
 
                                       ],
                       "clue":  "This flaky, crescent-shaped pastry is associated with France.",
-                      "image":  "games/pixel-guess-assets/images/food-drinks/croissant.jpg",
+                      "image":  "../assets/pixel-guess/images/food-drinks/croissant.jpg",
                       "sourceFile":  "File:Croissant 1.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Croissant_1.jpg",
                       "creator":  "Gaurav Dhwaj Khadka",
@@ -1464,7 +1464,7 @@
 
                                       ],
                       "clue":  "This small red fruit has seeds on its outer surface.",
-                      "image":  "games/pixel-guess-assets/images/food-drinks/strawberry.jpg",
+                      "image":  "../assets/pixel-guess/images/food-drinks/strawberry.jpg",
                       "sourceFile":  "File:Strawberry, Close-up.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Strawberry,_Close-up.jpg",
                       "creator":  "FurLined (Matt)",
@@ -1484,7 +1484,7 @@
 
                                       ],
                       "clue":  "This breakfast stack is often served with syrup.",
-                      "image":  "games/pixel-guess-assets/images/food-drinks/pancakes.jpg",
+                      "image":  "../assets/pixel-guess/images/food-drinks/pancakes.jpg",
                       "sourceFile":  "File:Pancakes (1).jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Pancakes_(1).jpg",
                       "creator":  "Renee Comet (National Cancer Institute)",
@@ -1504,7 +1504,7 @@
 
                                       ],
                       "clue":  "This brewed drink is served in the cup shown.",
-                      "image":  "games/pixel-guess-assets/images/food-drinks/coffee.jpg",
+                      "image":  "../assets/pixel-guess/images/food-drinks/coffee.jpg",
                       "sourceFile":  "File:Coffee cup.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Coffee_cup.jpg",
                       "creator":  "Egien",
@@ -1525,7 +1525,7 @@
 
                                       ],
                       "clue":  "This compact car is known for its rounded shape.",
-                      "image":  "games/pixel-guess-assets/images/brands-products/volkswagen-beetle.jpg",
+                      "image":  "../assets/pixel-guess/images/brands-products/volkswagen-beetle.jpg",
                       "sourceFile":  "File:VW Beetle.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:VW_Beetle.jpg",
                       "creator":  "IFCAR",
@@ -1544,7 +1544,7 @@
 
                                       ],
                       "clue":  "This Dutch capital is known for its canals and brick bridges.",
-                      "image":  "games/pixel-guess-assets/images/countries-places/amsterdam.jpg",
+                      "image":  "../assets/pixel-guess/images/countries-places/amsterdam.jpg",
                       "sourceFile":  "File:Canal view in Amsterdam downtown with old brick bridge over the water of Reguliersgracht; free photo by Fons Heijnsbroek, january 2022.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Canal_view_in_Amsterdam_downtown_with_old_brick_bridge_over_the_water_of_Reguliersgracht;_free_photo_by_Fons_Heijnsbroek,_january_2022.jpg",
                       "creator":  "Fons Heijnsbroek",
@@ -1565,7 +1565,7 @@
 
                                       ],
                       "clue":  "These ancient pyramids stand on the Giza Plateau in Egypt.",
-                      "image":  "games/pixel-guess-assets/images/countries-places/pyramids-of-giza.jpg",
+                      "image":  "../assets/pixel-guess/images/countries-places/pyramids-of-giza.jpg",
                       "sourceFile":  "File:The pyramid of Giza.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:The_pyramid_of_Giza.jpg",
                       "creator":  "Joyce Humphrey",
@@ -1585,7 +1585,7 @@
 
                                       ],
                       "clue":  "This device captures photographs.",
-                      "image":  "games/pixel-guess-assets/images/objects/camera.jpg",
+                      "image":  "../assets/pixel-guess/images/objects/camera.jpg",
                       "sourceFile":  "File:Nikon camera on a table.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Nikon_camera_on_a_table.jpg",
                       "creator":  "Tomwsulcer",
@@ -1605,7 +1605,7 @@
 
                                       ],
                       "clue":  "This masked comic-book hero protects Gotham City.",
-                      "image":  "games/pixel-guess-assets/images/movies-tv/batman.jpg",
+                      "image":  "../assets/pixel-guess/images/movies-tv/batman.jpg",
                       "sourceFile":  "File:Wondercon 2016 - Batman Cosplay (26080881025).jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Wondercon_2016_-_Batman_Cosplay_(26080881025).jpg",
                       "creator":  "William Tung",
@@ -1626,7 +1626,7 @@
 
                                       ],
                       "clue":  "This web-slinging superhero is also known as Peter Parker.",
-                      "image":  "games/pixel-guess-assets/images/movies-tv/spider-man.jpg",
+                      "image":  "../assets/pixel-guess/images/movies-tv/spider-man.jpg",
                       "sourceFile":  "File:SDCC 2017 - Spider-Man Cosplay (35308459724).jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:SDCC_2017_-_Spider-Man_Cosplay_(35308459724).jpg",
                       "creator":  "William Tung",
@@ -1645,7 +1645,7 @@
 
                                       ],
                       "clue":  "This green ogre is the hero of an animated comedy film series.",
-                      "image":  "games/pixel-guess-assets/images/movies-tv/shrek.jpg",
+                      "image":  "../assets/pixel-guess/images/movies-tv/shrek.jpg",
                       "sourceFile":  "File:Toronto 2015 - Shrek (16723895657).jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Toronto_2015_-_Shrek_(16723895657).jpg",
                       "creator":  "GabboT",
@@ -1665,7 +1665,7 @@
 
                                       ],
                       "clue":  "This black-armored villain appears in Star Wars.",
-                      "image":  "games/pixel-guess-assets/images/movies-tv/darth-vader.jpg",
+                      "image":  "../assets/pixel-guess/images/movies-tv/darth-vader.jpg",
                       "sourceFile":  "File:Darth Vader cosplay.JPG",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Darth_Vader_cosplay.JPG",
                       "creator":  "Michele Miglionico",
@@ -1684,7 +1684,7 @@
 
                                       ],
                       "clue":  "This block-building game features a green creature called a Creeper.",
-                      "image":  "games/pixel-guess-assets/images/video-games/minecraft.png",
+                      "image":  "../assets/pixel-guess/images/video-games/minecraft.png",
                       "sourceFile":  "File:Minecraft Creeper.png",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Minecraft_Creeper.png",
                       "creator":  "Xbox México (screenshot from CC BY video)",
@@ -1704,7 +1704,7 @@
 
                                       ],
                       "clue":  "This Nintendo hero wears a red cap and is often seen with his brother Luigi.",
-                      "image":  "games/pixel-guess-assets/images/video-games/super-mario.jpg",
+                      "image":  "../assets/pixel-guess/images/video-games/super-mario.jpg",
                       "sourceFile":  "File:Mario Cosplay - MCM Comic Con London 2016 (27364999026).jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Mario_Cosplay_-_MCM_Comic_Con_London_2016_(27364999026).jpg",
                       "creator":  "Altan Dilan",
@@ -1724,7 +1724,7 @@
 
                                       ],
                       "clue":  "This yellow Pokémon is known for its electric attacks.",
-                      "image":  "games/pixel-guess-assets/images/video-games/pikachu.jpg",
+                      "image":  "../assets/pixel-guess/images/video-games/pikachu.jpg",
                       "sourceFile":  "File:Pikachu Cosplayer at Anime North 2012.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Pikachu_Cosplayer_at_Anime_North_2012.jpg",
                       "creator":  "Tabercil",
@@ -1744,7 +1744,7 @@
 
                                       ],
                       "clue":  "This wooden string instrument is played by strumming or picking.",
-                      "image":  "games/pixel-guess-assets/images/objects/acoustic-guitar.jpg",
+                      "image":  "../assets/pixel-guess/images/objects/acoustic-guitar.jpg",
                       "sourceFile":  "File:Acoustic guitar.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Acoustic_guitar.jpg",
                       "creator":  "Massimo Giuliani",
@@ -1764,7 +1764,7 @@
 
                                       ],
                       "clue":  "This two-wheeled vehicle is powered by pedaling.",
-                      "image":  "games/pixel-guess-assets/images/objects/bicycle.jpg",
+                      "image":  "../assets/pixel-guess/images/objects/bicycle.jpg",
                       "sourceFile":  "File:Bike-side.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Bike-side.jpg",
                       "creator":  "MartinThoma",
@@ -1784,7 +1784,7 @@
 
                                       ],
                       "clue":  "This checkered board is used for a strategy game with black and white pieces.",
-                      "image":  "games/pixel-guess-assets/images/objects/chessboard.jpg",
+                      "image":  "../assets/pixel-guess/images/objects/chessboard.jpg",
                       "sourceFile":  "File:Chess_board_with_pieces.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Chess_board_with_pieces.jpg",
                       "creator":  "Ursus",
@@ -1803,7 +1803,7 @@
 
                                       ],
                       "clue":  "This handheld instrument helps show direction.",
-                      "image":  "games/pixel-guess-assets/images/objects/compass.jpg",
+                      "image":  "../assets/pixel-guess/images/objects/compass.jpg",
                       "sourceFile":  "File:Photograph of a compass being held upright.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Photograph_of_a_compass_being_held_upright.jpg",
                       "creator":  "Heidi Sandstrom",
@@ -1822,7 +1822,7 @@
 
                                       ],
                       "clue":  "This optical instrument is used to observe distant objects in space.",
-                      "image":  "games/pixel-guess-assets/images/objects/telescope.jpg",
+                      "image":  "../assets/pixel-guess/images/objects/telescope.jpg",
                       "sourceFile":  "File:Celestron_EdgeHD_telescope.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Celestron_EdgeHD_telescope.jpg",
                       "creator":  "Cjp24",
@@ -1842,7 +1842,7 @@
 
                                       ],
                       "clue":  "This spherical model shows the continents and oceans of Earth.",
-                      "image":  "games/pixel-guess-assets/images/objects/globe.jpg",
+                      "image":  "../assets/pixel-guess/images/objects/globe.jpg",
                       "sourceFile":  "File:World Globe.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:World_Globe.jpg",
                       "creator":  "Adbh266",
@@ -1861,7 +1861,7 @@
 
                                       ],
                       "clue":  "This vessel is used to brew and pour tea.",
-                      "image":  "games/pixel-guess-assets/images/objects/teapot.jpg",
+                      "image":  "../assets/pixel-guess/images/objects/teapot.jpg",
                       "sourceFile":  "File:Teapot white.jpg",
                       "sourceUrl":  "https://commons.wikimedia.org/wiki/File:Teapot_white.jpg",
                       "creator":  "Jeremy Keith",
@@ -1873,3 +1873,177 @@
     "roundsPerGame":  10,
     "maximumAttempts":  5
 };
+
+(() => {
+    const catalog = {
+        "pg.category.all": { nl: "Alle categorieën", de: "Alle Kategorien", fr: "Toutes les catégories", es: "Todas las categorías" },
+        "pg.category.famous-people": { nl: "Beroemde mensen", de: "Berühmte Persönlichkeiten", fr: "Personnalités célèbres", es: "Personajes famosos" },
+        "pg.category.food-drinks": { nl: "Eten en drinken", de: "Essen und Getränke", fr: "Cuisine et boissons", es: "Comida y bebidas" },
+        "pg.category.animals": { nl: "Dieren", de: "Tiere", fr: "Animaux", es: "Animales" },
+        "pg.category.brands-products": { nl: "Merken en producten", de: "Marken und Produkte", fr: "Marques et produits", es: "Marcas y productos" },
+        "pg.category.movies-tv": { nl: "Films en tv", de: "Film und Fernsehen", fr: "Films et télévision", es: "Cine y televisión" },
+        "pg.category.countries-places": { nl: "Landen en plekken", de: "Länder und Orte", fr: "Pays et lieux", es: "Países y lugares" },
+        "pg.category.objects": { nl: "Voorwerpen", de: "Gegenstände", fr: "Objets", es: "Objetos" },
+        "pg.category.video-games": { nl: "Videospellen", de: "Videospiele", fr: "Jeux vidéo", es: "Videojuegos" },
+        "pg.ui.pageTitle": { nl: "Pixelraadsel — just because.", de: "Pixel-Rätsel — just because.", fr: "Devine le pixel — just because.", es: "Adivina el píxel — just because." },
+        "pg.ui.gameEyebrow": { nl: "EEN KLEIN SPEL · NR. 03", de: "EIN KLEINES SPIEL · NR. 03", fr: "UN PETIT JEU · N° 03", es: "UN JUEGO PEQUEÑO · N.º 03" },
+        "pg.ui.gameTitle": { nl: "Pixel", de: "Pixel", fr: "Devine", es: "Adivina" },
+        "pg.ui.gameTitleGlue": { nl: "", de: "-", fr: " ", es: " " },
+        "pg.ui.gameTitleSecond": { nl: "raadsel.", de: "Rätsel.", fr: "le pixel.", es: "el píxel." },
+        "pg.ui.gameDescription": { nl: "Een kleine, wazige aanwijzing. Typ wat je denkt dat het is.", de: "Ein winziger, unscharfer Hinweis. Schreib, was du vermutest.", fr: "Un tout petit indice flou. Écris ce que tu crois voir.", es: "Una pista pequeña y borrosa. Escribe lo que crees que es." },
+        "pg.ui.chooseSubject": { nl: "KIES JE ONDERWERP", de: "WÄHLE DEIN THEMA", fr: "CHOISIS TON SUJET", es: "ELIGE UN TEMA" },
+        "pg.ui.pickCategory": { nl: "Kies een categorie.", de: "Wähle eine Kategorie.", fr: "Choisis une catégorie.", es: "Elige una categoría." },
+        "pg.ui.setupNote": { nl: "Tien afbeeldingen per spel · antwoorden in het Engels", de: "Zehn Bilder pro Spiel · Antworten auf Englisch", fr: "Dix images par partie · réponses en anglais", es: "Diez imágenes por partida · respuestas en inglés" },
+        "pg.ui.personalBest": { nl: "PERSOONLIJK RECORD", de: "PERSÖNLICHER REKORD", fr: "RECORD PERSONNEL", es: "RÉCORD PERSONAL" },
+        "pg.ui.startPlaying": { nl: "BEGIN MET SPELEN", de: "SPIEL STARTEN", fr: "JOUER", es: "EMPEZAR A JUGAR" },
+        "pg.ui.playAria": { nl: "Pixelraadselronde", de: "Pixel-Rätselrunde", fr: "Manche de Devine le pixel", es: "Ronda de Adivina el píxel" },
+        "pg.ui.round": { nl: "RONDE", de: "RUNDE", fr: "MANCHE", es: "RONDA" },
+        "pg.ui.score": { nl: "SCORE", de: "PUNKTE", fr: "SCORE", es: "PUNTUACIÓN" },
+        "pg.ui.guessed": { nl: "GERADEN", de: "ERRATEN", fr: "TROUVÉS", es: "ACERTADOS" },
+        "pg.ui.pictures": { nl: "afbeeldingen", de: "Bilder", fr: "images", es: "imágenes" },
+        "pg.ui.mixed": { nl: "door elkaar", de: "gemischt", fr: "mélangées", es: "mezcladas" },
+        "pg.ui.image": { nl: "Afbeelding:", de: "Bild:", fr: "Image :", es: "Imagen:" },
+        "pg.ui.hintsUsed": { nl: "GEBRUIKTE HINTS", de: "GENUTZTE TIPPS", fr: "INDICES UTILISÉS", es: "PISTAS USADAS" },
+        "pg.ui.getHint": { nl: "Geef een hint", de: "Hinweis anzeigen", fr: "Obtenir un indice", es: "Pedir una pista" },
+        "pg.ui.answerPrompt": { nl: "Wat denk je dat het is?", de: "Was glaubst du, was es ist?", fr: "À ton avis, qu’est-ce que c’est ?", es: "¿Qué crees que es?" },
+        "pg.ui.answerLanguage": { nl: "Typ je antwoord in het Engels", de: "Gib deine Antwort auf Englisch ein", fr: "Écris ta réponse en anglais", es: "Escribe tu respuesta en inglés" },
+        "pg.ui.answerPlaceholder": { nl: "Jouw antwoord…", de: "Deine Antwort…", fr: "Ta réponse…", es: "Tu respuesta…" },
+        "pg.ui.submitAnswer": { nl: "Antwoord versturen", de: "Antwort absenden", fr: "Valider la réponse", es: "Enviar respuesta" },
+        "pg.ui.backToCategories": { nl: "Terug naar categorieën", de: "Zurück zu den Kategorien", fr: "Retour aux catégories", es: "Volver a las categorías" },
+        "pg.ui.points": { nl: "PUNTEN", de: "PUNKTE", fr: "POINTS", es: "PUNTOS" },
+        "pg.ui.accuracy": { nl: "NAUWKEURIGHEID", de: "TREFFERQUOTE", fr: "PRÉCISION", es: "PRECISIÓN" },
+        "pg.ui.resultEyebrow": { nl: "DAT WAS ’M", de: "DAS WAR’S", fr: "ET VOILÀ", es: "FIN DE LA PARTIDA" },
+        "pg.ui.playAgain": { nl: "SPEEL OPNIEUW", de: "NOCHMAL SPIELEN", fr: "REJOUER", es: "VOLVER A JUGAR" },
+        "pg.ui.chooseCategory": { nl: "Kies een andere categorie", de: "Andere Kategorie wählen", fr: "Choisir une autre catégorie", es: "Elegir otra categoría" },
+        "pg.ui.footer": { nl: "gemaakt zonder bijzondere reden.", de: "ohne besonderen Grund gemacht.", fr: "créé sans raison particulière.", es: "hecho sin ningún motivo en particular." },
+        "pg.ui.emptyCategory": { nl: "Er staan nog geen afbeeldingen in deze categorie.", de: "In dieser Kategorie gibt es noch keine Bilder.", fr: "Il n’y a pas encore d’images dans cette catégorie.", es: "Todavía no hay imágenes en esta categoría." },
+        "pg.ui.attempts": { nl: "POGINGEN", de: "VERSUCHE", fr: "ESSAIS", es: "INTENTOS" },
+        "pg.ui.pixelLevel": { nl: "PIXELNIVEAU", de: "PIXELSTUFE", fr: "NIVEAU DE PIXELLISATION", es: "NIVEL DE PÍXELES" },
+        "pg.ui.initialHint": { nl: "Een hint is altijd optioneel. Na twee missers wordt het makkelijker.", de: "Ein Tipp ist immer freiwillig. Nach zwei Fehlversuchen wird es leichter.", fr: "L’indice est facultatif. Après deux erreurs, l’image devient plus nette.", es: "La pista es opcional. Tras dos fallos, será más fácil distinguir la imagen." },
+        "pg.ui.nextPicture": { nl: "VOLGENDE AFBEELDING", de: "NÄCHSTES BILD", fr: "IMAGE SUIVANTE", es: "SIGUIENTE IMAGEN" },
+        "pg.ui.loadingImage": { nl: "Afbeelding laden…", de: "Bild wird geladen …", fr: "Chargement de l’image…", es: "Cargando imagen…" },
+        "pg.ui.pixelatedImage": { nl: "Gepixelde afbeeldingshint", de: "Verpixelter Bildhinweis", fr: "Indice d’image pixellisée", es: "Pista de imagen pixelada" },
+        "pg.ui.creatorNotStated": { nl: "Maker niet vermeld", de: "Urheber nicht angegeben", fr: "Auteur non indiqué", es: "Autor no indicado" },
+        "pg.ui.imageSourcePage": { nl: "Bronpagina van de afbeelding", de: "Quellseite des Bildes", fr: "Page source de l’image", es: "Página de origen de la imagen" },
+        "pg.ui.source": { nl: "Bron", de: "Quelle", fr: "Source", es: "Fuente" },
+        "pg.ui.viewLicense": { nl: "Licentie bekijken", de: "Lizenz ansehen", fr: "Voir la licence", es: "Ver licencia" },
+        "pg.ui.imageError": { nl: "Deze afbeelding kon niet worden geladen. Je kunt doorgaan naar de volgende.", de: "Dieses Bild konnte nicht geladen werden. Du kannst zum nächsten Bild springen.", fr: "Impossible de charger cette image. Tu peux passer à la suivante.", es: "No se pudo cargar esta imagen. Puedes pasar a la siguiente." },
+        "pg.ui.skipPicture": { nl: "AFBEELDING OVERSLAAN", de: "BILD ÜBERSPRINGEN", fr: "PASSER L’IMAGE", es: "SALTAR IMAGEN" },
+        "pg.ui.imageRevealed": { nl: "AFBEELDING ONTHULD", de: "BILD AUFGEDECKT", fr: "IMAGE RÉVÉLÉE", es: "IMAGEN REVELADA" },
+        "pg.ui.visualHint": { nl: "Let goed op de vorm en de context van de afbeelding.", de: "Achte genau auf Form und Kontext des Bildes.", fr: "Observe attentivement la forme et le contexte de l’image.", es: "Fíjate bien en la forma y el contexto de la imagen." },
+        "pg.ui.answerOneWord": { nl: "Het antwoord bestaat uit {0} woord.", de: "Die Antwort besteht aus {0} Wort.", fr: "La réponse contient {0} mot.", es: "La respuesta tiene {0} palabra." },
+        "pg.ui.answerManyWords": { nl: "Het antwoord bestaat uit {0} woorden.", de: "Die Antwort besteht aus {0} Wörtern.", fr: "La réponse contient {0} mots.", es: "La respuesta tiene {0} palabras." },
+        "pg.ui.wordPattern": { nl: "Woordpatroon: {0}", de: "Wortmuster: {0}", fr: "Longueur des mots : {0}", es: "Patrón de palabras: {0}" },
+        "pg.ui.firstLetters": { nl: "De beginletters zijn {0}.", de: "Die Anfangsbuchstaben sind {0}.", fr: "Les premières lettres sont {0}.", es: "Las primeras letras son {0}." },
+        "pg.ui.revealedImage": { nl: "Onthulde afbeelding", de: "Aufgedecktes Bild", fr: "Image révélée", es: "Imagen revelada" },
+        "pg.ui.seeResults": { nl: "BEKIJK JE RESULTAAT", de: "ERGEBNIS ANSEHEN", fr: "VOIR LES RÉSULTATS", es: "VER RESULTADOS" },
+        "pg.ui.correctFeedback": { nl: "Goed! Het was {0}. +{1} punten.", de: "Richtig! Das war {0}. +{1} Punkte.", fr: "Bien joué ! C’était {0}. +{1} points.", es: "¡Correcto! Era {0}. +{1} puntos." },
+        "pg.ui.missedFeedback": { nl: "Geen pogingen meer. Het antwoord was {0}.", de: "Keine Versuche mehr. Die Antwort war {0}.", fr: "Plus d’essais. La réponse était {0}.", es: "Se acabaron los intentos. La respuesta era {0}." },
+        "pg.ui.wrongWithHint": { nl: "Niet helemaal — probeer het opnieuw. Je kunt een hint gebruiken.", de: "Nicht ganz — versuch es noch einmal. Wenn du möchtest, gibt es einen Tipp.", fr: "Pas tout à fait — réessaie. Tu peux demander un indice.", es: "No exactamente: inténtalo otra vez. Puedes pedir una pista." },
+        "pg.ui.wrongNoHint": { nl: "Niet helemaal — probeer het opnieuw! Het antwoord blijft verborgen.", de: "Nicht ganz — versuch es noch einmal! Die Antwort bleibt verborgen.", fr: "Pas tout à fait — réessaie ! La réponse reste cachée.", es: "No exactamente: ¡inténtalo otra vez! La respuesta sigue oculta." },
+        "pg.ui.resultPerfect": { nl: "Pixel-perfect.", de: "Pixelgenau.", fr: "Pixel parfait.", es: "Perfecto al píxel." },
+        "pg.ui.resultSharp": { nl: "Scherpe blik.", de: "Scharfer Blick.", fr: "Quel œil !", es: "¡Qué buena vista!" },
+        "pg.ui.resultFocus": { nl: "Je had het goed in beeld.", de: "Du hast den Dreh raus.", fr: "Tu as trouvé le bon angle.", es: "Encontraste el enfoque." },
+        "pg.ui.resultPixelsWon": { nl: "Deze ronde wonnen de pixels.", de: "Diesmal haben die Pixel gewonnen.", fr: "Les pixels ont gagné cette manche.", es: "Esta ronda ganaron los píxeles." },
+        "pg.ui.resultMessage": { nl: "Je raadde {0} van de {1} afbeeldingen in {2}.", de: "Du hast {0} von {1} Bildern aus {2} erraten.", fr: "Tu as deviné {0} image(s) sur {1} dans la catégorie {2}.", es: "Adivinaste {0} de {1} imágenes en {2}." }
+    };
+    const clueRows = {
+        "cristiano-ronaldo": ["Cristiano Ronaldo is een Portugese voetbalster.", "Cristiano Ronaldo ist ein portugiesischer Fußballstar.", "Cristiano Ronaldo est une star portugaise du football.", "Cristiano Ronaldo es una estrella portuguesa del fútbol."],
+        "taylor-swift": ["Ze is een Amerikaanse singer-songwriter, bekend om haar verhalende popsongs.", "Sie ist eine US-amerikanische Singer-Songwriterin, bekannt für erzählerische Popsongs.", "C’est une auteure-compositrice-interprète américaine connue pour ses chansons pop narratives.", "Es una cantautora estadounidense conocida por sus canciones pop narrativas."],
+        "albert-einstein": ["Deze in Duitsland geboren natuurkundige ontwikkelde de relativiteitstheorie.", "Dieser in Deutschland geborene Physiker entwickelte die Relativitätstheorie.", "Ce physicien né en Allemagne a élaboré la théorie de la relativité.", "Este físico nacido en Alemania desarrolló la teoría de la relatividad."],
+        "lionel-messi": ["Hij is een Argentijnse voetballer die meerdere Ballons d’Or heeft gewonnen.", "Er ist ein argentinischer Fußballer und mehrfacher Gewinner des Ballon d’Or.", "C’est un footballeur argentin qui a remporté plusieurs Ballons d’Or.", "Es un futbolista argentino que ha ganado varios Balones de Oro."],
+        "barack-obama": ["Hij was de 44e president van de Verenigde Staten.", "Er war der 44. Präsident der Vereinigten Staaten.", "Il a été le 44e président des États-Unis.", "Fue el 44.º presidente de Estados Unidos."],
+        "serena-williams": ["Ze is een Amerikaanse tenniskampioene met 23 grandslamtitels in het enkelspel.", "Sie ist eine US-amerikanische Tennismeisterin mit 23 Grand-Slam-Einzeltiteln.", "C’est une championne américaine de tennis, titrée 23 fois en simple en Grand Chelem.", "Es una campeona estadounidense de tenis con 23 títulos individuales de Grand Slam."],
+        "elvis-presley": ["Hij was een Amerikaanse zanger die bekendstond als de King of Rock and Roll.", "Er war ein US-amerikanischer Sänger, bekannt als der King of Rock and Roll.", "C’était un chanteur américain surnommé le King of Rock and Roll.", "Fue un cantante estadounidense conocido como el Rey del Rock and Roll."],
+        "usain-bolt": ["Deze Jamaicaanse sprinter won acht olympische gouden medailles.", "Dieser jamaikanische Sprinter gewann acht olympische Goldmedaillen.", "Ce sprinteur jamaïcain a remporté huit médailles d’or olympiques.", "Este velocista jamaicano ganó ocho medallas de oro olímpicas."],
+        "adele": ["Ze is een Engelse zangeres die bekendstaat om haar krachtige ballads.", "Sie ist eine englische Sängerin, bekannt für ihre kraftvollen Balladen.", "C’est une chanteuse anglaise connue pour ses ballades puissantes.", "Es una cantante inglesa conocida por sus poderosas baladas."],
+        "hamburger": ["Deze sandwich bevat meestal een gebakken schijf vlees in een broodje.", "Dieses Sandwich enthält meist ein gebratenes Patty in einem Brötchen.", "Ce sandwich contient généralement un steak cuit dans un pain rond.", "Este sándwich suele llevar una hamburguesa cocinada dentro de un pan."],
+        "sushi": ["Dit Japanse gerecht is gebaseerd op rijst die met azijn is aangemaakt.", "Dieses japanische Gericht basiert auf mit Essig gewürztem Reis.", "Ce plat japonais est préparé à base de riz vinaigré.", "Este plato japonés se prepara con arroz avinagrado."],
+        "avocado": ["Deze groene vrucht heeft een grote pit en romig vruchtvlees.", "Diese grüne Frucht hat einen großen Kern und cremiges Fruchtfleisch.", "Ce fruit vert possède un gros noyau et une chair crémeuse.", "Esta fruta verde tiene un hueso grande y una pulpa cremosa."],
+        "watermelon": ["Deze grote zomerfruit heeft een groene schil en sappig rood vruchtvlees.", "Diese große Sommerfrucht hat eine grüne Schale und saftiges rotes Fruchtfleisch.", "Ce gros fruit d’été a une peau verte et une chair rouge juteuse.", "Esta gran fruta de verano tiene una corteza verde y pulpa roja y jugosa."],
+        "taco": ["Dit Mexicaanse gerecht vouwt een tortilla om een vulling heen.", "Bei diesem mexikanischen Gericht wird eine Tortilla um eine Füllung gelegt.", "Ce plat mexicain consiste en une tortilla repliée autour d’une garniture.", "Este plato mexicano consiste en una tortilla doblada alrededor de un relleno."],
+        "cupcake": ["Dit kleine gebakje wordt vaak versierd met glazuur.", "Dieses kleine Küchlein wird oft mit Zuckerguss verziert.", "Ce petit gâteau individuel est souvent recouvert de glaçage.", "Este pequeño pastel individual suele llevar cobertura."],
+        "pineapple": ["Deze tropische vrucht heeft een stekelige kroon en een geschubde schil.", "Diese Tropenfrucht hat eine stachelige Krone und eine gemusterte Schale.", "Ce fruit tropical a une couronne épineuse et une peau écailleuse.", "Esta fruta tropical tiene una corona espinosa y una piel con dibujos."],
+        "doughnut": ["Dit gefrituurde zoete gebakje is vaak ringvormig en geglazuurd.", "Dieses süße frittierte Gebäck ist oft ringförmig und glasiert.", "Cette pâtisserie sucrée frite est souvent en forme d’anneau et glacée.", "Este dulce frito suele tener forma de anillo y estar glaseado."],
+        "giraffe": ["Dit lange Afrikaanse zoogdier heeft een zeer lange nek en een gevlekte vacht.", "Dieses große afrikanische Säugetier hat einen sehr langen Hals und ein geflecktes Fell.", "Ce grand mammifère africain a un très long cou et un pelage tacheté.", "Este alto mamífero africano tiene el cuello muy largo y el pelaje moteado."],
+        "lion": ["Deze grote katachtige leeft in groepen en wordt vaak de koning van de savanne genoemd.", "Diese Großkatze lebt in Rudeln und wird oft König der Savanne genannt.", "Ce grand félin vit en groupes et est souvent appelé le roi de la savane.", "Este gran felino vive en manadas y suele llamarse el rey de la sabana."],
+        "african-elephant": ["Dit is het grootste nog levende landdier, met slagtanden en een slurf.", "Dies ist das größte lebende Landtier, mit Stoßzähnen und Rüssel.", "C’est le plus grand animal terrestre vivant, avec des défenses et une trompe.", "Es el animal terrestre vivo más grande, con colmillos y trompa."],
+        "red-fox": ["Deze slimme hondachtige heeft een rossige vacht en een pluimstaart.", "Dieser schlaue Hundeartige hat rötliches Fell und einen buschigen Schwanz.", "Ce canidé rusé a un pelage roux et une queue touffue.", "Este astuto cánido tiene pelaje rojizo y una cola espesa."],
+        "giant-panda": ["Deze zwart-witte beer wordt sterk met bamboe geassocieerd.", "Dieser schwarz-weiße Bär wird stark mit Bambus verbunden.", "Cet ours noir et blanc est étroitement associé au bambou.", "Este oso blanco y negro está muy asociado al bambú."],
+        "penguin": ["Deze niet-vliegende zeevogel waggelt aan land en zwemt uitstekend.", "Dieser flugunfähige Seevogel watschelt an Land und schwimmt hervorragend.", "Cet oiseau marin incapable de voler se dandine sur terre et nage très bien.", "Esta ave marina no voladora camina tambaleándose y nada muy bien."],
+        "humpback-whale": ["Dit enorme zeezoogdier staat bekend om zijn gezang en lange borstvinnen.", "Dieses riesige Meeressäugetier ist für seinen Gesang und seine langen Brustflossen bekannt.", "Cet énorme mammifère marin est connu pour ses chants et ses longues nageoires pectorales.", "Este enorme mamífero marino es conocido por sus cantos y largas aletas pectorales."],
+        "tiger": ["Deze gestreepte grote katachtige is de grootste katachtige ter wereld.", "Diese gestreifte Großkatze ist die größte Katzenart.", "Ce grand félin rayé est le plus grand de la famille des félins.", "Este gran felino rayado es el miembro más grande de la familia de los felinos."],
+        "koala": ["Dit Australische buideldier brengt een groot deel van zijn leven door in eucalyptusbomen.", "Dieses australische Beuteltier verbringt einen Großteil seines Lebens in Eukalyptusbäumen.", "Ce marsupial australien passe une grande partie de sa vie dans les eucalyptus.", "Este marsupial australiano pasa gran parte de su vida en los eucaliptos."],
+        "sea-turtle": ["Dit zeereptiel heeft zwemvliezen en een beschermend schild.", "Dieses Meeresreptil hat Flossen und einen schützenden Panzer.", "Ce reptile marin possède des nageoires et une carapace protectrice.", "Este reptil marino tiene aletas y un caparazón protector."],
+        "owl": ["Deze nachtelijke roofvogel heeft grote, naar voren gerichte ogen.", "Dieser nachtaktive Greifvogel hat große, nach vorn gerichtete Augen.", "Ce rapace nocturne a de grands yeux dirigés vers l’avant.", "Esta ave rapaz nocturna tiene grandes ojos orientados hacia delante."],
+        "octopus": ["Dit intelligente zeedier heeft acht armen en geen botten.", "Dieses intelligente Meerestier hat acht Arme und keine Knochen.", "Cet animal marin intelligent a huit bras et aucun os.", "Este inteligente animal marino tiene ocho brazos y no tiene huesos."],
+        "peacock": ["Het mannetje van deze vogel spreidt een grote waaier van iriserende veren uit.", "Das Männchen dieses Vogels zeigt einen großen Fächer schillernder Federn.", "Le mâle de cet oiseau déploie une grande roue de plumes irisées.", "El macho de esta ave despliega un gran abanico de plumas iridiscentes."],
+        "red-eyed-tree-frog": ["Deze kleine regenwoudamfibie heeft felrode ogen en een groene huid.", "Diese kleine Regenwald-Amphibie hat leuchtend rote Augen und grüne Haut.", "Ce petit amphibien de la forêt tropicale a les yeux rouge vif et la peau verte.", "Este pequeño anfibio de la selva tiene ojos rojos brillantes y piel verde."],
+        "lego-bricks": ["Deze kleurrijke plastic bouwsteentjes worden gemaakt door een Deens speelgoedbedrijf.", "Diese bunten, ineinandergreifenden Kunststoffsteine stammen von einem dänischen Spielzeughersteller.", "Ces briques en plastique colorées et emboîtables sont fabriquées par une entreprise danoise.", "Estas coloridas piezas de plástico encajables las fabrica una empresa danesa de juguetes."],
+        "rubiks-cube": ["Deze draaibare puzzel heeft zes gekleurde vlakken die je moet oplossen.", "Dieses Drehpuzzle hat sechs farbige Seiten, die gelöst werden müssen.", "Ce casse-tête rotatif a six faces colorées à reconstituer.", "Este rompecabezas giratorio tiene seis caras de colores que hay que resolver."],
+        "game-boy": ["Deze grijze draagbare spelcomputer maakte mobiel gamen beroemd.", "Diese graue Handheld-Konsole machte tragbares Spielen berühmt.", "Cette console portable grise a rendu le jeu nomade célèbre.", "Esta consola portátil gris hizo famoso el juego portátil."],
+        "vespa-scooter": ["Dit Italiaanse merk scooters staat bekend om zijn vlakke instap.", "Diese italienische Motorrollermarke ist für ihren Durchstieg bekannt.", "Cette marque italienne de scooters est connue pour son cadre à plancher plat.", "Esta marca italiana de motos destaca por su diseño de acceso bajo."],
+        "adidas-superstar": ["Deze klassieke sportschoenen hebben een rubberen neus en drie strepen.", "Diese klassischen Sneaker haben eine Gummikappe und drei Streifen.", "Ces baskets classiques ont un embout en caoutchouc et trois bandes.", "Estas zapatillas clásicas tienen una puntera de goma y tres franjas."],
+        "converse-chuck-taylor": ["Deze hoge canvas-schoenen hebben een ronde patch bij de enkel.", "Diese hohen Canvas-Schuhe haben einen runden Aufnäher am Knöchel.", "Ces chaussures montantes en toile portent un écusson rond à la cheville.", "Estas zapatillas altas de lona llevan un parche circular en el tobillo."],
+        "barbie-doll": ["Deze modepop werd geïntroduceerd door speelgoedbedrijf Mattel.", "Diese Modepuppe wurde vom Spielzeughersteller Mattel eingeführt.", "Cette poupée mannequin a été lancée par le fabricant de jouets Mattel.", "Esta muñeca de moda fue presentada por la juguetera Mattel."],
+        "polaroid-camera": ["Dit cameramerk werd beroemd door instantfoto’s.", "Diese Kameramarke wurde durch Sofortbilder berühmt.", "Cette marque d’appareils photo est devenue célèbre grâce aux photos instantanées.", "Esta marca de cámaras se hizo famosa por sus fotografías instantáneas."],
+        "sony-walkman": ["Deze draagbare cassettespeler veranderde de manier waarop mensen naar muziek luisterden.", "Dieser tragbare Kassettenspieler veränderte, wie Menschen Musik hörten.", "Ce lecteur de cassettes portable a changé la façon d’écouter de la musique.", "Este reproductor portátil de casetes cambió la forma de escuchar música."],
+        "nintendo-nes": ["Deze 16-bit-thuisconsole volgde in de jaren 90 de oorspronkelijke NES op.", "Diese 16-Bit-Heimkonsole folgte in den 1990ern auf das ursprüngliche NES.", "Cette console de salon 16 bits a succédé à la NES originale dans les années 1990.", "Esta consola doméstica de 16 bits sucedió a la NES original en los años noventa."],
+        "playstation-controller": ["Deze gamecontroller is gemaakt voor Sony’s PlayStation-console.", "Dieser Controller ist für Sonys PlayStation-Konsole gemacht.", "Cette manette est conçue pour la console PlayStation de Sony.", "Este mando está diseñado para la consola PlayStation de Sony."],
+        "ray-ban-wayfarer": ["Deze iconische zonnebril heeft dikke, hoekige monturen.", "Diese ikonische Sonnenbrille hat dicke, kantige Fassungen.", "Ces lunettes de soleil emblématiques ont une monture épaisse et anguleuse.", "Estas icónicas gafas de sol tienen una montura gruesa y angular."],
+        "steamboat-willie": ["Deze beroemde muis speelde in het korte filmpje Steamboat Willie uit 1928.", "Diese berühmte Maus spielte im Kurzfilm Steamboat Willie von 1928 mit.", "Cette célèbre souris apparaît dans le court métrage Steamboat Willie de 1928.", "Este famoso ratón protagonizó el corto Steamboat Willie de 1928."],
+        "eiffel-tower": ["Dit ijzeren bouwwerk staat naast de Seine in Parijs.", "Dieses Wahrzeichen aus Eisen steht neben der Seine in Paris.", "Ce monument en treillis de fer se dresse près de la Seine, à Paris.", "Este monumento de hierro se alza junto al Sena, en París."],
+        "taj-mahal": ["Dit mausoleum van wit marmer in Agra werd gebouwd door Shah Jahan.", "Dieses Mausoleum aus weißem Marmor in Agra wurde von Shah Jahan erbaut.", "Ce mausolée de marbre blanc à Agra a été construit par Shah Jahan.", "Este mausoleo de mármol blanco en Agra fue construido por Shah Jahan."],
+        "statue-of-liberty": ["Dit koperen standbeeld staat op Liberty Island in de haven van New York.", "Diese Kupferstatue steht auf Liberty Island im Hafen von New York.", "Cette statue de cuivre se trouve sur Liberty Island, dans le port de New York.", "Esta estatua de cobre está en Liberty Island, en el puerto de Nueva York."],
+        "great-wall-china": ["Deze oude verdedigingsmuur loopt door het noorden van China.", "Diese antike Befestigungsanlage zieht sich durch den Norden Chinas.", "Cette ancienne fortification s’étend dans le nord de la Chine.", "Esta antigua fortificación se extiende por el norte de China."],
+        "colosseum": ["Dit oude Romeinse amfitheater was het toneel van openbare spektakels.", "Dieses antike römische Amphitheater war Schauplatz öffentlicher Veranstaltungen.", "Cet ancien amphithéâtre romain accueillait des spectacles publics.", "Este antiguo anfiteatro romano acogía espectáculos públicos."],
+        "machu-picchu": ["Deze citadel van de Inca’s ligt hoog in de Andes van Peru.", "Diese Inka-Zitadelle liegt hoch in den peruanischen Anden.", "Cette citadelle inca se trouve en altitude dans les Andes péruviennes.", "Esta ciudadela inca está en lo alto de los Andes peruanos."],
+        "mount-everest": ["Dit is de hoogste berg op aarde, gemeten vanaf zeeniveau.", "Dies ist der höchste Berg der Erde über dem Meeresspiegel.", "C’est la plus haute montagne du monde au-dessus du niveau de la mer.", "Es la montaña más alta de la Tierra sobre el nivel del mar."],
+        "sydney-opera-house": ["Deze locatie voor podiumkunsten heeft zeilvormige daken aan de haven van Sydney.", "Dieses Veranstaltungsgebäude hat segelförmige Dächer am Hafen von Sydney.", "Cette salle de spectacle aux toits en forme de voiles borde le port de Sydney.", "Este recinto de artes escénicas tiene tejados como velas junto al puerto de Sídney."],
+        "big-ben": ["Deze beroemde klokkentoren staat naast de Theems in Londen.", "Dieser berühmte Uhrturm steht an der Themse in London.", "Cette célèbre tour horloge se dresse près de la Tamise, à Londres.", "Esta famosa torre del reloj está junto al Támesis, en Londres."],
+        "santorini": ["Dit Griekse eiland staat bekend om witte gebouwen en blauwe koepels.", "Diese griechische Insel ist für weiße Gebäude und blaue Kuppeln bekannt.", "Cette île grecque est connue pour ses bâtiments blancs et ses dômes bleus.", "Esta isla griega es conocida por sus edificios blancos y cúpulas azules."],
+        "niagara-falls": ["Deze indrukwekkende watervallen liggen op de grens van Canada en de Verenigde Staten.", "Diese mächtigen Wasserfälle liegen an der Grenze zwischen Kanada und den USA.", "Ces puissantes chutes d’eau se trouvent à la frontière du Canada et des États-Unis.", "Estas potentes cataratas están en la frontera entre Canadá y Estados Unidos."],
+        "golden-gate-bridge": ["Deze oranje hangbrug overspant de ingang van de baai van San Francisco.", "Diese orangefarbene Hängebrücke überspannt die Einfahrt zur Bucht von San Francisco.", "Ce pont suspendu orange enjambe l’entrée de la baie de San Francisco.", "Este puente colgante naranja cruza la entrada de la bahía de San Francisco."],
+        "christ-the-redeemer": ["Dit monumentale standbeeld kijkt vanaf de Corcovadoberg uit over Rio de Janeiro.", "Diese monumentale Statue überblickt Rio de Janeiro vom Corcovado aus.", "Cette statue monumentale domine Rio de Janeiro depuis le mont Corcovado.", "Esta estatua monumental contempla Río de Janeiro desde el monte Corcovado."],
+        "alarm-clock": ["Deze klok maakt geluid om iemand op een ingesteld tijdstip wakker te maken.", "Diese Uhr gibt zu einer festgelegten Zeit einen Weckton von sich.", "Cette horloge sonne pour réveiller quelqu’un à l’heure programmée.", "Este reloj suena para despertar a alguien a una hora determinada."],
+        "typewriter": ["Deze mechanische machine drukt letters af wanneer je op de toetsen slaat.", "Diese mechanische Maschine druckt Buchstaben, wenn Tasten gedrückt werden.", "Cette machine mécanique imprime des lettres lorsqu’on appuie sur ses touches.", "Esta máquina mecánica imprime letras al pulsar sus teclas."],
+        "pocket-watch": ["Dit kleine uurwerk wordt in een zak gedragen en heeft vaak een kettinkje.", "Diese kleine Uhr wird in der Tasche getragen und hat oft eine Kette.", "Cette petite montre se porte dans une poche et possède souvent une chaîne.", "Este pequeño reloj se lleva en el bolsillo y suele tener una cadena."],
+        "sewing-machine": ["Deze machine naait stof met draad.", "Diese Maschine näht Stoff mit Faden.", "Cette machine coud du tissu avec du fil.", "Esta máquina cose tela con hilo."],
+        "beyonce": ["Deze Amerikaanse zangeres werd bekend als lid van Destiny’s Child.", "Diese US-amerikanische Sängerin wurde zuerst mit Destiny’s Child bekannt.", "Cette chanteuse américaine s’est d’abord fait connaître avec Destiny’s Child.", "Esta cantante estadounidense se hizo famosa primero con Destiny’s Child."],
+        "donald-trump": ["Hij is een bekende Amerikaanse politicus en voormalig president.", "Er ist ein bekannter US-Politiker und ehemaliger Präsident.", "C’est une personnalité politique américaine connue et un ancien président.", "Es una conocida figura política estadounidense y expresidente."],
+        "dwayne-johnson": ["Hij is een acteur en voormalig professioneel worstelaar, bekend als The Rock.", "Er ist Schauspieler und ehemaliger Profi-Wrestler, bekannt als The Rock.", "C’est un acteur et ancien catcheur professionnel surnommé The Rock.", "Es actor y exluchador profesional, conocido como The Rock."],
+        "elon-musk": ["Hij is een technologieondernemer die wordt geassocieerd met Tesla en SpaceX.", "Er ist ein Technologieunternehmer, der mit Tesla und SpaceX verbunden ist.", "C’est un entrepreneur technologique associé à Tesla et SpaceX.", "Es un empresario tecnológico asociado con Tesla y SpaceX."],
+        "flamingo": ["Deze lange roze steltvogel heeft een opvallend gebogen snavel.", "Dieser große rosafarbene Watvogel hat einen charakteristisch gebogenen Schnabel.", "Ce grand échassier rose a un bec incurvé caractéristique.", "Esta alta ave zancuda rosa tiene un pico curvado muy característico."],
+        "french-fries": ["Deze goudgele reepjes aardappel worden vaak als bijgerecht geserveerd.", "Diese goldenen Kartoffelstreifen werden oft als Beilage serviert.", "Ces bâtonnets de pomme de terre dorés sont souvent servis en accompagnement.", "Estas tiras doradas de patata suelen servirse como guarnición."],
+        "pretzel": ["Dit gedraaide, gebakken broodje wordt vaak met grof zout bestrooid.", "Dieses gedrehte Gebäck wird oft mit grobem Salz bestreut.", "Ce pain torsadé cuit au four est souvent saupoudré de gros sel.", "Este pan horneado retorcido suele cubrirse de sal gruesa."],
+        "croissant": ["Dit bladerige, halvemaanvormige gebak wordt met Frankrijk geassocieerd.", "Dieses blättrige, halbmondförmige Gebäck wird mit Frankreich verbunden.", "Cette viennoiserie feuilletée en croissant est associée à la France.", "Este pastel hojaldrado en forma de media luna se asocia con Francia."],
+        "strawberry": ["Deze kleine rode vrucht heeft zaadjes aan de buitenkant.", "Diese kleine rote Frucht hat ihre Samen außen.", "Ce petit fruit rouge porte ses graines à l’extérieur.", "Esta pequeña fruta roja tiene las semillas en la superficie."],
+        "pancakes": ["Deze stapel ontbijtkoeken wordt vaak met siroop geserveerd.", "Dieser Stapel Frühstückspfannkuchen wird oft mit Sirup serviert.", "Cette pile de crêpes épaisses est souvent servie avec du sirop.", "Esta pila de tortitas para el desayuno suele servirse con sirope."],
+        "coffee": ["Deze gebrouwen drank wordt geserveerd in de afgebeelde kop.", "Dieses aufgebrühte Getränk wird in der abgebildeten Tasse serviert.", "Cette boisson infusée est servie dans la tasse représentée.", "Esta bebida preparada se sirve en la taza que aparece."],
+        "volkswagen-beetle": ["Deze compacte auto staat bekend om zijn ronde vorm.", "Dieses kompakte Auto ist für seine runde Form bekannt.", "Cette voiture compacte est connue pour sa forme arrondie.", "Este coche compacto es conocido por su forma redondeada."],
+        "amsterdam": ["Deze Nederlandse hoofdstad staat bekend om haar grachten en bakstenen bruggen.", "Diese niederländische Hauptstadt ist für ihre Grachten und Backsteinbrücken bekannt.", "Cette capitale néerlandaise est connue pour ses canaux et ses ponts de briques.", "Esta capital neerlandesa es conocida por sus canales y puentes de ladrillo."],
+        "pyramids-of-giza": ["Deze oude piramides staan op het plateau van Gizeh in Egypte.", "Diese antiken Pyramiden stehen auf dem Gizeh-Plateau in Ägypten.", "Ces pyramides antiques se dressent sur le plateau de Gizeh, en Égypte.", "Estas antiguas pirámides están en la meseta de Guiza, en Egipto."],
+        "camera": ["Dit apparaat maakt foto’s.", "Dieses Gerät nimmt Fotos auf.", "Cet appareil prend des photographies.", "Este dispositivo captura fotografías."],
+        "batman": ["Deze gemaskerde stripheld beschermt Gotham City.", "Dieser maskierte Comic-Held beschützt Gotham City.", "Ce héros masqué de bande dessinée protège Gotham City.", "Este héroe enmascarado de cómic protege Gotham City."],
+        "spider-man": ["Deze superheld slingert aan webben en heet ook Peter Parker.", "Dieser netzschwingende Superheld ist auch als Peter Parker bekannt.", "Ce super-héros lanceur de toiles est aussi connu sous le nom de Peter Parker.", "Este superhéroe que lanza telarañas también se llama Peter Parker."],
+        "shrek": ["Deze groene oger is de held van een reeks komische animatiefilms.", "Dieser grüne Oger ist der Held einer animierten Filmkomödienreihe.", "Cet ogre vert est le héros d’une série de films d’animation comiques.", "Este ogro verde protagoniza una serie de películas animadas de comedia."],
+        "darth-vader": ["Deze schurk in zwart harnas komt voor in Star Wars.", "Dieser schwarz gepanzerte Bösewicht kommt in Star Wars vor.", "Ce méchant en armure noire apparaît dans Star Wars.", "Este villano con armadura negra aparece en Star Wars."],
+        "minecraft": ["Deze blokkenbouwgame bevat een groen wezen dat Creeper heet.", "Dieses Klötzchen-Spiel enthält ein grünes Wesen namens Creeper.", "Ce jeu de construction en blocs met en scène une créature verte appelée Creeper.", "Este juego de construcción con bloques incluye una criatura verde llamada Creeper."],
+        "super-mario": ["Deze Nintendo-held draagt een rode pet en is vaak samen met zijn broer Luigi te zien.", "Dieser Nintendo-Held trägt eine rote Mütze und ist oft mit seinem Bruder Luigi zu sehen.", "Ce héros de Nintendo porte une casquette rouge et apparaît souvent avec son frère Luigi.", "Este héroe de Nintendo lleva una gorra roja y suele aparecer con su hermano Luigi."],
+        "pikachu": ["Deze gele Pokémon staat bekend om zijn elektrische aanvallen.", "Dieses gelbe Pokémon ist für seine Elektro-Attacken bekannt.", "Ce Pokémon jaune est connu pour ses attaques électriques.", "Este Pokémon amarillo es conocido por sus ataques eléctricos."],
+        "acoustic-guitar": ["Dit houten snaarinstrument bespeel je door de snaren aan te slaan of te tokkelen.", "Dieses hölzerne Saiteninstrument wird durch Anschlagen oder Zupfen gespielt.", "Cet instrument à cordes en bois se joue en grattant ou en pinçant les cordes.", "Este instrumento de cuerda de madera se toca rasgueando o punteando."],
+        "bicycle": ["Dit tweewielige voertuig wordt aangedreven door te trappen.", "Dieses zweirädrige Fahrzeug wird durch Treten angetrieben.", "Ce véhicule à deux roues avance grâce au pédalage.", "Este vehículo de dos ruedas funciona pedaleando."],
+        "chessboard": ["Dit geblokte bord wordt gebruikt voor een strategiespel met zwarte en witte stukken.", "Dieses karierte Brett dient einem Strategiespiel mit schwarzen und weißen Figuren.", "Ce plateau quadrillé sert à un jeu de stratégie avec des pièces noires et blanches.", "Este tablero cuadriculado se usa para un juego de estrategia con piezas blancas y negras."],
+        "compass": ["Dit draagbare instrument helpt je de richting te bepalen.", "Dieses tragbare Instrument hilft bei der Orientierung.", "Cet instrument portatif aide à trouver une direction.", "Este instrumento portátil ayuda a orientarse."],
+        "telescope": ["Dit optische instrument wordt gebruikt om verre hemellichamen te observeren.", "Dieses optische Instrument dient zur Beobachtung ferner Objekte im All.", "Cet instrument optique sert à observer des objets lointains dans l’espace.", "Este instrumento óptico se usa para observar objetos lejanos en el espacio."],
+        "globe": ["Dit bolvormige model toont de continenten en oceanen van de aarde.", "Dieses kugelförmige Modell zeigt die Kontinente und Ozeane der Erde.", "Ce modèle sphérique représente les continents et les océans de la Terre.", "Este modelo esférico muestra los continentes y océanos de la Tierra."],
+        "teapot": ["Dit voorwerp wordt gebruikt om thee te zetten en in te schenken.", "Dieses Gefäß dient zum Aufbrühen und Ausschenken von Tee.", "Ce récipient sert à préparer et à verser le thé.", "Este recipiente sirve para preparar y servir té."]
+    };
+    Object.entries(clueRows).forEach(([id, translations]) => {
+        ["nl", "de", "fr", "es"].forEach((language, index) => {
+            catalog[`pg.clue.${id}`] = catalog[`pg.clue.${id}`] || {};
+            catalog[`pg.clue.${id}`][language] = translations[index];
+        });
+    });
+    if (window.JB_I18N) window.JB_I18N.registerCatalog(catalog);
+})();
