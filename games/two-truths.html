@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F5F2EA">
+    <title>Two Truths, One Lie — Trivia Game | Just Because Games</title>
+    <meta name="description" content="Read three curious claims, find the lie, and learn something new along the way in this quick Two Truths, One Lie quiz." data-i18n-content="Read three curious claims, find the lie, and learn something new along the way in this quick Two Truths, One Lie quiz.">
+    <link rel="canonical" href="https://just-because-games.netlify.app/games/two-truths.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Just Because Games">
+    <meta property="og:title" content="Two Truths, One Lie — Trivia Game | Just Because Games" data-i18n-content="Two Truths, One Lie — Trivia Game | Just Because Games">
+    <meta property="og:description" content="Read three curious claims, find the lie, and learn something new along the way in this quick Two Truths, One Lie quiz." data-i18n-content="Read three curious claims, find the lie, and learn something new along the way in this quick Two Truths, One Lie quiz.">
+    <meta property="og:url" content="https://just-because-games.netlify.app/games/two-truths.html">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="game-page ttl-page">
+    <header class="header">
+        <a href="../index.html" class="logo">just because<span>.</span></a>
+        <div class="header-actions">
+            <a href="../index.html" class="back-link">← back home</a>
+            <div data-theme-switcher></div>
+            <div data-language-switcher></div>
+        </div>
+    </header>
+    <main class="game-main ttl-main">
+        <section class="game-intro ttl-intro">
+            <p class="eyebrow">A LITTLE GAME · NO. 05</p>
+            <h1>Two Truths,<br><span>One Lie.</span></h1>
+            <p>Three claims. Two facts. One fib. Can you spot the lie?</p>
+        </section>
+        <section class="ttl-setup" id="ttl-setup">
+            <div class="ttl-section-heading"><div><p class="eyebrow">SET UP YOUR GAME</p><h2>Pick a subject.</h2></div><p id="ttl-pool-note"></p></div>
+            <div class="ttl-category-grid" id="ttl-category-grid" aria-label="Choose a category"></div>
+            <div class="ttl-controls">
+                <div class="ttl-difficulty-panel"><div class="ttl-panel-heading"><span class="eyebrow">HOW TRICKY?</span><span id="ttl-difficulty-caption">A little of everything</span></div><div id="ttl-difficulty-options" role="group" aria-label="Choose difficulty"></div></div>
+                <aside class="ttl-best-panel"><span class="eyebrow">PERSONAL BEST</span><strong id="ttl-best">0</strong><small id="ttl-best-label">All Categories · All difficulties</small></aside>
+            </div>
+            <p class="ttl-setup-message" id="ttl-setup-message" aria-live="polite"></p>
+            <button class="ttl-primary" id="ttl-start" type="button"><span>START PLAYING</span><span aria-hidden="true">↗</span></button>
+        </section>
+        <section class="ttl-game is-hidden" id="ttl-game" aria-label="Quiz round">
+            <div class="ttl-game-topline"><div><p class="eyebrow" id="ttl-round-category"></p><span class="ttl-difficulty-pill" id="ttl-round-difficulty"></span></div><div class="ttl-stats"><span>ROUND <strong id="ttl-round"></strong></span><span>SCORE <strong id="ttl-score">0</strong></span><span>STREAK <strong id="ttl-streak">0</strong></span></div></div>
+            <div class="ttl-question-heading"><p class="eyebrow">TWO TRUTHS. ONE LIE.</p><h2>Which statement is a lie?</h2><p>Read all three, then choose one.</p></div>
+            <div class="ttl-statements" id="ttl-statements" role="group" aria-label="Three statements"></div>
+            <section class="ttl-feedback is-hidden" id="ttl-feedback" aria-live="polite"><div class="ttl-feedback-title"><span id="ttl-feedback-mark"></span><h3 id="ttl-feedback-heading"></h3><strong id="ttl-points"></strong></div><p class="ttl-streak-note" id="ttl-streak-note"></p><div class="ttl-explanations" id="ttl-explanations"></div></section>
+            <button class="ttl-next is-hidden" id="ttl-next" type="button"><span>Next question</span><span aria-hidden="true">→</span></button>
+        </section>
+        <section class="ttl-results is-hidden" id="ttl-results" aria-live="polite"><p class="eyebrow">THAT'S A WRAP</p><h2 id="ttl-result-title">Nice work.</h2><div class="ttl-final-score"><strong id="ttl-final-score">0</strong><span>POINTS</span></div><div class="ttl-result-stats"><div><strong id="ttl-correct"></strong><span>CORRECT</span></div><div><strong id="ttl-wrong"></strong><span>WRONG</span></div><div><strong id="ttl-accuracy"></strong><span>ACCURACY</span></div><div><strong id="ttl-best-streak"></strong><span>BEST STREAK</span></div></div><p class="ttl-result-message" id="ttl-result-message"></p><div class="ttl-result-actions"><button class="ttl-primary" id="ttl-play-again" type="button"><span>PLAY AGAIN</span><span aria-hidden="true">↗</span></button><button class="ttl-secondary" id="ttl-back" type="button">Back to categories</button></div></section>
+        <p class="ttl-footnote">Every statement includes a source so you can keep exploring.</p>
+    </main>
+    <footer class="footer"><p>made for no particular reason.</p><p>just because. © 2026</p></footer>
+    <script src="../js/translations.js"></script>
+    <script src="two-truths-data.js"></script>
+    <script src="two-truths.js"></script>
+</body>
+</html>

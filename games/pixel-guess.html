@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F5F2EA">
+    <title>Pixel Guess — Picture Puzzle | Just Because Games</title>
+    <meta name="description" content="Can you identify a picture from a tiny, blurry clue? Play Pixel Guess, choose a category, and test your visual instincts." data-i18n-content="Can you identify a picture from a tiny, blurry clue? Play Pixel Guess, choose a category, and test your visual instincts.">
+    <link rel="canonical" href="https://just-because-games.netlify.app/games/pixel-guess.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Just Because Games">
+    <meta property="og:title" content="Pixel Guess — Picture Puzzle | Just Because Games" data-i18n-content="Pixel Guess — Picture Puzzle | Just Because Games">
+    <meta property="og:description" content="Can you identify a picture from a tiny, blurry clue? Play Pixel Guess, choose a category, and test your visual instincts." data-i18n-content="Can you identify a picture from a tiny, blurry clue? Play Pixel Guess, choose a category, and test your visual instincts.">
+    <meta property="og:url" content="https://just-because-games.netlify.app/games/pixel-guess.html">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="game-page pixel-guess-page">
+    <svg class="pg-symbol-bank" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="pg-icon-all" viewBox="0 0 80 64">
+            <rect x="5" y="5" width="31" height="24" rx="5" fill="#D98549"/><rect x="43" y="5" width="31" height="24" rx="5" fill="#C5D9AD"/>
+            <rect x="5" y="35" width="31" height="24" rx="5" fill="#D7C4E8"/><rect x="43" y="35" width="31" height="24" rx="5" fill="#B9D5E4"/>
+            <circle cx="20" cy="17" r="6" fill="#F5F2EA"/><path d="M50 22c1-9 13-9 14 0M52 14a5 5 0 1 1 10 0" fill="none" stroke="#F5F2EA" stroke-width="3"/>
+        </symbol>
+        <symbol id="pg-icon-people" viewBox="0 0 80 64">
+            <circle cx="27" cy="19" r="11" fill="#D98549"/><path d="M8 58c1-16 8-24 19-24s18 8 19 24" fill="#E8A778"/>
+            <circle cx="55" cy="21" r="9" fill="#C97946"/><path d="M43 58c1-13 5-20 13-20s14 7 15 20" fill="#D98549"/>
+        </symbol>
+        <symbol id="pg-icon-food" viewBox="0 0 80 64">
+            <path d="M13 49 36 9a5 5 0 0 1 9 0l22 40a5 5 0 0 1-5 8H18a5 5 0 0 1-5-8Z" fill="#E9B55C" stroke="#AF743B" stroke-width="3"/>
+            <path d="m21 47 19-31 19 34H19" fill="#D8754D"/><circle cx="34" cy="34" r="3" fill="#F4D78C"/><circle cx="48" cy="42" r="3" fill="#F4D78C"/><circle cx="42" cy="27" r="3" fill="#F4D78C"/>
+        </symbol>
+        <symbol id="pg-icon-animals" viewBox="0 0 80 64">
+            <path d="m17 22 4-14 13 10 6-1 7-9 8 14c8 4 11 11 9 20-2 12-12 17-26 16S16 51 14 41c-2-8-1-14 3-19Z" fill="#C7A574"/>
+            <path d="M23 38h1m29 0h1" stroke="#302D27" stroke-width="5" stroke-linecap="round"/><path d="M34 48q7 6 14 0" fill="none" stroke="#302D27" stroke-width="3" stroke-linecap="round"/>
+        </symbol>
+        <symbol id="pg-icon-brands" viewBox="0 0 80 64">
+            <path d="m18 17 9-9h35v48H18z" fill="#E3B650" stroke="#8F6A35" stroke-width="3"/><path d="M27 8v12h35" fill="none" stroke="#8F6A35" stroke-width="3"/>
+            <path d="M38 30h12m-6-6v12" stroke="#F8F4E9" stroke-width="4" stroke-linecap="round"/><circle cx="26" cy="26" r="2" fill="#F8F4E9"/>
+        </symbol>
+        <symbol id="pg-icon-movies" viewBox="0 0 80 64">
+            <path d="M11 19h58v38H11z" fill="#33312B"/><path d="M11 19h58v11H11z" fill="#C8BFAE"/>
+            <path d="m18 19 9 11m8-11 9 11m8-11 9 11m8-11 9 11" stroke="#777064" stroke-width="4"/><path d="M22 39h36m-36 7h25" stroke="#F5F2EA" stroke-width="3" stroke-linecap="round"/>
+        </symbol>
+        <symbol id="pg-icon-places" viewBox="0 0 80 64">
+            <path d="M10 54h60M16 51V29h48v22M12 28 40 9l28 19" fill="#D8D2C6" stroke="#716B60" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M25 50V35h10v15m10 0V35h10v15" fill="none" stroke="#9B7654" stroke-width="4"/><path d="M40 9v19" stroke="#716B60" stroke-width="3"/>
+        </symbol>
+        <symbol id="pg-icon-objects" viewBox="0 0 80 64">
+            <path d="M27 9h26l-3 10H30zM32 19h16v28H32z" fill="#92A9AE" stroke="#52676B" stroke-width="3"/>
+            <path d="M25 47h30v8H25z" fill="#B9D5E4" stroke="#52676B" stroke-width="3"/><path d="M36 28h8m-8 7h8" stroke="#F5F2EA" stroke-width="3" stroke-linecap="round"/>
+        </symbol>
+        <symbol id="pg-icon-games" viewBox="0 0 80 64">
+            <path d="M18 20h44c7 0 11 5 12 12l2 14c1 7-7 10-12 5l-8-8H24l-8 8c-5 5-13 2-12-5l2-14c1-7 5-12 12-12Z" fill="#9E8BB5" stroke="#655A71" stroke-width="3"/>
+            <path d="M22 30v14m-7-7h14" stroke="#F5F2EA" stroke-width="4" stroke-linecap="round"/><circle cx="54" cy="33" r="3" fill="#F5F2EA"/><circle cx="63" cy="41" r="3" fill="#F5F2EA"/>
+        </symbol>
+    </svg>
+
+    <header class="header">
+        <a href="../index.html" class="logo">just because<span>.</span></a>
+        <div class="header-actions">
+            <a href="../index.html" class="back-link">← back home</a>
+            <div data-theme-switcher></div>
+            <div data-language-switcher></div>
+        </div>
+    </header>
+
+    <main class="game-main pg-main">
+        <section class="game-intro pg-intro">
+            <p class="eyebrow">A LITTLE GAME · NO. 03</p>
+            <h1>Pixel <span>Guess.</span></h1>
+            <p>One tiny, blurry clue. Type what you think it is.</p>
+        </section>
+
+        <section class="pg-setup" id="pg-setup">
+            <div class="pg-setup-heading">
+                <div>
+                    <p class="eyebrow">CHOOSE YOUR SUBJECT</p>
+                    <h2>Pick a category.</h2>
+                </div>
+                <p class="pg-setup-note">Ten pictures per run · answers in English</p>
+            </div>
+
+            <div class="pg-category-grid" id="pg-category-grid">
+                <button class="pg-category-card is-selected" type="button" data-category="all" aria-pressed="true">
+                    <span class="pg-category-art pg-art-all"><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#pg-icon-all"/></svg></span>
+                    <span class="pg-category-copy"><strong>All Categories</strong><small><span data-count="all">0</span> pictures · mixed</small></span>
+                    <span class="pg-selected-mark" aria-hidden="true">✓</span>
+                </button>
+                <button class="pg-category-card" type="button" data-category="famous-people" aria-pressed="false">
+                    <span class="pg-category-art pg-art-people"><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#pg-icon-people"/></svg></span>
+                    <span class="pg-category-copy"><strong>Famous People</strong><small><span data-count="famous-people">0</span> pictures</small></span>
+                    <span class="pg-selected-mark" aria-hidden="true">✓</span>
+                </button>
+                <button class="pg-category-card" type="button" data-category="food-drinks" aria-pressed="false">
+                    <span class="pg-category-art pg-art-food"><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#pg-icon-food"/></svg></span>
+                    <span class="pg-category-copy"><strong>Food &amp; Drinks</strong><small><span data-count="food-drinks">0</span> pictures</small></span>
+                    <span class="pg-selected-mark" aria-hidden="true">✓</span>
+                </button>
+                <button class="pg-category-card" type="button" data-category="animals" aria-pressed="false">
+                    <span class="pg-category-art pg-art-animals"><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#pg-icon-animals"/></svg></span>
+                    <span class="pg-category-copy"><strong>Animals</strong><small><span data-count="animals">0</span> pictures</small></span>
+                    <span class="pg-selected-mark" aria-hidden="true">✓</span>
+                </button>
+                <button class="pg-category-card" type="button" data-category="brands-products" aria-pressed="false">
+                    <span class="pg-category-art pg-art-brands"><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#pg-icon-brands"/></svg></span>
+                    <span class="pg-category-copy"><strong>Brands &amp; Products</strong><small><span data-count="brands-products">0</span> pictures</small></span>
+                    <span class="pg-selected-mark" aria-hidden="true">✓</span>
+                </button>
+                <button class="pg-category-card" type="button" data-category="movies-tv" aria-pressed="false">
+                    <span class="pg-category-art pg-art-movies"><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#pg-icon-movies"/></svg></span>
+                    <span class="pg-category-copy"><strong>Movies &amp; TV</strong><small><span data-count="movies-tv">0</span> pictures</small></span>
+                    <span class="pg-selected-mark" aria-hidden="true">✓</span>
+                </button>
+                <button class="pg-category-card" type="button" data-category="countries-places" aria-pressed="false">
+                    <span class="pg-category-art pg-art-places"><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#pg-icon-places"/></svg></span>
+                    <span class="pg-category-copy"><strong>Countries &amp; Places</strong><small><span data-count="countries-places">0</span> pictures</small></span>
+                    <span class="pg-selected-mark" aria-hidden="true">✓</span>
+                </button>
+                <button class="pg-category-card" type="button" data-category="objects" aria-pressed="false">
+                    <span class="pg-category-art pg-art-objects"><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#pg-icon-objects"/></svg></span>
+                    <span class="pg-category-copy"><strong>Objects</strong><small><span data-count="objects">0</span> pictures</small></span>
+                    <span class="pg-selected-mark" aria-hidden="true">✓</span>
+                </button>
+                <button class="pg-category-card" type="button" data-category="video-games" aria-pressed="false">
+                    <span class="pg-category-art pg-art-games"><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#pg-icon-games"/></svg></span>
+                    <span class="pg-category-copy"><strong>Video Games</strong><small><span data-count="video-games">0</span> pictures</small></span>
+                    <span class="pg-selected-mark" aria-hidden="true">✓</span>
+                </button>
+            </div>
+
+            <p class="pg-setup-feedback" id="pg-setup-feedback" aria-live="polite"></p>
+            <div class="pg-start-row">
+                <div class="pg-best-score">PERSONAL BEST <strong id="pg-best-score">0</strong></div>
+                <button class="start-button pg-start-button" id="pg-start-button" type="button"><span>START PLAYING</span><span class="start-arrow">→</span></button>
+            </div>
+        </section>
+
+        <section class="pg-play is-hidden" id="pg-play" aria-label="Pixel Guess round">
+            <div class="pg-play-topline">
+                <p class="eyebrow" id="pg-round-category">ALL CATEGORIES</p>
+                <div class="pg-live-stats">
+                    <span>ROUND <strong id="pg-round-number">1 / 10</strong></span>
+                    <span>SCORE <strong id="pg-score">0</strong></span>
+                    <span>GUESSED <strong id="pg-correct-count">0</strong></span>
+                </div>
+            </div>
+
+            <div class="pg-image-panel">
+                <div class="pg-image-frame" id="pg-image-frame">
+                    <canvas id="pg-canvas" aria-label="Pixelated image clue"></canvas>
+                    <p class="pg-image-status" id="pg-image-status">Loading image…</p>
+                </div>
+                <div class="pg-image-meta">
+                    <span id="pg-image-pixel-level">PIXEL LEVEL 1</span>
+                    <span id="pg-attempts-label">ATTEMPTS 0 / 5</span>
+                </div>
+            </div>
+
+            <div class="pg-credit-line">
+                <span>Image:</span> <span id="pg-credit-name">Creator</span>
+                <span>·</span> <a id="pg-source-link" href="#" target="_blank" rel="noreferrer noopener">Source</a>
+                <span>·</span> <a id="pg-license-link" href="#" target="_blank" rel="noreferrer noopener">License</a>
+            </div>
+
+            <div class="pg-hint-row">
+                <div class="pg-hint-meter" aria-live="polite">
+                    <span class="eyebrow">HINTS USED</span>
+                    <strong id="pg-hints-used">0 / 4</strong>
+                </div>
+                <button class="random-category-button pg-hint-button" id="pg-hint-button" type="button">Get a hint <span>↗</span></button>
+            </div>
+            <p class="pg-hint-text" id="pg-hint-text" aria-live="polite"></p>
+
+            <form class="pg-answer-form" id="pg-answer-form" autocomplete="off">
+                <label for="pg-answer-input">What do you think it is? <span>Type your answer in English</span></label>
+                <div class="pg-input-row">
+                    <input id="pg-answer-input" name="answer" type="text" maxlength="80" placeholder="Your answer…" required>
+                    <button class="pg-submit-button" type="submit">Submit answer <span>↗</span></button>
+                </div>
+            </form>
+
+            <p class="pg-feedback" id="pg-feedback" aria-live="polite"></p>
+            <button class="start-button pg-continue-button is-hidden" id="pg-continue-button" type="button"><span id="pg-continue-label">NEXT PICTURE</span><span class="start-arrow">→</span></button>
+            <button class="back-button pg-back-button" id="pg-back-button" type="button">← Back to categories</button>
+        </section>
+
+        <section class="pg-results is-hidden" id="pg-results" aria-live="polite">
+            <p class="eyebrow">THAT'S A WRAP</p>
+            <h2 id="pg-result-title">Nice run.</h2>
+            <p class="pg-result-score"><strong id="pg-final-score">0</strong><span>POINTS</span></p>
+            <div class="pg-result-stats">
+                <div><strong id="pg-final-correct">0 / 10</strong><span>GUESSED</span></div>
+                <div><strong id="pg-final-percent">0%</strong><span>ACCURACY</span></div>
+                <div><strong id="pg-final-best">0</strong><span>PERSONAL BEST</span></div>
+            </div>
+            <p class="pg-result-message" id="pg-result-message"></p>
+            <div class="pg-result-actions">
+                <button class="start-button pg-start-button" id="pg-play-again" type="button"><span>PLAY AGAIN</span><span class="start-arrow">↻</span></button>
+                <button class="back-button" id="pg-change-category" type="button">← Choose another category</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer"><p>made for no particular reason.</p><p>just because. © 2026</p></footer>
+
+    <script src="../js/translations.js"></script>
+    <script src="pixel-guess-data.js"></script>
+    <script src="pixel-guess.js"></script>
+</body>
+</html>

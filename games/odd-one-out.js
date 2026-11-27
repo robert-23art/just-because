@@ -9,6 +9,7 @@
         return {
             id: `${category?.id || "unknown"}-${(index % questionsPerCategory) + 1}`,
             category: category?.id || "",
+            translationIndex: index + 1,
             difficulty: row[0],
             choices: row[1],
             odd: row[2],
@@ -71,6 +72,34 @@
     let correctCount = 0;
     let currentQuestion = null;
     let answered = false;
+    let selectedAnswer = null;
+    let earnedPoints = 0;
+    let streakMessageKey = "";
+    let streakMessageCount = 0;
+
+    function translate(key, fallback) {
+        return window.JB_I18N?.t ? window.JB_I18N.t(key, fallback) : fallback;
+    }
+
+    function format(key, fallback, values) {
+        return Object.entries(values).reduce(
+            (text, [name, value]) => text.replaceAll(`__${name.toUpperCase()}__`, value),
+            translate(key, fallback)
+        );
+    }
+
+    function categoryName(id) {
+        const category = data.categories.find(item => item.id === id);
+        return category ? translate(`ooo.category.${id}`, category.name) : "";
+    }
+
+    function difficultyName(id) {
+        return translate(`ooo.difficulty.${id}`, difficultyNames[id] || id);
+    }
+
+    function questionText(field, fallback) {
+        return translate(`ooo.q.${currentQuestion.translationIndex}.${field}`, fallback);
+    }
 
     function readStorage(key) {
         try { return window.localStorage.getItem(key); } catch { return null; }
@@ -152,8 +181,10 @@
     function updateBestScore() {
         const score = Number(readStorage(highScoreKey())) || 0;
         elements.bestScore.textContent = score;
-        const categoryName = selectedCategory === "all" ? "All Categories" : categoryMap.get(selectedCategory);
-        elements.bestLabel.textContent = `${categoryName} · ${difficultyNames[selectedDifficulty]}`;
+        const category = selectedCategory === "all"
+            ? translate("ooo.ui.allCategories", "All Categories")
+            : categoryName(selectedCategory);
+        elements.bestLabel.textContent = `${category} · ${difficultyName(selectedDifficulty)}`;
     }
 
     function updateSetup() {
@@ -173,29 +204,76 @@
             const isSelected = card.dataset.category === selectedCategory;
             card.classList.toggle("is-selected", isSelected);
             card.setAttribute("aria-pressed", String(isSelected));
+            const label = card.querySelector(".ooo-category-copy strong");
+            if (label) {
+                label.textContent = card.dataset.category === "all"
+                    ? translate("ooo.ui.allCategories", "All Categories")
+                    : categoryName(card.dataset.category);
+            }
+            const countLabel = card.querySelector(".ooo-category-copy small");
+            if (countLabel) {
+                const countText = countLabel.lastChild;
+                if (countText && countText.nodeType === Node.TEXT_NODE) {
+                    countText.textContent = ` ${translate("ooo.ui.questions", "questions")}`;
+                }
+            }
         });
         elements.difficultyOptions.querySelectorAll(".ooo-difficulty-button").forEach(button => {
             const isSelected = button.dataset.difficulty === selectedDifficulty;
             button.classList.toggle("is-selected", isSelected);
             button.setAttribute("aria-pressed", String(isSelected));
+            button.textContent = difficultyName(button.dataset.difficulty);
         });
-        elements.difficultyCaption.textContent = difficultyCaptions[selectedDifficulty];
+        const captionKey = `ooo.ui.caption${selectedDifficulty[0].toUpperCase()}${selectedDifficulty.slice(1)}`;
+        elements.difficultyCaption.textContent = translate(captionKey, difficultyCaptions[selectedDifficulty]);
         const runLength = Math.min(roundsPerGame, total);
-        elements.setupMessage.textContent = `${total} curated questions available · ${runLength} questions in a run.`;
+        elements.setupMessage.textContent = format(
+            "ooo.ui.setupAvailable",
+            "__TOTAL__ curated questions available · __RUN__ questions in a run.",
+            { total, run: runLength }
+        );
         elements.start.disabled = total === 0;
+        const statLabels = elements.game.querySelectorAll(".ooo-live-stats > span");
+        ["round", "score", "streak"].forEach((key, index) => {
+            const label = statLabels[index]?.firstChild;
+            if (label && label.nodeType === Node.TEXT_NODE) {
+                label.textContent = ` ${translate(`ooo.ui.${key}`, key.toUpperCase())} `;
+            }
+        });
+        const resultStats = elements.results.querySelectorAll(".ooo-result-stats > div > span");
+        ["correctLabel", "wrongLabel", "accuracyLabel", "bestStreakLabel"].forEach((key, index) => {
+            if (resultStats[index]) {
+                resultStats[index].textContent = translate(`ooo.ui.${key}`, resultStats[index].textContent);
+            }
+        });
+        const resultEyebrow = elements.results.querySelector(".eyebrow");
+        if (resultEyebrow) resultEyebrow.textContent = translate("ooo.ui.thatWrap", "THAT'S A WRAP");
+        const pointsLabel = elements.results.querySelector(".ooo-result-score span");
+        if (pointsLabel) pointsLabel.textContent = translate("ooo.ui.pointsLabel", "POINTS");
+        const backLabel = translate("ooo.ui.backToCategories", "← Back to categories");
+        elements.back.textContent = backLabel;
+        const playAgainLabel = elements.playAgain.querySelector("span");
+        if (playAgainLabel) playAgainLabel.textContent = translate("ooo.ui.playAgain", "PLAY AGAIN");
+        elements.backToCategories.textContent = backLabel;
         updateBestScore();
     }
 
     function startGame() {
         const pool = matchingQuestions();
         if (!pool.length) {
-            elements.setupMessage.textContent = "There are no questions for this selection yet.";
+            elements.setupMessage.textContent = translate(
+                "ooo.ui.noQuestions",
+                "There are no questions for this selection yet."
+            );
             return;
         }
         const targetRounds = Math.min(roundsPerGame, pool.length);
         runQuestions = chooseRun(pool, targetRounds);
         if (new Set(runQuestions.map(question => question.id)).size !== targetRounds) {
-            elements.setupMessage.textContent = "There are not enough unique questions for this selection yet.";
+            elements.setupMessage.textContent = translate(
+                "ooo.ui.notEnoughQuestions",
+                "There are not enough unique questions for this selection yet."
+            );
             return;
         }
         roundIndex = 0;
@@ -212,8 +290,9 @@
     function renderRound() {
         currentQuestion = runQuestions[roundIndex];
         answered = false;
-        elements.roundCategory.textContent = categoryMap.get(currentQuestion.category).toUpperCase();
-        elements.roundDifficulty.textContent = currentQuestion.difficulty.toUpperCase();
+        selectedAnswer = null;
+        elements.roundCategory.textContent = categoryName(currentQuestion.category).toUpperCase();
+        elements.roundDifficulty.textContent = difficultyName(currentQuestion.difficulty).toUpperCase();
         elements.roundDifficulty.dataset.level = currentQuestion.difficulty;
         elements.roundNumber.textContent = `${roundIndex + 1} / ${runQuestions.length}`;
         elements.score.textContent = score;
@@ -223,61 +302,97 @@
         elements.next.classList.add("is-hidden");
 
         shuffle(currentQuestion.choices).forEach((choice, index) => {
+            const translatedChoice = questionText(`choice.${currentQuestion.choices.indexOf(choice)}`, choice);
             const button = document.createElement("button");
             button.type = "button";
             button.className = "ooo-answer-card";
             button.dataset.choice = choice;
-            button.setAttribute("aria-label", `Option ${String.fromCharCode(65 + index)}: ${choice}`);
+            button.setAttribute("aria-label", format(
+                "ooo.ui.option",
+                "Option __LETTER__: __CHOICE__",
+                { letter: String.fromCharCode(65 + index), choice: translatedChoice }
+            ));
             button.innerHTML = `<span class="ooo-choice-letter">${String.fromCharCode(65 + index)}</span><span class="ooo-choice-text"></span><span class="ooo-choice-mark" aria-hidden="true"></span>`;
-            button.querySelector(".ooo-choice-text").textContent = choice;
+            button.querySelector(".ooo-choice-text").textContent = translatedChoice;
             button.addEventListener("click", () => selectAnswer(choice));
             elements.answerGrid.append(button);
         });
     }
 
-    function selectAnswer(choice) {
-        if (answered || !currentQuestion) return;
-        answered = true;
-        const isCorrect = choice === currentQuestion.odd;
+    function renderFeedback() {
+        const isCorrect = selectedAnswer === currentQuestion.odd;
         const optionButtons = [...elements.answerGrid.querySelectorAll(".ooo-answer-card")];
         optionButtons.forEach(button => {
             button.disabled = true;
             if (button.dataset.choice === currentQuestion.odd) {
                 button.classList.add("is-correct");
                 button.querySelector(".ooo-choice-mark").textContent = "✓";
-            } else if (button.dataset.choice === choice && !isCorrect) {
+            } else if (button.dataset.choice === selectedAnswer && !isCorrect) {
                 button.classList.add("is-wrong");
                 button.querySelector(".ooo-choice-mark").textContent = "×";
             }
         });
-
-        let earned = 0;
-        let streakMessage = "";
-        if (isCorrect) {
-            streak++;
-            correctCount++;
-            bestStreak = Math.max(bestStreak, streak);
-            earned = 100 + Math.min(Math.max(streak - 1, 0) * 10, 50);
-            score += earned;
-            streakMessage = streak === 2 ? "A new streak is taking shape!" : streak >= 3 ? `${streak} in a row — keep it going!` : "";
-        } else {
-            streakMessage = streak > 0 ? `Your ${streak}-answer streak ends here.` : "Your streak resets. The next one is yours.";
-            streak = 0;
-        }
 
         elements.score.textContent = score;
         elements.streak.textContent = streak;
         elements.feedback.classList.remove("is-hidden", "is-correct", "is-wrong");
         elements.feedback.classList.add(isCorrect ? "is-correct" : "is-wrong");
         elements.feedbackMark.textContent = isCorrect ? "✓" : "!";
-        elements.feedbackHeading.textContent = isCorrect ? "Correct!" : "Not quite!";
-        elements.pointsEarned.textContent = isCorrect ? `+${earned}` : "+0";
-        elements.answerReveal.textContent = `${currentQuestion.odd} is the odd one out.`;
-        elements.explanation.textContent = currentQuestion.explanation;
-        elements.streakNote.textContent = streakMessage;
+        elements.feedbackHeading.textContent = translate(
+            isCorrect ? "ooo.ui.correct" : "ooo.ui.incorrect",
+            isCorrect ? "Correct!" : "Not quite!"
+        );
+        elements.pointsEarned.textContent = isCorrect ? `+${earnedPoints}` : "+0";
+        elements.answerReveal.textContent = format(
+            "ooo.ui.answerReveal",
+            "__ANSWER__ is the odd one out.",
+            { answer: questionText("odd", currentQuestion.odd) }
+        );
+        elements.explanation.textContent = questionText("explanation", currentQuestion.explanation);
+        elements.streakNote.textContent = !streakMessageKey
+            ? ""
+            : streakMessageKey === "ooo.ui.streakNew" || streakMessageKey === "ooo.ui.streakReset"
+                ? translate(streakMessageKey, "")
+                : format(
+                    streakMessageKey,
+                    streakMessageKey === "ooo.ui.streakContinue"
+                        ? "__COUNT__ in a row — keep it going!"
+                        : "Your __COUNT__-answer streak ends here.",
+                    { count: streakMessageCount }
+                );
         elements.next.classList.remove("is-hidden");
-        elements.next.querySelector("span").textContent = roundIndex + 1 === runQuestions.length ? "See Results" : "Next Question";
+        elements.next.querySelector("span").textContent = translate(
+            roundIndex + 1 === runQuestions.length ? "ooo.ui.seeResults" : "ooo.ui.nextQuestion",
+            roundIndex + 1 === runQuestions.length ? "See Results" : "Next Question"
+        );
+    }
 
+    function selectAnswer(choice) {
+        if (answered || !currentQuestion) return;
+        answered = true;
+        selectedAnswer = choice;
+        const isCorrect = choice === currentQuestion.odd;
+        earnedPoints = 0;
+        streakMessageKey = "";
+        streakMessageCount = 0;
+
+        if (isCorrect) {
+            streak++;
+            correctCount++;
+            bestStreak = Math.max(bestStreak, streak);
+            earnedPoints = 100 + Math.min(Math.max(streak - 1, 0) * 10, 50);
+            score += earnedPoints;
+            streakMessageKey = streak === 2
+                ? "ooo.ui.streakNew"
+                : streak >= 3 ? "ooo.ui.streakContinue" : "";
+            streakMessageCount = streak;
+        } else {
+            streakMessageKey = streak > 0 ? "ooo.ui.streakEnds" : "ooo.ui.streakReset";
+            streakMessageCount = streak;
+            streak = 0;
+        }
+
+        renderFeedback();
         if (score > (Number(readStorage(highScoreKey())) || 0)) {
             writeStorage(highScoreKey(), score);
         }
@@ -307,17 +422,29 @@
         elements.bestStreak.textContent = bestStreak;
 
         if (accuracy === 100) {
-            elements.resultTitle.textContent = "Amazing!";
-            elements.resultMessage.textContent = "A perfect run. You spotted every connection.";
+            elements.resultTitle.textContent = translate("ooo.ui.resultPerfectTitle", "Amazing!");
+            elements.resultMessage.textContent = translate(
+                "ooo.ui.resultPerfectMessage",
+                "A perfect run. You spotted every connection."
+            );
         } else if (accuracy >= 70) {
-            elements.resultTitle.textContent = "Great job!";
-            elements.resultMessage.textContent = "Sharp thinking. You found most of the odd ones out.";
+            elements.resultTitle.textContent = translate("ooo.ui.resultGreatTitle", "Great job!");
+            elements.resultMessage.textContent = translate(
+                "ooo.ui.resultGreatMessage",
+                "Sharp thinking. You found most of the odd ones out."
+            );
         } else if (accuracy >= 40) {
-            elements.resultTitle.textContent = "Nice try!";
-            elements.resultMessage.textContent = "Every round is a new pattern to spot. Keep going.";
+            elements.resultTitle.textContent = translate("ooo.ui.resultNiceTitle", "Nice try!");
+            elements.resultMessage.textContent = translate(
+                "ooo.ui.resultNiceMessage",
+                "Every round is a new pattern to spot. Keep going."
+            );
         } else {
-            elements.resultTitle.textContent = "Keep practicing!";
-            elements.resultMessage.textContent = "The connections get easier to spot with each run.";
+            elements.resultTitle.textContent = translate("ooo.ui.resultPracticeTitle", "Keep practicing!");
+            elements.resultMessage.textContent = translate(
+                "ooo.ui.resultPracticeMessage",
+                "The connections get easier to spot with each run."
+            );
         }
         updateBestScore();
     }
@@ -352,12 +479,28 @@
     elements.playAgain.addEventListener("click", startGame);
     elements.backToCategories.addEventListener("click", backToSetup);
 
+    window.addEventListener("jb:languagechange", () => {
+        updateSetup();
+        if (!elements.game.classList.contains("is-hidden") && currentQuestion) {
+            const wasAnswered = answered;
+            renderRound();
+            if (wasAnswered) {
+                answered = true;
+                renderFeedback();
+            }
+        }
+        if (!elements.results.classList.contains("is-hidden")) showResults();
+    });
+
     try {
         if (!categoryMap.has(selectedCategory) && selectedCategory !== "all") selectedCategory = "all";
         if (!difficultyNames[selectedDifficulty]) selectedDifficulty = "all";
         validateDataset();
     } catch (error) {
-        elements.setupMessage.textContent = "The question set needs a quick repair before this game can start.";
+        elements.setupMessage.textContent = translate(
+            "ooo.ui.repair",
+            "The question set needs a quick repair before this game can start."
+        );
         elements.start.disabled = true;
         console.error(error);
     }
