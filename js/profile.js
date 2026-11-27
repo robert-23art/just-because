@@ -251,6 +251,7 @@
                         <input id="profile-invite-link" type="text" readonly>
                         <button class="profile-secondary-button" type="button" data-copy-invite></button>
                     </div>
+                    <button class="profile-secondary-button profile-share-button" type="button" data-copy-passport></button>
                     <p class="profile-local-note" data-profile-friends-note></p>
                     <form class="profile-add-form" id="profile-add-form">
                         <label for="profile-friend-input" data-profile-add-label></label>
@@ -276,6 +277,7 @@
         dialog.querySelector("#profile-add-form").addEventListener("submit", addFriend);
         dialog.querySelector("[data-copy-code]").addEventListener("click", () => copyValue(profile.friendCode, "Friend code copied."));
         dialog.querySelector("[data-copy-invite]").addEventListener("click", () => copyValue(inviteLink(), "Invite link copied."));
+        dialog.querySelector("[data-copy-passport]").addEventListener("click", () => copyValue(shareMessage(), "Passport message copied."));
         dialog.querySelector("#profile-avatar-upload").addEventListener("change", uploadAvatar);
         dialog.querySelector("#profile-friends-list").addEventListener("click", event => {
             const removeButton = event.target.closest("[data-remove-friend]");
@@ -528,6 +530,7 @@
         dialog.querySelector('label[for="profile-invite-link"]').textContent = translate("Invite link");
         dialog.querySelector("#profile-invite-link").value = inviteLink();
         dialog.querySelector("[data-copy-invite]").textContent = translate("Copy invite link");
+        dialog.querySelector("[data-copy-passport]").textContent = translate("Share my Passport");
         dialog.querySelector("[data-profile-friends-note]").textContent = translate("Your profile and friends stay on this device.");
         dialog.querySelector("[data-profile-add-label]").textContent = translate("Add a friend");
         dialog.querySelector("#profile-friend-input").placeholder = translate("Enter a code or invite link");
@@ -561,27 +564,53 @@
     }
 
     function inviteLink() {
-        const homePath = location.pathname.toLowerCase().includes("/games/") ? "../index.html" : "./index.html";
-        const invite = new URL(homePath, location.href);
-        invite.search = "";
+        const origin = location.protocol === "file:" ? "https://netlify.app" : window.location.origin;
+        const invite = new URL("/", origin);
         invite.searchParams.set("addfriend", profile.friendCode);
+        invite.searchParams.set("friendname", profile.name);
+        invite.searchParams.set("friendavatar", avatarById.has(profile.avatar) ? profile.avatar : avatars[0].id);
         return invite.href;
+    }
+
+    function shareMessage() {
+        return translate(
+            "Hey! Add me on Just Because Games! I'm {name} (friend code {code}). Join me: {link}",
+            "Hey! Add me on Just Because Games! I'm {name} (friend code {code}). Join me: {link}",
+            {
+                name: profile.name,
+                code: profile.friendCode,
+                link: inviteLink()
+            }
+        );
+    }
+
+    function fallbackCopy(value) {
+        const temporary = document.createElement("textarea");
+        temporary.value = value;
+        temporary.style.position = "fixed";
+        temporary.style.left = "-9999px";
+        temporary.style.opacity = "0";
+        const dialogContent = document.querySelector("#profile-dialog[open] .profile-dialog-card");
+        (dialogContent || document.body).append(temporary);
+        try {
+            temporary.focus();
+            temporary.select();
+            return document.execCommand("copy");
+        } finally {
+            temporary.remove();
+        }
     }
 
     async function copyValue(value, successKey) {
         try {
             if (navigator.clipboard?.writeText) {
-                await navigator.clipboard.writeText(value);
-            } else {
-                const temporary = document.createElement("textarea");
-                temporary.value = value;
-                temporary.style.position = "fixed";
-                temporary.style.opacity = "0";
-                document.body.append(temporary);
-                temporary.select();
-                const copied = document.execCommand("copy");
-                temporary.remove();
-                if (!copied) throw new Error("Clipboard copy was rejected.");
+                try {
+                    await navigator.clipboard.writeText(value);
+                } catch {
+                    if (!fallbackCopy(value)) throw new Error("Clipboard copy was rejected.");
+                }
+            } else if (!fallbackCopy(value)) {
+                throw new Error("Clipboard copy was rejected.");
             }
             setMessage(successKey);
         } catch {
@@ -589,42 +618,60 @@
         }
     }
 
-    function parseFriendCode(value) {
+    function parseFriendInvite(value) {
         const raw = value.trim();
         try {
-            const url = new URL(raw, location.href);
-            const fromLink = url.searchParams.get("addfriend");
-            if (fromLink) return fromLink.toUpperCase();
+            const invite = new URL(raw, location.href);
+            const code = invite.searchParams.get("addfriend");
+            if (code) {
+                return {
+                    code: code.toUpperCase(),
+                    name: invite.searchParams.get("friendname") || "",
+                    avatar: invite.searchParams.get("friendavatar") || ""
+                };
+            }
         } catch {
-            return raw.toUpperCase();
+            // A plain friend code is not a URL.
         }
-        return raw.toUpperCase();
+        return { code: raw.toUpperCase(), name: "", avatar: "" };
     }
 
     function addFriend(event) {
         event.preventDefault();
         const input = document.querySelector("#profile-friend-input");
-        const code = parseFriendCode(input.value);
+        const added = addFriendDetails(parseFriendInvite(input.value));
+        if (added) input.value = "";
+    }
+
+    function addFriendDetails(invite) {
+        const code = invite.code.trim().toUpperCase();
         if (!/^JB-[A-Z0-9]{4}$/.test(code)) {
             setMessage("Enter a valid friend code or invite link.");
-            return;
+            return false;
         }
         if (code === profile.friendCode) {
             setMessage("You cannot add your own code.");
-            return;
+            return false;
         }
         if (profile.friends.some(friend => friend.code === code)) {
             setMessage("That player is already on your list.");
-            return;
+            return false;
         }
-        profile.friends.push({ code, name: "", avatar: "👤" });
+        const name = typeof invite.name === "string" ? invite.name.trim().slice(0, 20) : "";
+        const avatar = avatarById.get(invite.avatar)?.emoji || "👤";
+        profile.friends.push({ code, name, avatar });
         if (!saveProfile()) {
+            profile.friends.pop();
             setMessage("Your profile could not be saved in this browser.");
-            return;
+            return false;
         }
-        input.value = "";
-        setMessage("Friend added.");
+        if (name) {
+            setMessage("Added {name} to your friends!", "Added {name} to your friends!", { name });
+        } else {
+            setMessage("Friend added.");
+        }
         renderModal();
+        return true;
     }
 
     function saveIdentity() {
@@ -733,16 +780,19 @@
             renderModal();
         });
 
-        const inviteCode = new URLSearchParams(location.search).get("addfriend");
+        const params = new URLSearchParams(location.search);
+        const inviteCode = params.get("addfriend");
         if (!inviteCode) return;
         activeTab = "friends";
         openProfile();
-        const input = document.querySelector("#profile-friend-input");
-        input.value = `JB-${inviteCode.replace(/^JB-/i, "").toUpperCase()}`;
-        setMessage("Friend invitation detected. Add this player.");
+        addFriendDetails({
+            code: inviteCode,
+            name: params.get("friendname") || "",
+            avatar: params.get("friendavatar") || ""
+        });
         const cleanedUrl = new URL(location.href);
-        cleanedUrl.searchParams.delete("addfriend");
-        history.replaceState(null, "", cleanedUrl);
+        ["addfriend", "friendname", "friendavatar"].forEach(key => cleanedUrl.searchParams.delete(key));
+        history.replaceState(null, "", cleanedUrl.href);
     }
 
     if (document.readyState === "loading") {

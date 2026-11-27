@@ -658,7 +658,11 @@
         ["Profile sections", "Profielonderdelen", "Profilbereiche", "Sections du profil", "Secciones del perfil"],
         ["Your profile and friends stay on this device.", "Je profiel en vriendenlijst blijven op dit apparaat.", "Dein Profil und deine Freundesliste bleiben auf diesem Gerät.", "Ton profil et ta liste d’amis restent sur cet appareil.", "Tu perfil y tu lista de amigos se guardan en este dispositivo."],
         ["Player {code}", "Speler {code}", "Spieler {code}", "Joueur {code}", "Jugador {code}"],
-        ["Image must be 10 MB or smaller.", "De afbeelding mag maximaal 10 MB zijn.", "Das Bild darf höchstens 10 MB groß sein.", "L’image doit faire 10 Mo ou moins.", "La imagen debe ocupar 10 MB o menos."]
+        ["Image must be 10 MB or smaller.", "De afbeelding mag maximaal 10 MB zijn.", "Das Bild darf höchstens 10 MB groß sein.", "L’image doit faire 10 Mo ou moins.", "La imagen debe ocupar 10 MB o menos."],
+        ["Share my Passport", "Deel mijn paspoort", "Teile meinen Pass", "Partager mon passeport", "Compartir mi pasaporte"],
+        ["Passport message copied.", "Uitnodigingsbericht gekopieerd.", "Einladungsnachricht kopiert.", "Message d’invitation copié.", "Mensaje de invitación copiado."],
+        ["Added {name} to your friends!", "{name} is toegevoegd aan je vrienden!", "{name} wurde deinen Freunden hinzugefügt!", "Tu as ajouté {name} à ta liste d’amis !", "¡{name} se añadió a tus amigos!"],
+        ["Hey! Add me on Just Because Games! I'm {name} (friend code {code}). Join me: {link}", "Hoi! Voeg me toe op Just Because Games! Ik ben {name} (vriendencode {code}). Doe mee: {link}", "Hey! Füge mich bei Just Because Games hinzu! Ich bin {name} (Freundescode {code}). Mach mit: {link}", "Salut ! Ajoute-moi sur Just Because Games ! Je suis {name} (code ami {code}). Rejoins-moi : {link}", "¡Hola! ¡Añádeme en Just Because Games! Soy {name} (código de amigo {code}). Únete: {link}"]
     ];
     const languageCodes = languages.map(language => language.code);
     const messages = Object.fromEntries(languageCodes.map((code, index) => [

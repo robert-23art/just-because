@@ -4937,6 +4937,11 @@ a.game-card {
     color: var(--text);
 }
 
+.profile-share-button {
+    width: 100%;
+    margin-top: 10px;
+}
+
 .profile-battle-button {
     width: 100%;
     margin-top: 16px;
