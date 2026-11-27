@@ -396,7 +396,7 @@ function returnToSetup() {
 }
 
 function renderStaticUi() {
-    document.title = tr("Sort It — just because.", "Sort It — just because.");
+    document.title = tr("Sort It — Sorting Puzzle | Just Because Games", "Sort It — Sorting Puzzle | Just Because Games");
     document.querySelector(".back-link").textContent = `← ${tr("back home", "back home")}`;
     document.getElementById("sort-it-kicker").textContent = `${tr("A LITTLE GAME · NO.", "A LITTLE GAME · NO.")} 11`;
     const title = document.getElementById("sort-it-title");

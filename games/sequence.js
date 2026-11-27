@@ -174,7 +174,7 @@ function renderTileLabels() {
 }
 
 function renderStaticUi() {
-    document.title = tr("Sequence — just because.", "Sequence — just because.");
+    document.title = tr("Sequence — Memory Game | Just Because Games", "Sequence — Memory Game | Just Because Games");
     document.querySelector(".back-link").textContent = `← ${tr("back home", "back home")}`;
     document.getElementById("sequence-kicker").textContent = `${tr("A LITTLE GAME · NO.", "A LITTLE GAME · NO.")} 10`;
     document.getElementById("sequence-title").innerHTML = `${tr("Sequence", "Sequence")}<span>.</span>`;

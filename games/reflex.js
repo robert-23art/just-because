@@ -168,7 +168,7 @@ function renderStats() {
 }
 
 function renderStaticUi() {
-    document.title = tr("Reflex — just because.", "Reflex — just because.");
+    document.title = tr("Reflex — Reaction Time Game | Just Because Games", "Reflex — Reaction Time Game | Just Because Games");
     document.querySelector(".back-link").textContent = tr("← back home", "← back home");
     document.querySelector(".reflex-intro .eyebrow").textContent = `${tr("A LITTLE GAME · NO.", "A LITTLE GAME · NO.")} 09`;
     document.querySelector(".reflex-intro h1").innerHTML = `${tr("Reflex", "Reflex")}<span>.</span>`;

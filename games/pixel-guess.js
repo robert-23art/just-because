@@ -259,7 +259,7 @@
             const element = document.querySelector(selector);
             if (element) element.textContent = text;
         };
-        document.title = tr("pageTitle", "Pixel Guess — just because.");
+        document.title = tr("pageTitle", "Pixel Guess — Picture Puzzle | Just Because Games");
         one(".pg-intro .eyebrow", tr("gameEyebrow", "A LITTLE GAME · NO. 03"));
         const introTitle = document.querySelector(".pg-intro h1");
         if (introTitle) {

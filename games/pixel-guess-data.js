@@ -1885,7 +1885,7 @@ const PIXEL_GUESS_DATA = {
         "pg.category.countries-places": { nl: "Landen en plekken", de: "Länder und Orte", fr: "Pays et lieux", es: "Países y lugares" },
         "pg.category.objects": { nl: "Voorwerpen", de: "Gegenstände", fr: "Objets", es: "Objetos" },
         "pg.category.video-games": { nl: "Videospellen", de: "Videospiele", fr: "Jeux vidéo", es: "Videojuegos" },
-        "pg.ui.pageTitle": { nl: "Pixelraadsel — just because.", de: "Pixel-Rätsel — just because.", fr: "Devine le pixel — just because.", es: "Adivina el píxel — just because." },
+        "pg.ui.pageTitle": { nl: "Pixelraadsel — Afbeeldingspuzzel | Just Because Games", de: "Pixel-Rätsel — Bilderrätsel | Just Because Games", fr: "Devine le pixel — puzzle visuel | Just Because Games", es: "Adivina el píxel — puzzle de imágenes | Just Because Games" },
         "pg.ui.gameEyebrow": { nl: "EEN KLEIN SPEL · NR. 03", de: "EIN KLEINES SPIEL · NR. 03", fr: "UN PETIT JEU · N° 03", es: "UN JUEGO PEQUEÑO · N.º 03" },
         "pg.ui.gameTitle": { nl: "Pixel", de: "Pixel", fr: "Devine", es: "Adivina" },
         "pg.ui.gameTitleGlue": { nl: "", de: "-", fr: " ", es: " " },
