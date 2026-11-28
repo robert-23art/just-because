@@ -4,9 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guess the Color — just because.</title>
+    <title>Guess the Color — Color Game | Just Because Games</title>
+    <meta name="description" content="Test your color perception in Guess the Color. Match a mystery shade and find out how sharp your eyes are in this quick browser game." data-i18n-content="Test your color perception in Guess the Color. Match a mystery shade and find out how sharp your eyes are in this quick browser game.">
+    <link rel="canonical" href="https://just-because-games.netlify.app/games/guess-color.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Just Because Games">
+    <meta property="og:title" content="Guess the Color — Color Game | Just Because Games" data-i18n-content="Guess the Color — Color Game | Just Because Games">
+    <meta property="og:description" content="Test your color perception in Guess the Color. Match a mystery shade and find out how sharp your eyes are in this quick browser game." data-i18n-content="Test your color perception in Guess the Color. Match a mystery shade and find out how sharp your eyes are in this quick browser game.">
+    <meta property="og:url" content="https://just-because-games.netlify.app/games/guess-color.html">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body class="game-page">
@@ -16,7 +25,12 @@
             just because<span>.</span>
         </a>
 
-        <a href="../index.html" class="back-link">← back home</a>
+        <div class="header-actions">
+            <a href="../index.html" class="back-link">← back home</a>
+            <div data-theme-switcher></div>
+            <div data-language-switcher></div>
+            <div data-profile-switcher></div>
+        </div>
     </header>
 
     <main class="game-main">
@@ -168,6 +182,14 @@
         <p>just because. © 2026</p>
     </footer>
 
+    <script src="../js/translations.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-client.js"></script>
+    <script src="../js/profile.js"></script>
+    <script src="../js/daily-challenge.js"></script>
+    <script src="../js/leaderboard.js"></script>
+    <script src="../js/sound.js"></script>
+    <script src="../js/share-score.js"></script>
     <script src="guess-color-data.js"></script>
     <script src="guess-color.js"></script>
 

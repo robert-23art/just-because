@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aim Trainer | Just Because Games</title><link rel="canonical" href="https://just-because-games.netlify.app/games/aim-trainer.html">
+<link rel="icon" href="../favicon.svg"><script src="../js/theme.js"></script><link rel="stylesheet" href="../css/style.css">
+<style>
+.aim-setup,.aim-results{max-width:720px;margin:32px auto;padding:28px;border:1px solid var(--border);border-radius:18px;background:var(--surface)}
+.aim-difficulties{display:flex;gap:8px;margin:18px 0}.aim-difficulty{padding:10px 14px;border:1px solid var(--border);border-radius:999px;background:var(--surface-soft);color:var(--text);cursor:pointer}.aim-difficulty.is-selected{border-color:#ff6b00;background:#ff6b00;color:#111827}
+.aim-board{position:relative;min-height:min(62vh,520px);overflow:hidden;border:1px solid var(--border);border-radius:18px;background:var(--surface)}
+.aim-target{position:absolute;width:64px;height:64px;border:0;border-radius:50%;background:#ff6b00;box-shadow:0 8px 22px rgba(255,107,0,.28);cursor:crosshair}.aim-target.medium{width:48px;height:48px}.aim-target.hard{width:38px;height:38px;animation:aim-shrink 1s linear forwards}@keyframes aim-shrink{to{transform:scale(.35)}}
+.aim-stats{display:flex;justify-content:space-between;gap:12px;margin-bottom:12px}.aim-stats strong{color:var(--text)}
+</style>
+</head>
+<body class="game-page"><header class="header"><a href="../index.html" class="logo">just because<span>.</span></a><div class="header-actions"><a class="back-link" href="../index.html">← back home</a><div data-theme-switcher></div><div data-language-switcher></div><div data-profile-switcher></div></div></header>
+<main><section class="aim-setup" id="aim-setup"><p class="eyebrow">AIM TRAINER</p><h1>Hit the orange targets.</h1><div class="aim-difficulties" id="aim-difficulties"><button class="aim-difficulty is-selected" data-mode="easy">Easy</button><button class="aim-difficulty" data-mode="medium">Medium</button><button class="aim-difficulty" data-mode="hard">Hard</button></div><button id="aim-start" class="start-button">START PLAYING</button></section>
+<section id="aim-game" hidden><div class="aim-stats"><span>Time <strong id="aim-time">30.0</strong></span><span>Hits <strong id="aim-hits">0</strong></span><span>Accuracy <strong id="aim-accuracy">100%</strong></span></div><div class="aim-board" id="aim-board"></div></section>
+<section class="aim-results" id="aim-results" hidden><p class="eyebrow">THAT'S A WRAP</p><h2 id="aim-result-title">Nice shooting.</h2><p><strong id="aim-final-score">0</strong> hits</p><button id="aim-replay" class="start-button">PLAY AGAIN</button><button id="aim-back" class="back-button">Back to settings</button></section></main>
+<footer class="footer"><p>made for no particular reason.</p><p>just because. © 2026</p></footer>
+<script src="../js/translations.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="../js/supabase-client.js"></script><script src="../js/profile.js"></script><script src="../js/daily-challenge.js"></script><script src="../js/leaderboard.js"></script><script src="../js/sound.js"></script><script src="../js/share-score.js"></script><script src="aim-trainer.js"></script></body></html>

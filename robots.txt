@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://just-because-games.netlify.app/sitemap.xml

@@ -76,6 +76,29 @@
         try { localStorage.setItem(key, String(value)); } catch { /* Keep the game playable without storage. */ }
     }
 
+    function translate(key, fallback) {
+        return window.JB_I18N?.t ? window.JB_I18N.t(key, fallback) : fallback;
+    }
+
+    function categoryName(id) {
+        return translate(`wn.category.${id}`, categoryNames[id]);
+    }
+
+    function difficultyName(id) {
+        return translate(`wn.difficulty.${id}`, difficultyNames[id]);
+    }
+
+    function questionText(question, field, fallback) {
+        return translate(`wn.q.${question.id}.${field}`, fallback);
+    }
+
+    function answerText(question) {
+        const answerIndex = question.options.indexOf(question.answer);
+        return answerIndex < 0
+            ? question.answer
+            : questionText(question, `option.${answerIndex}`, question.answer);
+    }
+
     function shuffle(items) {
         const result = [...items];
         for (let index = result.length - 1; index > 0; index--) {
@@ -118,19 +141,26 @@
             const isSelected = button.dataset.category === selectedCategory;
             button.classList.toggle("is-selected", isSelected);
             button.setAttribute("aria-pressed", String(isSelected));
+            const label = button.querySelector("strong");
+            if (label) {
+                label.textContent = button.dataset.category === "all"
+                    ? translate("wn.category.all", "All Puzzles")
+                    : categoryName(button.dataset.category);
+            }
         });
         ui.difficultyChoices.querySelectorAll("[data-difficulty]").forEach(button => {
             const isSelected = button.dataset.difficulty === selectedDifficulty;
             button.classList.toggle("is-selected", isSelected);
             button.setAttribute("aria-pressed", String(isSelected));
+            button.textContent = difficultyName(button.dataset.difficulty);
         });
 
         const pool = questions.filter(question =>
             (selectedCategory === "all" || question.category === selectedCategory)
             && (selectedDifficulty === "all" || question.difficulty === selectedDifficulty)
         );
-        ui.categorySummary.textContent = selectedCategory === "all" ? "All Puzzles" : categoryNames[selectedCategory];
-        ui.difficultySummary.textContent = difficultyNames[selectedDifficulty];
+        ui.categorySummary.textContent = selectedCategory === "all" ? translate("wn.category.all", "All Puzzles") : categoryName(selectedCategory);
+        ui.difficultySummary.textContent = difficultyName(selectedDifficulty);
         ui.poolSummary.textContent = `${pool.length} curated puzzles · ${data?.roundsPerGame || 10} per game`;
         ui.bestScore.textContent = getHighScore();
         ui.bestLabel.textContent = `${ui.categorySummary.textContent} · ${ui.difficultySummary.textContent}`;
@@ -144,6 +174,7 @@
         );
         if (!validateData() || pool.length < data.roundsPerGame) return;
 
+        window.JustBecauseProfile?.recordGame("whats-next");
         run = shuffle(pool).slice(0, data.roundsPerGame);
         roundIndex = 0;
         score = 0;
@@ -176,19 +207,20 @@
         ui.progress.parentElement.setAttribute("aria-valuenow", String(roundIndex));
         ui.score.textContent = score;
         ui.streak.textContent = streak;
-        ui.category.textContent = selectedCategory === "all" ? "ALL PUZZLES" : categoryNames[selectedCategory].toUpperCase();
-        ui.difficulty.textContent = difficultyNames[selectedDifficulty].toUpperCase();
-        ui.puzzleType.textContent = categoryNames[question.category].toUpperCase();
-        ui.puzzle.textContent = question.prompt;
+        ui.category.textContent = (selectedCategory === "all" ? translate("wn.category.all", "All Puzzles") : categoryName(selectedCategory)).toUpperCase();
+        ui.difficulty.textContent = difficultyName(selectedDifficulty).toUpperCase();
+        ui.puzzleType.textContent = categoryName(question.category).toUpperCase();
+        ui.puzzle.textContent = questionText(question, "prompt", question.prompt);
         ui.answers.replaceChildren();
 
-        shuffle(question.options).forEach((option, index) => {
+        shuffle(question.options.map((option, optionIndex) => ({ option, optionIndex }))).forEach(({ option, optionIndex }, index) => {
             const button = document.createElement("button");
             button.type = "button";
             button.className = "wn-answer-button";
             button.dataset.answer = option;
+            button.dataset.optionIndex = String(optionIndex);
             button.innerHTML = `<span class="wn-answer-letter">${String.fromCharCode(65 + index)}</span><span class="wn-answer-value"></span>`;
-            button.querySelector(".wn-answer-value").textContent = option;
+            button.querySelector(".wn-answer-value").textContent = questionText(question, `option.${optionIndex}`, option);
             button.addEventListener("click", () => chooseAnswer(button, question));
             ui.answers.append(button);
         });
@@ -197,7 +229,7 @@
     function useHint() {
         if (hintUsed || answered) return;
         hintUsed = true;
-        ui.hintText.textContent = run[roundIndex].hint;
+        ui.hintText.textContent = questionText(run[roundIndex], "hint", run[roundIndex].hint);
         ui.hintText.classList.remove("is-hidden");
         ui.hintButton.disabled = true;
         ui.hintButton.classList.add("is-used");
@@ -219,6 +251,7 @@
 
         if (isCorrect) {
             correctCount++;
+            window.DailyChallenge?.report("whats-next", correctCount);
             streak++;
             bestStreak = Math.max(bestStreak, streak);
             earned = hintUsed ? 50 : 100;
@@ -242,7 +275,11 @@
             ui.streakMoment.classList.remove("is-celebrating");
         }
 
-        ui.explanation.textContent = `${isCorrect ? "That's it." : `The answer is ${question.answer}.`} ${question.explanation}`;
+        const answer = answerText(question);
+        const explanationIntro = isCorrect
+            ? translate("wn.feedback.correct", "That's it.")
+            : `${translate("wn.feedback.answer", "The answer is")} ${answer}.`;
+        ui.explanation.textContent = `${explanationIntro} ${questionText(question, "explanation", question.explanation)}`;
         ui.score.textContent = score;
         ui.streak.textContent = streak;
         ui.hintButton.disabled = true;
@@ -271,6 +308,7 @@
         const previousBest = getHighScore();
         if (score > previousBest) {
             try { localStorage.setItem(highScoreKey(), String(score)); } catch { /* Scores are optional when storage is blocked. */ }
+            window.JustBecauseLeaderboard?.refresh();
             ui.resultTitle.textContent = "A new personal best!";
         } else if (correctCount === run.length) {
             ui.resultTitle.textContent = "Pattern pro.";
@@ -300,6 +338,31 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
+    function refreshQuestionLanguage() {
+        const question = run[roundIndex];
+        if (!question || ui.game.classList.contains("is-hidden")) return;
+
+        ui.category.textContent = (selectedCategory === "all" ? translate("wn.category.all", "All Puzzles") : categoryName(selectedCategory)).toUpperCase();
+        ui.difficulty.textContent = difficultyName(selectedDifficulty).toUpperCase();
+        ui.puzzleType.textContent = categoryName(question.category).toUpperCase();
+        ui.puzzle.textContent = questionText(question, "prompt", question.prompt);
+        ui.answers.querySelectorAll(".wn-answer-button").forEach(button => {
+            const optionIndex = Number(button.dataset.optionIndex);
+            button.querySelector(".wn-answer-value").textContent = questionText(question, `option.${optionIndex}`, question.options[optionIndex]);
+        });
+        if (!ui.hintText.classList.contains("is-hidden")) {
+            ui.hintText.textContent = questionText(question, "hint", question.hint);
+        }
+        if (answered) {
+            const isCorrect = ui.feedback.classList.contains("is-correct");
+            const answer = answerText(question);
+            const explanationIntro = isCorrect
+                ? translate("wn.feedback.correct", "That's it.")
+                : `${translate("wn.feedback.answer", "The answer is")} ${answer}.`;
+            ui.explanation.textContent = `${explanationIntro} ${questionText(question, "explanation", question.explanation)}`;
+        }
+    }
+
     ui.categoryChoices.addEventListener("click", event => {
         const button = event.target.closest("[data-category]");
         if (!button) return;
@@ -322,6 +385,10 @@
     ui.quit.addEventListener("click", backToCategories);
     ui.playAgain.addEventListener("click", startGame);
     ui.backCategories.addEventListener("click", backToCategories);
+    window.addEventListener("jb:languagechange", () => {
+        updateSetup();
+        refreshQuestionLanguage();
+    });
 
     updateSetup();
 })();

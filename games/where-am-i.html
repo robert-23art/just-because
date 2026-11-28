@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F5F2EA">
+    <title>Where Am I? — Geography Quiz | Just Because Games</title>
+    <meta name="description" content="Identify countries from their outlines in Where Am I?, a geography quiz with regions and difficulty levels for every map fan." data-i18n-content="Identify countries from their outlines in Where Am I?, a geography quiz with regions and difficulty levels for every map fan.">
+    <link rel="canonical" href="https://just-because-games.netlify.app/games/where-am-i.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Just Because Games">
+    <meta property="og:title" content="Where Am I? — Geography Quiz | Just Because Games" data-i18n-content="Where Am I? — Geography Quiz | Just Because Games">
+    <meta property="og:description" content="Identify countries from their outlines in Where Am I?, a geography quiz with regions and difficulty levels for every map fan." data-i18n-content="Identify countries from their outlines in Where Am I?, a geography quiz with regions and difficulty levels for every map fan.">
+    <meta property="og:url" content="https://just-because-games.netlify.app/games/where-am-i.html">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="where-am-i.css">
+</head>
+<body class="game-page where-am-i-page">
+    <header class="header">
+        <a href="../index.html" class="logo">just because<span>.</span></a>
+        <div class="header-actions">
+            <a href="../index.html" class="back-link">← back home</a>
+            <div data-theme-switcher></div>
+            <div data-language-switcher></div>
+            <div data-profile-switcher></div>
+        </div>
+    </header>
+
+    <main class="game-main wai-main">
+        <section class="game-intro wai-intro">
+            <p class="eyebrow">A LITTLE GAME · NO. 07</p>
+            <h1>Where <span>Am I?</span></h1>
+            <p>One country outline. No labels. Can you place it on the map in your mind?</p>
+        </section>
+
+        <section class="wai-setup" id="wai-setup">
+            <div class="wai-section-heading">
+                <div><p class="eyebrow">SET UP YOUR GAME</p><h2>Choose a region.</h2></div>
+                <p id="wai-pool-note"></p>
+            </div>
+            <div class="wai-region-grid" id="wai-region-grid" role="group" aria-label="Choose a region"></div>
+            <div class="wai-setup-controls">
+                <div class="wai-difficulty-panel">
+                    <div class="wai-panel-heading"><span class="eyebrow">HOW TRICKY?</span><span id="wai-difficulty-caption">A little of everything</span></div>
+                    <div id="wai-difficulty-options" role="group" aria-label="Choose difficulty"></div>
+                </div>
+                <aside class="wai-best-panel"><span class="eyebrow">PERSONAL BEST</span><strong id="wai-best">0</strong><small id="wai-best-label">All Countries · All difficulties</small></aside>
+            </div>
+            <p class="wai-setup-message" id="wai-setup-message" aria-live="polite"></p>
+            <button class="wai-primary" id="wai-start" type="button"><span>START PLAYING</span><span aria-hidden="true">↗</span></button>
+            <details class="wai-data-note">
+                <summary>About the map data</summary>
+                <p>Silhouettes are generated from Natural Earth 1:50m country boundaries. Dependent territories and Antarctica are excluded. Taiwan follows Natural Earth’s country classification; Israel and Palestine are included as named country records. Distant overseas components are omitted so the main outline stays legible.</p>
+            </details>
+        </section>
+
+        <section class="wai-game is-hidden" id="wai-game" aria-label="Guess the country">
+            <div class="wai-game-topline">
+                <div><p class="eyebrow" id="wai-round-region"></p><span class="wai-difficulty-pill" id="wai-round-difficulty"></span></div>
+                <div class="wai-stats"><span>ROUND<strong id="wai-round">1 / 10</strong></span><span>SCORE<strong id="wai-score">0</strong></span><span>STREAK<strong id="wai-streak">0</strong></span></div>
+            </div>
+            <div class="wai-instruction"><p class="eyebrow">NO LABELS. JUST THE OUTLINE.</p><h2>Where am I?</h2></div>
+            <div class="wai-map-stage" id="wai-map-stage" role="img" aria-label="An unlabeled country outline">
+                <svg id="wai-map" viewBox="0 0 1000 650" aria-hidden="true" focusable="false"><path id="wai-country-shape" d=""></path></svg>
+                <span class="wai-map-caption" aria-hidden="true">COUNTRY OUTLINE</span>
+            </div>
+            <div class="wai-play-meta"><span id="wai-attempts">3 tries left</span><span id="wai-hints-used">Hints used: 0 / 3</span></div>
+            <div class="wai-hint-area">
+                <button class="wai-hint-button" id="wai-hint" type="button"><span aria-hidden="true">✳</span> Use a hint <span id="wai-hint-count">−20 pts</span></button>
+                <div class="wai-hint-list" id="wai-hint-list" aria-live="polite"></div>
+            </div>
+            <form class="wai-answer-form" id="wai-answer-form" autocomplete="off">
+                <label for="wai-answer">Your answer</label>
+                <div class="wai-input-row"><input id="wai-answer" name="answer" type="text" placeholder="Type your answer..." autocapitalize="words" spellcheck="false" aria-describedby="wai-answer-help wai-feedback-text"><button class="wai-submit" id="wai-submit" type="submit">Submit Answer <span aria-hidden="true">↗</span></button></div>
+                <p class="wai-answer-help" id="wai-answer-help">Use the English country name. Press Enter to submit.</p>
+            </form>
+            <section class="wai-feedback is-hidden" id="wai-feedback" aria-live="polite"><div class="wai-feedback-heading"><span id="wai-feedback-mark"></span><h3 id="wai-feedback-title"></h3><strong id="wai-points"></strong></div><p id="wai-feedback-text"></p></section>
+            <button class="wai-next is-hidden" id="wai-next" type="button"><span>Next Country</span><span aria-hidden="true">→</span></button>
+            <button class="wai-quit" id="wai-quit" type="button">Back to regions</button>
+        </section>
+
+        <section class="wai-results is-hidden" id="wai-results" aria-live="polite">
+            <p class="eyebrow">THAT'S A WRAP</p><h2 id="wai-result-title">Nice work.</h2>
+            <div class="wai-final-score"><strong id="wai-final-score">0</strong><span>POINTS</span></div>
+            <div class="wai-result-stats"><div><strong id="wai-correct">0</strong><span>CORRECT</span></div><div><strong id="wai-wrong">0</strong><span>WRONG</span></div><div><strong id="wai-accuracy">0%</strong><span>ACCURACY</span></div><div><strong id="wai-best-streak">0</strong><span>BEST STREAK</span></div></div>
+            <p class="wai-result-message" id="wai-result-message"></p>
+            <div class="wai-result-actions"><button class="wai-primary" id="wai-play-again" type="button"><span>PLAY AGAIN</span><span aria-hidden="true">↗</span></button><button class="wai-secondary" id="wai-back" type="button">Back to regions</button></div>
+        </section>
+        <p class="wai-footnote">Made with Natural Earth. Public-domain map data, kept right here in the project.</p>
+    </main>
+    <footer class="footer"><p>made for no particular reason.</p><p>just because. © 2026</p></footer>
+    <script src="../js/translations.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-client.js"></script>
+    <script src="../js/profile.js"></script>
+    <script src="../js/daily-challenge.js"></script>
+    <script src="../js/leaderboard.js"></script>
+    <script src="../js/sound.js"></script>
+    <script src="../js/share-score.js"></script>
+    <script src="where-am-i-data.js"></script>
+    <script src="where-am-i.js"></script>
+</body>
+</html>

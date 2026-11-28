@@ -1,0 +1,20 @@
+(()=>{
+"use strict";
+const own=document.getElementById("naval-own"),enemy=document.getElementById("naval-enemy"),status=document.getElementById("naval-status"),match=document.getElementById("naval-match"),lobby=document.getElementById("naval-lobby"),players=document.getElementById("naval-players");
+let ownShip=new Set(),enemyShip=new Set(),placed=false,energy=0,hits=0,misses=0,mode="bot";
+function tr(k,f){return window.JB_I18N?.t?window.JB_I18N.t(k,f):f}
+function createGrid(container,side){container.replaceChildren();for(let i=0;i<64;i++){const b=document.createElement("button");b.type="button";b.className="naval-cell";b.dataset.index=i;if(side==="own"&&ownShip.has(i))b.classList.add("ship");container.append(b)}}
+function randomFleet(){ownShip=new Set();const lengths=[4,3,3,2,2];for(const length of lengths){let placed=false;while(!placed){const horizontal=Math.random()<.5,row=Math.floor(Math.random()*8),col=Math.floor(Math.random()*8);const cells=[];for(let k=0;k<length;k++){const r=row+(horizontal?0:k),c=col+(horizontal?k:0);if(r>=8||c>=8)return randomFleet();cells.push(r*8+c)}if(cells.some(i=>ownShip.has(i)))continue;cells.forEach(i=>ownShip.add(i));placed=true}}createGrid(own,"own")}
+function placeEnemy(){enemyShip=new Set();while(enemyShip.size<14){enemyShip.add(Math.floor(Math.random()*64))}}
+function renderPlayers(info){players.replaceChildren();[info.self,info.opponent].forEach(p=>{const el=document.createElement("div");el.className="match-player";el.innerHTML=`<span class="match-avatar">${p.avatar}</span><span>${p.name}${p.role==="owner"?" 👑 "+tr("ADMIN (OWNER)","ADMIN (OWNER)"):p.role==="admin"?" "+tr("ADMIN","ADMIN"):""}</span>`;players.append(el)})}
+document.getElementById("naval-random").addEventListener("click",()=>{if(!placed)randomFleet()});
+document.getElementById("naval-rotate").addEventListener("click",()=>status.textContent=tr("Next ship rotates horizontally or vertically.","Next ship rotates horizontally or vertically."));
+own.addEventListener("click",e=>{if(placed)return;const b=e.target.closest("[data-index]");if(!b)return;const i=Number(b.dataset.index);ownShip.has(i)?ownShip.delete(i):ownShip.add(i);createGrid(own,"own")});
+document.getElementById("naval-ready").addEventListener("click",()=>{if(ownShip.size<14){status.textContent=tr("Place or randomize all ships first.","Place or randomize all ships first.");return}placed=true;placeEnemy();createGrid(enemy,"enemy");document.getElementById("naval-radar").disabled=false;document.getElementById("naval-double").disabled=false;status.textContent=tr("Battle started. Choose a target.","Battle started. Choose a target.");});
+enemy.addEventListener("click",e=>{if(!placed)return;const b=e.target.closest("[data-index]");if(!b||b.classList.contains("hit")||b.classList.contains("miss"))return;const i=Number(b.dataset.index);if(enemyShip.has(i)){b.classList.add("hit");energy++;hits++;window.JustBecauseSound?.play("good")}else{b.classList.add("miss");misses++}if(hits>=14)finish()});
+document.getElementById("naval-radar").addEventListener("click",()=>{if(energy<2)return;energy-=2;for(let i=0;i<64;i++){if(enemyShip.has(i)&&Math.floor(i/8)>=3&&Math.floor(i/8)<=5)continue}status.textContent=`${tr("Radar Scan","Radar Scan")} · ${tr("Energy","Energy")} ${energy}`});
+document.getElementById("naval-double").addEventListener("click",()=>{if(energy<3)return;energy-=3;status.textContent=tr("Double Strike armed: choose two targets.","Double Strike armed: choose two targets.")});
+function finish(){status.textContent=tr("You sank the enemy fleet!","You sank the enemy fleet!");window.JustBecauseSound?.play("record");localStorage.setItem("jb_naval_strike_score_"+mode,String(hits));window.JustBecauseLeaderboard?.refresh();window.JustBecauseSupabase?.upsertScore("naval-strike",mode,"local",hits)}
+createGrid(own,"own");createGrid(enemy,"enemy");
+window.JustBecauseLobby.mount("naval-strike",lobby,info=>{lobby.hidden=true;match.hidden=false;mode=info.mode==="bot"?"bot":"online";renderPlayers(info);randomFleet();placeEnemy()});
+})();

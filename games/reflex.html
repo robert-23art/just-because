@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflex — Reaction Time Game | Just Because Games</title>
+    <meta name="description" content="Test your reaction speed in Reflex. Wait for the green signal, avoid fake-outs, and try to beat your personal best." data-i18n-content="Test your reaction speed in Reflex. Wait for the green signal, avoid fake-outs, and try to beat your personal best.">
+    <link rel="canonical" href="https://just-because-games.netlify.app/games/reflex.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Just Because Games">
+    <meta property="og:title" content="Reflex — Reaction Time Game | Just Because Games" data-i18n-content="Reflex — Reaction Time Game | Just Because Games">
+    <meta property="og:description" content="Test your reaction speed in Reflex. Wait for the green signal, avoid fake-outs, and try to beat your personal best." data-i18n-content="Test your reaction speed in Reflex. Wait for the green signal, avoid fake-outs, and try to beat your personal best.">
+    <meta property="og:url" content="https://just-because-games.netlify.app/games/reflex.html">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="game-page reflex-page">
+    <header class="header">
+        <a href="../index.html" class="logo">just because<span>.</span></a>
+        <div class="header-actions">
+            <a href="../index.html" class="back-link">← back home</a>
+            <div data-theme-switcher></div>
+            <div data-language-switcher></div>
+            <div data-profile-switcher></div>
+        </div>
+    </header>
+
+    <main class="game-main reflex-main">
+        <section class="reflex-setup-screen" id="setup-screen">
+            <section class="game-intro reflex-intro">
+                <p class="eyebrow">A LITTLE GAME · NO. 09</p>
+                <h1>Reflex<span>.</span></h1>
+                <p>A tiny test of your reaction time. Keep your eyes open.</p>
+            </section>
+
+            <section class="reflex-setup-card">
+                <div class="reflex-section-heading">
+                    <div>
+                        <p class="eyebrow">YOUR CHOICE</p>
+                        <h2>Choose your mode.</h2>
+                    </div>
+                    <span aria-hidden="true">✳</span>
+                </div>
+
+                <div class="reflex-mode-grid" id="mode-options" role="group" aria-label="Choose a game mode">
+                    <button class="reflex-mode-card is-selected" type="button" data-mode="classic" aria-pressed="true">
+                        <strong>Classic</strong>
+                        <span>5 rounds · wait for green</span>
+                    </button>
+                    <button class="reflex-mode-card" type="button" data-mode="hard" aria-pressed="false">
+                        <strong>Hard / Fake-Out</strong>
+                        <span>Ignore red, orange, and other shapes</span>
+                    </button>
+                    <button class="reflex-mode-card" type="button" data-mode="endless" aria-pressed="false">
+                        <strong>Endless</strong>
+                        <span>Keep going and track your average</span>
+                    </button>
+                </div>
+
+                <aside class="reflex-best-panel">
+                    <span class="eyebrow">PERSONAL BEST</span>
+                    <strong><span id="setup-best">—</span><small id="setup-best-unit"></small></strong>
+                    <span class="reflex-new-record" id="setup-new-record" role="status" aria-live="polite" hidden>New record!</span>
+                    <small>Lowest reaction time on this device.</small>
+                </aside>
+
+                <button class="reflex-start-button" id="start-button" type="button">
+                    <span>START PLAYING</span><span aria-hidden="true">→</span>
+                </button>
+            </section>
+        </section>
+
+        <section class="reflex-game-screen" id="game-screen" aria-label="Reflex reaction game" hidden>
+            <button class="reflex-back-button" id="back-to-setup" type="button">← Back to settings</button>
+            <div class="reflex-game-heading">
+                <div>
+                    <p class="eyebrow" id="active-mode-label">CLASSIC</p>
+                    <h2 id="round-label">Round 1 / 5</h2>
+                </div>
+                <div class="reflex-live-stats">
+                    <div><span>AVERAGE</span><strong id="average-time">—</strong></div>
+                    <div>
+                        <span>PERSONAL BEST</span>
+                        <strong id="game-best">—</strong>
+                        <small class="reflex-new-record" id="game-new-record" role="status" aria-live="polite" hidden>New record!</small>
+                    </div>
+                </div>
+            </div>
+
+            <button class="reflex-pad" id="reflex-pad" type="button" aria-live="polite">
+                <span class="reflex-signal-mark" id="signal-mark" aria-hidden="true">●</span>
+                <strong id="signal-status">Wait for green...</strong>
+                <small id="signal-hint">Don't click until the light turns green.</small>
+            </button>
+
+            <p class="reflex-result-line" id="round-result" aria-live="polite"></p>
+            <div class="reflex-game-actions">
+                <button class="reflex-next-button" id="next-round" type="button" hidden>Next round</button>
+                <button class="reflex-end-button" id="finish-endless" type="button" hidden>Finish run</button>
+            </div>
+
+            <section class="reflex-history-panel">
+                <div class="reflex-history-heading">
+                    <h3 id="history-title">Round times</h3>
+                    <span><span id="round-count">0</span><span id="round-count-label"> rounds</span></span>
+                </div>
+                <ol class="reflex-history" id="round-history"></ol>
+            </section>
+        </section>
+
+        <section class="reflex-results-screen" id="results-screen" aria-live="polite" hidden>
+            <p class="eyebrow">THAT'S A WRAP</p>
+            <h2 id="results-title">Nice reactions.</h2>
+            <p class="reflex-final-average"><strong id="final-average">—</strong><span id="final-average-label">AVERAGE REACTION</span></p>
+            <p class="reflex-result-copy" id="results-copy"></p>
+            <div class="reflex-results-best">
+                <span class="eyebrow">PERSONAL BEST</span>
+                <strong id="results-best">—</strong>
+                <span class="reflex-new-record" id="results-new-record" role="status" aria-live="polite" hidden>New record!</span>
+            </div>
+            <ol class="reflex-history reflex-results-history" id="results-history"></ol>
+            <div class="reflex-results-actions">
+                <button class="reflex-start-button" id="play-again" type="button"><span>PLAY AGAIN</span><span aria-hidden="true">↻</span></button>
+                <button class="reflex-end-button" id="results-back" type="button">← Back to settings</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>made for no particular reason.</p>
+        <p>just because. © 2026</p>
+    </footer>
+
+    <script src="../js/translations.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-client.js"></script>
+    <script src="../js/profile.js"></script>
+    <script src="../js/daily-challenge.js"></script>
+    <script src="../js/leaderboard.js"></script>
+    <script src="../js/sound.js"></script>
+    <script src="../js/share-score.js"></script>
+    <script src="reflex.js"></script>
+</body>
+</html>

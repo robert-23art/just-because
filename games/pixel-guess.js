@@ -46,9 +46,15 @@
     const maximumAttempts = PIXEL_GUESS_DATA.maximumAttempts || 5;
     const pixelLevels = [8, 14, 25, 43, 76];
     const allItems = PIXEL_GUESS_DATA.items || [];
-    const categoryNames = new Map(
-        (PIXEL_GUESS_DATA.categories || []).map(category => [category.id, category.name])
-    );
+    const categoryNames = new Map((PIXEL_GUESS_DATA.categories || []).map(category => [category.id, category.name]));
+    const tr = (id, fallback, ...values) => {
+        let text = window.JB_I18N ? window.JB_I18N.t(`pg.ui.${id}`, fallback) : fallback;
+        values.forEach((value, index) => { text = text.replace(`{${index}}`, value); });
+        return text;
+    };
+    const categoryName = id => window.JB_I18N
+        ? window.JB_I18N.t(`pg.category.${id}`, categoryNames.get(id) || "All Categories")
+        : categoryNames.get(id) || "All Categories";
 
     let selectedCategory = "all";
     let runItems = [];
@@ -63,6 +69,10 @@
     let revealStep = 0;
     let roundState = "setup";
     let bestScore = 0;
+    let roundPoints = 0;
+    let lastFeedbackType = "";
+    let setupFeedbackType = "";
+    let activeLanguage = window.JB_I18N ? window.JB_I18N.language : "en";
 
     function readStorage(key) {
         try {
@@ -229,9 +239,129 @@
             card.disabled = count === 0;
             card.classList.toggle("is-selected", category === selectedCategory);
             card.setAttribute("aria-pressed", String(category === selectedCategory));
+            const copy = card.querySelector(".pg-category-copy");
+            if (copy) {
+                const name = document.createElement("strong");
+                name.textContent = category === "all" ? categoryName("all") : categoryName(category);
+                const details = document.createElement("small");
+                details.textContent = category === "all"
+                    ? `${count} ${tr("pictures", "pictures")} · ${tr("mixed", "mixed")}`
+                    : `${count} ${tr("pictures", "pictures")}`;
+                copy.replaceChildren(name, details);
+            }
         });
 
         startButton.disabled = (selectedCategory === "all" ? total : (counts.get(selectedCategory) || 0)) === 0;
+    }
+
+    function renderStaticText() {
+        const one = (selector, text) => {
+            const element = document.querySelector(selector);
+            if (element) element.textContent = text;
+        };
+        document.title = tr("pageTitle", "Pixel Guess — Picture Puzzle | Just Because Games");
+        one(".pg-intro .eyebrow", tr("gameEyebrow", "A LITTLE GAME · NO. 03"));
+        const introTitle = document.querySelector(".pg-intro h1");
+        if (introTitle) {
+            const title = document.createTextNode(`${tr("gameTitle", "Pixel")}${tr("gameTitleGlue", " ")}`);
+            const titleTail = document.createElement("span");
+            titleTail.textContent = tr("gameTitleSecond", "Guess.");
+            introTitle.replaceChildren(title, titleTail);
+        }
+        one(".pg-intro > p:last-child", tr("gameDescription", "One tiny, blurry clue. Type what you think it is."));
+        one(".pg-setup-heading .eyebrow", tr("chooseSubject", "CHOOSE YOUR SUBJECT"));
+        one(".pg-setup-heading h2", tr("pickCategory", "Pick a category."));
+        one(".pg-setup-note", tr("setupNote", "Ten pictures per run · answers in English"));
+        const bestLabel = document.querySelector(".pg-best-score");
+        if (bestLabel && bestLabel.firstChild) bestLabel.firstChild.textContent = `${tr("personalBest", "PERSONAL BEST")} `;
+        startButton.querySelector("span").textContent = tr("startPlaying", "START PLAYING");
+        const play = document.getElementById("pg-play");
+        if (play) play.setAttribute("aria-label", tr("playAria", "Pixel Guess round"));
+        [tr("round", "ROUND"), tr("score", "SCORE"), tr("guessed", "GUESSED")].forEach((label, index) => {
+            const stat = document.querySelector(`.pg-live-stats span:nth-child(${index + 1})`);
+            if (stat && stat.firstChild) stat.firstChild.textContent = `${label} `;
+        });
+        const imageLabel = document.querySelector(".pg-credit-line > span:first-child");
+        if (imageLabel) imageLabel.textContent = tr("image", "Image:");
+        one(".pg-hint-meter .eyebrow", tr("hintsUsed", "HINTS USED"));
+        const formLabel = answerForm.querySelector("label");
+        if (formLabel) {
+            if (formLabel.firstChild) formLabel.firstChild.textContent = `${tr("answerPrompt", "What do you think it is?")} `;
+            const languageNote = formLabel.querySelector("span");
+            if (languageNote) languageNote.textContent = tr("answerLanguage", "Type your answer in English");
+        }
+        hintButton.firstChild.textContent = `${tr("getHint", "Get a hint")} `;
+        answerInput.placeholder = tr("answerPlaceholder", "Your answer…");
+        submitButton.firstChild.textContent = `${tr("submitAnswer", "Submit answer")} `;
+        backButton.textContent = `← ${tr("backToCategories", "Back to categories")}`;
+        one(".pg-result-score span", tr("points", "POINTS"));
+        one("#pg-results > .eyebrow", tr("resultEyebrow", "THAT'S A WRAP"));
+        one(".pg-result-stats div:nth-child(1) span", tr("guessed", "GUESSED"));
+        one(".pg-result-stats div:nth-child(2) span", tr("accuracy", "ACCURACY"));
+        one(".pg-result-stats div:nth-child(3) span", tr("personalBest", "PERSONAL BEST"));
+        document.getElementById("pg-play-again").querySelector("span").textContent = tr("playAgain", "PLAY AGAIN");
+        document.getElementById("pg-change-category").textContent = `← ${tr("chooseCategory", "Choose another category")}`;
+        one(".footer p:first-child", tr("footer", "made for no particular reason."));
+        setupFeedback.textContent = setupFeedbackType === "empty"
+            ? tr("emptyCategory", "There are no pictures in this category yet.")
+            : "";
+        updateCategoryCards();
+    }
+
+    function renderRoundText() {
+        if (!currentItem) return;
+        roundCategory.textContent = categoryName(currentItem.category).toUpperCase();
+        attemptsLabel.textContent = `${tr("attempts", "ATTEMPTS")} ${attempts} / ${maximumAttempts}`;
+        hintsUsedElement.textContent = `${hintsUsed} / 4`;
+        pixelLevelElement.textContent = imageLoaded
+            ? tr("pixelLevel", "PIXEL LEVEL") + ` ${revealStep + 1}`
+            : tr("pixelLevel", "PIXEL LEVEL") + " 1";
+        if (!imageLoaded && roundState !== "image-error") imageStatus.textContent = tr("loadingImage", "Loading image…");
+        canvas.setAttribute("aria-label", roundState === "correct" || roundState === "missed"
+            ? `${tr("revealedImage", "Revealed image")}: ${currentItem.answer}`
+            : tr("pixelatedImage", "Pixelated image clue"));
+        creditName.textContent = currentItem.creator || tr("creatorNotStated", "Creator not stated");
+        sourceLink.title = currentItem.sourceFile || tr("imageSourcePage", "Image source page");
+        sourceLink.textContent = tr("source", "Source");
+        licenseLink.textContent = currentItem.license || tr("viewLicense", "View license");
+
+        if (roundState === "image-error") {
+            imageStatus.textContent = tr("imageError", "This picture could not be loaded. You can skip to the next one.");
+            continueLabel.textContent = tr("skipPicture", "SKIP PICTURE");
+        } else if (roundState === "active") {
+            hintText.textContent = hintsUsed
+                ? getHint(currentItem, hintsUsed - 1)
+                : tr("initialHint", "A hint is always optional. Two misses make it easier to spot.");
+            continueLabel.textContent = tr("nextPicture", "NEXT PICTURE");
+            if (lastFeedbackType === "wrong") renderWrongFeedback();
+            else if (lastFeedbackType === "empty") feedback.textContent = "";
+        } else if (roundState === "correct" || roundState === "missed") {
+            continueLabel.textContent = roundIndex + 1 >= runItems.length
+                ? tr("seeResults", "SEE YOUR RESULTS")
+                : tr("nextPicture", "NEXT PICTURE");
+            feedback.textContent = roundState === "correct"
+                ? tr("correctFeedback", `Correct! It was {0}. +{1} points.`, currentItem.answer, roundPoints)
+                : tr("missedFeedback", `Out of tries. The answer was {0}.`, currentItem.answer);
+        }
+        if (imageLoaded) drawPixelated(roundState === "correct" || roundState === "missed");
+    }
+
+    function renderWrongFeedback() {
+        feedback.textContent = attempts >= 2
+            ? tr("wrongWithHint", "Not quite — try again. A hint is ready if you want one.")
+            : tr("wrongNoHint", "Not quite — try again! The answer stays hidden.");
+        feedback.className = "pg-feedback is-wrong";
+    }
+
+    function handleLanguageChange(event) {
+        activeLanguage = event && event.detail && event.detail.language
+            ? event.detail.language
+            : (window.JB_I18N ? window.JB_I18N.language : activeLanguage);
+        renderStaticText();
+        if (currentItem && (roundState === "active" || roundState === "correct" || roundState === "missed" || roundState === "image-error")) {
+            renderRoundText();
+        }
+        if (!resultsScreen.classList.contains("is-hidden")) renderResults();
     }
 
     function selectCategory(category) {
@@ -241,6 +371,7 @@
         selectedCategory = category;
         writeStorage("jb-pixel-guess-category", category);
         setupFeedback.textContent = "";
+        setupFeedbackType = "";
         updateCategoryCards();
         updateBestScore();
     }
@@ -251,15 +382,19 @@
             : allItems.filter(item => item.category === selectedCategory);
 
         if (!available.length) {
-            setupFeedback.textContent = "There are no pictures in this category yet.";
+            setupFeedbackType = "empty";
+            setupFeedback.textContent = tr("emptyCategory", "There are no pictures in this category yet.");
             return;
         }
+        window.JustBecauseProfile?.recordGame("pixel-guess");
 
+        setupFeedbackType = "";
         const numberOfRounds = Math.min(roundsPerGame, available.length);
         runItems = shuffle(available).slice(0, numberOfRounds);
         roundIndex = 0;
         score = 0;
         correctCount = 0;
+        roundPoints = 0;
         scoreElement.textContent = score;
         correctCountElement.textContent = correctCount;
         roundState = "active";
@@ -282,37 +417,37 @@
         hintsUsed = 0;
         revealStep = 0;
         imageLoaded = false;
+        roundPoints = 0;
+        lastFeedbackType = "";
 
-        roundCategory.textContent = selectedCategory === "all"
-            ? categoryNames.get(currentItem.category) || "ALL CATEGORIES"
-            : categoryNames.get(selectedCategory) || "ALL CATEGORIES";
+        roundCategory.textContent = categoryName(currentItem.category).toUpperCase();
         roundNumber.textContent = `${roundIndex + 1} / ${runItems.length}`;
         scoreElement.textContent = score;
         correctCountElement.textContent = correctCount;
-        attemptsLabel.textContent = `ATTEMPTS 0 / ${maximumAttempts}`;
+        attemptsLabel.textContent = `${tr("attempts", "ATTEMPTS")} 0 / ${maximumAttempts}`;
         hintsUsedElement.textContent = "0 / 4";
-        pixelLevelElement.textContent = "PIXEL LEVEL 1";
-        hintText.textContent = "A hint is always optional. Two misses make it easier to spot.";
+        pixelLevelElement.textContent = `${tr("pixelLevel", "PIXEL LEVEL")} 1`;
+        hintText.textContent = tr("initialHint", "A hint is always optional. Two misses make it easier to spot.");
         feedback.textContent = "";
         feedback.className = "pg-feedback";
         continueButton.classList.add("is-hidden");
-        continueLabel.textContent = "NEXT PICTURE";
+        continueLabel.textContent = tr("nextPicture", "NEXT PICTURE");
         hintButton.disabled = false;
         answerInput.disabled = false;
         submitButton.disabled = false;
         answerInput.value = "";
-        answerInput.placeholder = "Your answer…";
         answerInput.focus({ preventScroll: true });
 
-        imageStatus.textContent = "Loading image…";
+        imageStatus.textContent = tr("loadingImage", "Loading image…");
         imageStatus.classList.remove("is-hidden");
-        canvas.setAttribute("aria-label", "Pixelated image clue");
+        canvas.setAttribute("aria-label", tr("pixelatedImage", "Pixelated image clue"));
 
-        creditName.textContent = currentItem.creator || "Creator not stated";
+        creditName.textContent = currentItem.creator || tr("creatorNotStated", "Creator not stated");
         sourceLink.href = currentItem.sourceUrl;
-        sourceLink.title = currentItem.sourceFile || "Image source page";
+        sourceLink.title = currentItem.sourceFile || tr("imageSourcePage", "Image source page");
+        sourceLink.textContent = tr("source", "Source");
         licenseLink.href = currentItem.licenseUrl || currentItem.sourceUrl;
-        licenseLink.textContent = currentItem.license || "View license";
+        licenseLink.textContent = currentItem.license || tr("viewLicense", "View license");
 
         currentImage = new Image();
         currentImage.onload = () => {
@@ -321,14 +456,14 @@
             drawPixelated();
         };
         currentImage.onerror = () => {
-            imageStatus.textContent = "This picture could not be loaded. You can skip to the next one.";
+            imageStatus.textContent = tr("imageError", "This picture could not be loaded. You can skip to the next one.");
             imageStatus.classList.remove("is-hidden");
             answerInput.disabled = true;
             submitButton.disabled = true;
             hintButton.disabled = true;
             roundState = "image-error";
             continueButton.classList.remove("is-hidden");
-            continueLabel.textContent = "SKIP PICTURE";
+            continueLabel.textContent = tr("skipPicture", "SKIP PICTURE");
         };
         currentImage.src = currentItem.image;
     }
@@ -370,8 +505,8 @@
         );
 
         pixelLevelElement.textContent = reveal
-            ? "IMAGE REVEALED"
-            : `PIXEL LEVEL ${revealStep + 1}`;
+            ? tr("imageRevealed", "IMAGE REVEALED")
+            : `${tr("pixelLevel", "PIXEL LEVEL")} ${revealStep + 1}`;
     }
 
     function revealOneStep() {
@@ -381,13 +516,17 @@
 
     function getHint(item, index) {
         const words = item.answer.split(/\s+/).filter(Boolean);
-        if (index === 0) return item.clue || "Look closely at the shape and context in the picture.";
-        if (index === 1) return `The answer has ${words.length} ${words.length === 1 ? "word" : "words"}.`;
+        if (index === 0) {
+            return item.clue
+                ? (window.JB_I18N ? window.JB_I18N.t(`pg.clue.${item.id}`, item.clue) : item.clue)
+                : tr("visualHint", "Look closely at the shape and context in the picture.");
+        }
+        if (index === 1) return tr(words.length === 1 ? "answerOneWord" : "answerManyWords", `The answer has {0} ${words.length === 1 ? "word" : "words"}.`, words.length);
         if (index === 2) {
             const shape = words.map(word => `${word[0]}${"·".repeat(Math.max(1, word.length - 2))}${word.at(-1)}`).join(" / ");
-            return `Word pattern: ${shape}`;
+            return tr("wordPattern", "Word pattern: {0}", shape);
         }
-        return `The first letters are ${words.map(word => word[0].toUpperCase()).join(" · ")}.`;
+        return tr("firstLetters", "The first letters are {0}.", words.map(word => word[0].toUpperCase()).join(" · "));
     }
 
     function useHint() {
@@ -401,17 +540,20 @@
         answerInput.focus({ preventScroll: true });
     }
 
-    function setRoundFinished(message, success) {
+    function setRoundFinished(success) {
         roundState = success ? "correct" : "missed";
+        lastFeedbackType = "";
         drawPixelated(true);
-        canvas.setAttribute("aria-label", `Revealed image: ${currentItem.answer}`);
+        canvas.setAttribute("aria-label", `${tr("revealedImage", "Revealed image")}: ${currentItem.answer}`);
         answerInput.disabled = true;
         submitButton.disabled = true;
         hintButton.disabled = true;
-        continueLabel.textContent = roundIndex + 1 >= runItems.length ? "SEE YOUR RESULTS" : "NEXT PICTURE";
+        continueLabel.textContent = roundIndex + 1 >= runItems.length
+            ? tr("seeResults", "SEE YOUR RESULTS")
+            : tr("nextPicture", "NEXT PICTURE");
         continueButton.classList.remove("is-hidden");
-        feedback.textContent = message;
         feedback.className = `pg-feedback ${success ? "is-correct" : "is-wrong"}`;
+        renderRoundText();
     }
 
     function submitAnswer(event) {
@@ -425,37 +567,39 @@
         }
 
         if (isCorrectAnswer(guess, currentItem)) {
-            const earned = Math.max(10, 100 - revealStep * 18);
-            score += earned;
+            roundPoints = Math.max(10, 100 - revealStep * 18);
+            score += roundPoints;
             correctCount++;
+            window.DailyChallenge?.report("pixel-guess", correctCount);
             scoreElement.textContent = score;
             correctCountElement.textContent = correctCount;
             saveHighScore();
-            setRoundFinished(`Correct! It was ${currentItem.answer}. +${earned} points.`, true);
+            setRoundFinished(true);
             return;
         }
 
         attempts++;
-        attemptsLabel.textContent = `ATTEMPTS ${attempts} / ${maximumAttempts}`;
+        attemptsLabel.textContent = `${tr("attempts", "ATTEMPTS")} ${attempts} / ${maximumAttempts}`;
         answerInput.value = "";
         revealOneStep();
 
         if (attempts >= maximumAttempts) {
-            setRoundFinished(`Out of tries. The answer was ${currentItem.answer}.`, false);
+            setRoundFinished(false);
             return;
         }
 
-        feedback.textContent = attempts >= 2
-            ? "Not quite — try again. A hint is ready if you want one."
-            : "Not quite — try again! The answer stays hidden.";
-        feedback.className = "pg-feedback is-wrong";
+        lastFeedbackType = "wrong";
+        renderWrongFeedback();
         answerInput.focus();
     }
 
     function saveHighScore() {
         const key = highScoreKey(selectedCategory);
         const stored = Number(readStorage(key)) || 0;
-        if (score > stored) writeStorage(key, score);
+        if (score > stored) {
+            writeStorage(key, score);
+            window.JustBecauseLeaderboard?.refresh();
+        }
         updateBestScore();
     }
 
@@ -481,12 +625,24 @@
         finalPercent.textContent = `${percentage}%`;
         finalBest.textContent = getHighScore(selectedCategory);
 
-        if (percentage === 100) resultTitle.textContent = "Pixel-perfect.";
-        else if (percentage >= 70) resultTitle.textContent = "Sharp eyes.";
-        else if (percentage >= 40) resultTitle.textContent = "You found your focus.";
-        else resultTitle.textContent = "The pixels won this round.";
+        renderResults();
+    }
 
-        resultMessage.textContent = `You guessed ${correctCount} of ${played} pictures in ${categoryNames.get(selectedCategory) || "All Categories"}.`;
+    function renderResults() {
+        const played = runItems.length;
+        const percentage = played ? Math.round((correctCount / played) * 100) : 0;
+        if (percentage === 100) resultTitle.textContent = tr("resultPerfect", "Pixel-perfect.");
+        else if (percentage >= 70) resultTitle.textContent = tr("resultSharp", "Sharp eyes.");
+        else if (percentage >= 40) resultTitle.textContent = tr("resultFocus", "You found your focus.");
+        else resultTitle.textContent = tr("resultPixelsWon", "The pixels won this round.");
+
+        resultMessage.textContent = tr(
+            "resultMessage",
+            "You guessed {0} of {1} pictures in {2}.",
+            correctCount,
+            played,
+            categoryName(selectedCategory)
+        );
     }
 
     function returnToSetup() {
@@ -514,12 +670,14 @@
         startGame();
     });
     document.getElementById("pg-change-category").addEventListener("click", returnToSetup);
+    window.addEventListener("jb:languagechange", handleLanguageChange);
 
     const savedCategory = readStorage("jb-pixel-guess-category");
     if (savedCategory && (savedCategory === "all" || categoryNames.has(savedCategory))) {
         selectedCategory = savedCategory;
     }
 
+    renderStaticText();
     updateCategoryCards();
     updateBestScore();
 })();

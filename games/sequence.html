@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequence — Memory Game | Just Because Games</title>
+    <meta name="description" content="Watch the tiles light up, then repeat the pattern from memory. Choose a difficulty and see how far you can get in Sequence." data-i18n-content="Watch the tiles light up, then repeat the pattern from memory. Choose a difficulty and see how far you can get in Sequence.">
+    <link rel="canonical" href="https://just-because-games.netlify.app/games/sequence.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Just Because Games">
+    <meta property="og:title" content="Sequence — Memory Game | Just Because Games" data-i18n-content="Sequence — Memory Game | Just Because Games">
+    <meta property="og:description" content="Watch the tiles light up, then repeat the pattern from memory. Choose a difficulty and see how far you can get in Sequence." data-i18n-content="Watch the tiles light up, then repeat the pattern from memory. Choose a difficulty and see how far you can get in Sequence.">
+    <meta property="og:url" content="https://just-because-games.netlify.app/games/sequence.html">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="game-page sequence-page">
+    <header class="header">
+        <a href="../index.html" class="logo">just because<span>.</span></a>
+        <div class="header-actions">
+            <a href="../index.html" class="back-link">← back home</a>
+            <div data-theme-switcher></div>
+            <div data-language-switcher></div>
+            <div data-profile-switcher></div>
+        </div>
+    </header>
+
+    <main class="game-main sequence-main">
+        <section id="setup-screen">
+            <div class="game-intro sequence-intro">
+                <p class="eyebrow" id="sequence-kicker">A LITTLE GAME · NO. 10</p>
+                <h1 id="sequence-title">Sequence<span>.</span></h1>
+                <p id="sequence-intro-copy">Remember the rhythm. Repeat the pattern.</p>
+            </div>
+
+            <section class="sequence-setup-card">
+                <div class="sequence-panel-heading">
+                    <div>
+                        <p class="eyebrow" id="setup-eyebrow">YOUR CHOICE</p>
+                        <h2 id="setup-heading">Choose your difficulty.</h2>
+                    </div>
+                    <span aria-hidden="true">✳</span>
+                </div>
+
+                <div class="sequence-difficulty-grid" id="difficulty-options" role="group" aria-label="Choose your difficulty">
+                    <button class="sequence-difficulty-card is-selected" type="button" data-difficulty="easy" aria-pressed="true">
+                        <span class="sequence-difficulty-icon" aria-hidden="true">2×2</span>
+                        <span class="sequence-difficulty-copy"><strong>Easy</strong><small>2 x 2 · calm pace</small></span>
+                        <span class="sequence-selected-mark" aria-hidden="true">✓</span>
+                    </button>
+                    <button class="sequence-difficulty-card" type="button" data-difficulty="medium" aria-pressed="false">
+                        <span class="sequence-difficulty-icon" aria-hidden="true">3×3</span>
+                        <span class="sequence-difficulty-copy"><strong>Medium</strong><small>3 x 3 · steady pace</small></span>
+                        <span class="sequence-selected-mark" aria-hidden="true">✓</span>
+                    </button>
+                    <button class="sequence-difficulty-card" type="button" data-difficulty="hard" aria-pressed="false">
+                        <span class="sequence-difficulty-icon" aria-hidden="true">↗</span>
+                        <span class="sequence-difficulty-copy"><strong>Hard</strong><small>3 x 3 · quick, shifting patterns</small></span>
+                        <span class="sequence-selected-mark" aria-hidden="true">✓</span>
+                    </button>
+                </div>
+
+                <div class="sequence-setup-bottom">
+                    <aside class="sequence-best-panel">
+                        <span class="eyebrow" id="setup-best-label">PERSONAL BEST</span>
+                        <strong id="setup-best">—</strong>
+                        <span class="sequence-record-badge" id="setup-new-record" role="status" aria-live="polite" hidden>New record!</span>
+                        <small id="best-note">Best level on this device.</small>
+                    </aside>
+                    <div class="sequence-setup-actions">
+                        <button class="sequence-sound-button" id="setup-sound-toggle" type="button" aria-pressed="true">Sound: On</button>
+                        <button class="sequence-start-button" id="start-button" type="button">
+                            <span>START PLAYING</span><span aria-hidden="true">→</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section class="sequence-screen" id="game-screen" aria-label="Sequence memory game" hidden>
+            <section class="sequence-game-card">
+                <div class="sequence-game-heading">
+                    <div class="sequence-game-heading-main">
+                        <button class="sequence-back-button" id="back-to-setup" type="button">← Back to settings</button>
+                        <p class="eyebrow" id="active-difficulty">Easy</p>
+                        <h2 id="level-label">Level 1</h2>
+                    </div>
+                    <div class="sequence-game-stats">
+                        <div class="sequence-live-best">
+                            <span class="eyebrow" id="game-best-label">PERSONAL BEST</span>
+                            <strong id="game-best">—</strong>
+                            <span class="sequence-record-badge" id="game-new-record" role="status" aria-live="polite" hidden>New record!</span>
+                        </div>
+                        <button class="sequence-sound-button" id="game-sound-toggle" type="button" aria-pressed="true">Sound: On</button>
+                    </div>
+                </div>
+
+                <div class="sequence-game-message">
+                    <p id="sequence-status" role="status" aria-live="polite">Watch carefully...</p>
+                    <small id="sequence-progress"></small>
+                </div>
+                <div class="sequence-grid" id="sequence-grid" data-columns="2" role="group" aria-label="Sequence memory game"></div>
+            </section>
+        </section>
+
+        <section class="sequence-screen" id="game-over-screen" aria-live="polite" hidden>
+            <section class="sequence-game-over-card">
+                <p class="eyebrow" id="game-over-kicker">THAT'S IT</p>
+                <h2 id="game-over-title">Game over.</h2>
+                <p class="sequence-game-over-feedback" id="game-over-feedback">Wrong!</p>
+                <div class="sequence-final-level">
+                    <span id="final-level-label">Level reached</span>
+                    <strong id="final-level">1</strong>
+                </div>
+                <div class="sequence-game-over-best">
+                    <span class="eyebrow" id="over-best-label">PERSONAL BEST</span>
+                    <strong id="over-best">—</strong>
+                    <span class="sequence-record-badge" id="over-new-record" role="status" aria-live="polite" hidden>New record!</span>
+                </div>
+                <div class="sequence-game-over-actions">
+                    <button class="sequence-start-button" id="play-again" type="button">
+                        <span>Play Again</span><span aria-hidden="true">↻</span>
+                    </button>
+                    <button class="sequence-secondary-button" id="game-over-back" type="button">Choose another difficulty</button>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>made for no particular reason.</p>
+        <p>just because. © 2026</p>
+    </footer>
+
+    <script src="../js/translations.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-client.js"></script>
+    <script src="../js/profile.js"></script>
+    <script src="../js/daily-challenge.js"></script>
+    <script src="../js/leaderboard.js"></script>
+    <script src="../js/sound.js"></script>
+    <script src="../js/share-score.js"></script>
+    <script src="sequence.js"></script>
+</body>
+</html>

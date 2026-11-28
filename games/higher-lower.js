@@ -64,6 +64,129 @@ let nextIndex = 0;
 
 let score = 0;
 let isProcessing = false;
+let answerRevealed = false;
+let feedbackState = null;
+let gameCompleted = false;
+let gameEnded = false;
+
+function translate(key, fallback) {
+    return window.JB_I18N
+        ? window.JB_I18N.t(key, fallback)
+        : fallback;
+}
+
+function categoryName(category) {
+    return translate(`hl.category.${category}`, categoryNames[category] || category);
+}
+
+function itemName(item) {
+    if (!activeData || !item) return "";
+    const index = activeData.items.indexOf(item);
+    return translate(`hl.item.${activeCategory}.${index}`, item.name);
+}
+
+function setText(element, key, fallback) {
+    if (!element) return;
+    element.textContent = translate(key, fallback);
+}
+
+function updateStaticText() {
+    setText(document.querySelector(".back-link"), "hl.ui.backHome", "← back home");
+    setText(document.querySelector(".game-intro .eyebrow"), "hl.ui.eyebrow", "A LITTLE GAME · NO. 02");
+    const title = document.querySelector(".game-intro h1");
+    if (title) {
+        const language = window.JB_I18N ? window.JB_I18N.language : "en";
+        const titleText = translate("hl.ui.title", "Higher or lower?");
+        const joiner = { en: "or", nl: "of", de: "oder", fr: "ou", es: "o" }[language] || "or";
+        const joinerIndex = titleText.indexOf(joiner);
+        title.innerHTML = joinerIndex < 0
+            ? titleText
+            : `${titleText.slice(0, joinerIndex)}<span>${joiner}</span>${titleText.slice(joinerIndex + joiner.length)}`;
+    }
+    setText(document.querySelector(".game-intro > p:not(.eyebrow)"), "hl.ui.intro", "Think you know your numbers? Let's put that to the test.");
+    setText(startButton.querySelector("span:first-child"), "hl.ui.start", "START PLAYING");
+    setText(document.querySelector(".category-title .eyebrow"), "hl.ui.yourChoice", "YOUR CHOICE");
+    setText(document.querySelector(".category-title h2"), "hl.ui.pickCategory", "Pick a category.");
+
+    Array.from(categorySelect.options).forEach(option => {
+        option.textContent = categoryName(option.value);
+    });
+    setText(randomButton, "hl.ui.random", "↻ Random");
+    setText(document.querySelector(".category-note"), "hl.ui.categoryNote", "Can't decide? Let fate choose.");
+    setText(document.querySelector(".highscore-box .eyebrow"), "hl.ui.personalBest", "YOUR PERSONAL BEST");
+    setText(document.querySelector(".highscore-label"), "hl.ui.highScore", "HIGH SCORE");
+    setText(document.querySelector(".highscore-note"), "hl.ui.highScoreNote", "Your best score on this device.");
+    const scoreLabel = document.querySelector(".round-score");
+    if (scoreLabel && scoreLabel.firstChild) {
+        const caption = scoreLabel.firstChild;
+        if (caption.nodeType === 1) {
+            caption.dataset.i18n = "hl.ui.score";
+            caption.textContent = `${translate("hl.ui.score", "SCORE:")} `;
+        } else {
+            caption.nodeValue = `${translate("hl.ui.score", "SCORE:")} `;
+        }
+    }
+    const cardLabels = document.querySelectorAll(".card-label");
+    setText(cardLabels[0], "hl.ui.current", "CURRENT");
+    setText(cardLabels[1], "hl.ui.next", "NEXT");
+    setText(document.querySelector(".versus"), "hl.ui.versus", "VS");
+    setText(higherButton, "hl.ui.higher", "Higher ↑");
+    setText(lowerButton, "hl.ui.lower", "Lower ↓");
+    setText(playAgainButton.querySelector("span:first-child"), "hl.ui.playAgain", "PLAY AGAIN");
+    setText(backButton, "hl.ui.backSettings", "← Back to settings");
+    setText(document.querySelector(".footer p:first-child"), "hl.ui.madeForNoReason", "made for no particular reason.");
+}
+
+function renderFeedback() {
+    if (!feedbackState || !nextItem) {
+        feedbackElement.textContent = "";
+        return;
+    }
+    const key = feedbackState.correct ? "hl.ui.correct" : "hl.ui.incorrect";
+    const fallback = feedbackState.correct
+        ? `Correct! ${itemName(nextItem)} is ${feedbackState.direction}.`
+        : `Not quite! The correct answer was ${feedbackState.direction}.`;
+    const direction = translate(
+        `hl.ui.direction${feedbackState.direction === "higher" ? "Higher" : "Lower"}`,
+        feedbackState.direction
+    );
+    feedbackElement.textContent = translate(key, fallback)
+        .replace("{item}", itemName(nextItem))
+        .replace("{direction}", direction);
+}
+
+function refreshVisibleRound() {
+    if (!activeData || !currentItem || !nextItem) return;
+    roundCategory.textContent = categoryName(activeCategory) +
+        (activeMode === "mixed" ? ` · ${translate("hl.ui.randomPick", "RANDOM PICK")}` : "");
+    metricTitle.textContent = translate(`hl.metric.${activeCategory}`, activeData.metric);
+    metricQuestion.textContent = translate(`hl.question.${activeCategory}`, activeData.question);
+    currentName.textContent = itemName(currentItem);
+    nextName.textContent = itemName(nextItem);
+    currentValue.textContent = formatValue(currentItem.value, activeData.unit);
+    nextValue.textContent = answerRevealed
+        ? formatValue(nextItem.value, activeData.unit)
+        : "???";
+    renderFeedback();
+    if (gameEnded) updateEndText();
+}
+
+function updateEndText() {
+    if (gameCompleted) {
+        endTitle.textContent = translate("hl.ui.clearedTitle", "You cleared the whole list!");
+        endMessage.textContent = translate(
+            "hl.ui.clearedMessage",
+            `Amazing! You got all ${score} comparisons right.`
+        ).replace("{score}", score);
+    } else {
+        endTitle.textContent = translate("hl.ui.gameOver", "Game over!");
+        const key = score === 1 ? "hl.ui.finalSingular" : "hl.ui.finalPlural";
+        const fallback = score === 1
+            ? `You scored ${score} point. Better luck next time!`
+            : `You scored ${score} points. Better luck next time!`;
+        endMessage.textContent = translate(key, fallback).replace("{score}", score);
+    }
+}
 
 
 // SAVE AND LOAD HIGHSCORES
@@ -84,6 +207,7 @@ function saveHighScore() {
             `jb-hl-score-${activeMode}`,
             score
         );
+        window.JustBecauseLeaderboard?.refresh();
     }
 
     updateHighScore();
@@ -94,16 +218,19 @@ function updateHighScore() {
 
     highscoreElement.textContent = getHighScore(category);
 
-    highscoreCategory.textContent = categoryNames[category];
+    highscoreCategory.textContent = categoryName(category);
 }
 
 
 // FORMAT NUMBERS
 
 function formatValue(value, unit) {
-    const formatted = new Intl.NumberFormat("en-US", {
+    const formatted = new Intl.NumberFormat(
+        window.JB_I18N ? window.JB_I18N.language : "en-US",
+        {
         maximumFractionDigits: 1
-    }).format(value);
+        }
+    ).format(value);
 
     return `${formatted} ${unit}`;
 }
@@ -130,6 +257,7 @@ function shuffleItems(items) {
 // START THE GAME
 
 function startGame() {
+    window.JustBecauseProfile?.recordGame("higher-lower");
 
     activeMode = categorySelect.value;
 
@@ -160,15 +288,10 @@ function startGame() {
 
     score = 0;
     isProcessing = false;
+    gameEnded = false;
+    gameCompleted = false;
 
     // Update the game information
-    roundCategory.textContent =
-        activeData.name +
-        (activeMode === "mixed" ? " · RANDOM PICK" : "");
-
-    metricTitle.textContent = activeData.metric;
-    metricQuestion.textContent = activeData.question;
-
     roundScore.textContent = score;
 
     // Switch screens
@@ -185,17 +308,9 @@ function startGame() {
 // DISPLAY A ROUND
 
 function renderRound() {
-
-    currentName.textContent = currentItem.name;
-    currentValue.textContent = formatValue(
-        currentItem.value,
-        activeData.unit
-    );
-
-    nextName.textContent = nextItem.name;
-
-    // Hide the next value until the player answers
-    nextValue.textContent = "???";
+    answerRevealed = false;
+    feedbackState = null;
+    refreshVisibleRound();
 
     roundScore.textContent = score;
     feedbackElement.textContent = "";
@@ -223,6 +338,7 @@ function checkAnswer(guess) {
     const isCorrect = guess === correctDirection;
 
     // Reveal the hidden value
+    answerRevealed = true;
     nextValue.textContent = formatValue(
         nextItem.value,
         activeData.unit
@@ -233,12 +349,13 @@ function checkAnswer(guess) {
     if (isCorrect) {
 
         score++;
+        window.DailyChallenge?.report("higher-lower", score);
 
         roundScore.textContent = score;
         saveHighScore();
 
-        feedbackElement.textContent =
-            `Correct! ${nextItem.name} is ${correctDirection}.`;
+        feedbackState = { correct: true, direction: correctDirection };
+        renderFeedback();
 
         // Move to the next comparison
         window.setTimeout(() => {
@@ -264,8 +381,8 @@ function checkAnswer(guess) {
 
         saveHighScore();
 
-        feedbackElement.textContent =
-            `Not quite! The correct answer was ${correctDirection}.`;
+        feedbackState = { correct: false, direction: correctDirection };
+        renderFeedback();
 
         window.setTimeout(() => {
             finishGame(false);
@@ -279,21 +396,13 @@ function checkAnswer(guess) {
 function finishGame(completed) {
 
     isProcessing = false;
+    gameEnded = true;
+    gameCompleted = completed;
 
     answerButtons.classList.add("is-hidden");
     gameOver.classList.remove("is-hidden");
 
-    if (completed) {
-        endTitle.textContent = "You cleared the whole list!";
-        endMessage.textContent =
-            `Amazing! You got all ${score} comparisons right.`;
-    } else {
-        endTitle.textContent = "Game over!";
-        endMessage.textContent =
-            `You scored ${score} ${
-                score === 1 ? "point" : "points"
-            }. Better luck next time!`;
-    }
+    updateEndText();
 
     saveHighScore();
 }
@@ -353,8 +462,15 @@ backButton.addEventListener("click", () => {
     setupScreen.classList.remove("is-hidden");
 
     isProcessing = false;
+    gameEnded = false;
 
     updateHighScore();
+});
+
+window.addEventListener("jb:languagechange", () => {
+    updateStaticText();
+    updateHighScore();
+    refreshVisibleRound();
 });
 
 
@@ -369,4 +485,5 @@ if (savedCategory && categoryNames[savedCategory]) {
 
 // INITIALISE PAGE
 
+updateStaticText();
 updateHighScore();
