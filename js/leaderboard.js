@@ -12,7 +12,17 @@
         "flag-quiz": { prefixes: ["jb_flag_quiz_highscore_"] },
         reflex: { prefixes: ["jb_reflex_best_ms_", "jb_reflex_best_ms"], lowerIsBetter: true },
         sequence: { prefixes: ["jb_sequence_best_"] },
-        "sort-it": { prefixes: ["jb_sort_it_best_"] }
+        "sort-it": { prefixes: ["jb_sort_it_best_"] },
+        "aim-trainer": { prefixes: ["jb_aim_trainer_best_"] },
+        "typing-sprint": { prefixes: ["jb_typing_sprint_best_wpm_"] },
+        "guess-price": { prefixes: ["jb_guess_price_best_"] },
+        "connect-4": { prefixes: ["jb_connect_4_score_"] },
+        "naval-strike": { prefixes: ["jb_naval_strike_score_"] },
+        "bluff-arena": { prefixes: ["jb_bluff_arena_score_"] },
+        "neon-air-hockey": { prefixes: ["jb_neon_air_hockey_score_"] },
+        "tank-brawl": { prefixes: ["jb_tank_brawl_score_"] },
+        "penalty-shootout": { prefixes: ["jb_penalty_shootout_score_"] },
+        "bumper-arena": { prefixes: ["jb_bumper_arena_score_"] }
     };
     const avatarEmojis = {
         cat: "🐱",
@@ -199,7 +209,8 @@
                 ? profile.customAvatar
                 : "",
             score: readBest(),
-            isSelf: true
+            isSelf: true,
+            role: profile.role || "player"
         }];
         const seenCodes = new Set();
         for (const friend of Array.isArray(profile.friends) ? profile.friends : []) {
@@ -212,7 +223,8 @@
                 avatar: typeof friend.avatar === "string" ? friend.avatar : "👤",
                 customAvatar: "",
                 score: readFriendRecord(friend),
-                isSelf: false
+                isSelf: false,
+                role: friend.role || "player"
             });
         }
         players.sort((left, right) => {
@@ -261,6 +273,17 @@
             const playerName = document.createElement("span");
             playerName.textContent = player.name;
             playerLabel.append(playerName);
+            if (player.role === "owner" || player.isOwner) {
+                const ownerBadge = document.createElement("span");
+                ownerBadge.className = "role-badge owner-badge";
+                ownerBadge.textContent = "👑 " + translate("ADMIN (OWNER)", "ADMIN (OWNER)");
+                playerLabel.append(ownerBadge);
+            } else if (player.role === "admin" || player.isAdmin) {
+                const adminBadge = document.createElement("span");
+                adminBadge.className = "role-badge admin-badge";
+                adminBadge.textContent = translate("ADMIN", "ADMIN");
+                playerLabel.append(adminBadge);
+            }
             nameCell.append(playerLabel);
             const score = document.createElement("td");
             score.className = "leaderboard-score";
@@ -304,6 +327,48 @@
             score: null,
             isSelf: false
         })));
+        if (window.JustBecauseSupabase?.ready()) {
+            const profile = readProfile();
+            window.JustBecauseSupabase.loadScores(gameId, profile.friendCode).then(async result => {
+                const globalPlayers = [];
+                for (const row of (result.global || []).slice(0, 10)) {
+                    const player = await window.JustBecauseSupabase.findPlayer(row.player_code);
+                    globalPlayers.push({
+                        name: player?.name || row.player_code,
+                        avatar: player?.avatar || "cat",
+                        score: Number(row.score),
+                        isSelf: row.player_code === profile.friendCode,
+                        role: player?.role || "player"
+                    });
+                }
+                globalPlayers.sort((left, right) => config.lowerIsBetter
+                    ? left.score - right.score
+                    : right.score - left.score);
+                fillRows(globalTable.tbody, globalPlayers.slice(0, 10));
+
+                const friendCodes = new Set((profile.friends || []).map(friend => friend.code));
+                const friendPlayers = [];
+                for (const row of (result.friends || [])) {
+                    if (!friendCodes.has(row.player_code) && row.player_code !== profile.friendCode) continue;
+                    const player = row.player_code === profile.friendCode
+                        ? profile
+                        : profile.friends.find(friend => friend.code === row.player_code);
+                    friendPlayers.push({
+                        name: player?.name || row.player_code,
+                        avatar: player?.avatar || "cat",
+                        score: Number(row.score),
+                        isSelf: row.player_code === profile.friendCode,
+                        role: player?.role || "player"
+                    });
+                }
+                if (friendPlayers.length) {
+                    friendPlayers.sort((left, right) => config.lowerIsBetter
+                        ? left.score - right.score
+                        : right.score - left.score);
+                    fillRows(friendsTable.tbody, friendPlayers.slice(0, 10));
+                }
+            }).catch(error => console.error("Could not refresh live leaderboards.", error));
+        }
     }
 
     window.addEventListener("jb:languagechange", render);

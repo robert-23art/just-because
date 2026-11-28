@@ -5461,6 +5461,30 @@ a.game-card {
 }
 
 @media (max-width: 520px) {
+    body.game-page main {
+        width: calc(100% - 30px) !important;
+        max-width: none !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    .online-lobby-options {
+        grid-template-columns: 1fr;
+    }
+    .match-players,
+    .naval-layout {
+        grid-template-columns: 1fr;
+    }
+    .naval-layout {
+        display: grid;
+    }
+    .match-players {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .match-player {
+        width: 100%;
+    }
     .header-actions {
         gap: 8px;
     }
@@ -6103,6 +6127,158 @@ a.game-card {
     background-color: #ff6b00;
     color: #111827;
 }
+
+.sound-switcher { display: flex; align-items: center; }
+.sound-button {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 16px;
+}
+.sound-button:hover { border-color: #ff6b00; transform: translateY(-1px); }
+.share-score-button {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 16px auto 0;
+    padding: 11px 16px;
+    border: 1px solid #ff6b00;
+    border-radius: 10px;
+    background: #ff6b00;
+    color: #111827;
+    font: 700 13px 'DM Sans', sans-serif;
+    cursor: pointer;
+}
+.share-score-status { max-width: 260px; font-size: 11px; }
+.profile-dialog-footer {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    text-align: center;
+    font-size: 11px;
+    cursor: pointer;
+    user-select: none;
+}
+.profile-owner-activation {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    margin-top: 10px;
+}
+.profile-owner-activation[hidden] { display: none !important; }
+.profile-owner-activation input {
+    min-height: 42px;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--control-bg);
+    color: var(--text);
+}
+.role-badge {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    margin-left: 5px;
+    padding: 3px 7px;
+    border-radius: 999px;
+    font-size: 9px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+.owner-badge {
+    border: 1px solid #f0b429;
+    background: linear-gradient(135deg, #ff6b00, #ffd166);
+    color: #111827;
+}
+.admin-badge {
+    border: 1px solid var(--border);
+    background: var(--surface-soft);
+    color: var(--text);
+}
+.profile-role-button {
+    min-height: 34px;
+    margin-left: auto;
+    padding: 7px 9px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface-soft);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.online-lobby {
+    width: min(760px, 100%);
+    margin: 30px auto;
+}
+.online-lobby-card {
+    padding: clamp(22px, 5vw, 38px);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--surface);
+    box-shadow: 0 14px 36px var(--shadow);
+    text-align: center;
+}
+.online-lobby-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 22px;
+}
+.online-lobby-options button {
+    min-height: 62px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface-soft);
+    color: var(--text);
+    font: 700 13px 'DM Sans', sans-serif;
+    cursor: pointer;
+}
+.online-lobby-options button:first-child {
+    border-color: #ff6b00;
+    background: #ff6b00;
+    color: #111827;
+}
+.online-lobby-status { min-height: 20px; margin-top: 16px; color: var(--text-muted); }
+.online-lobby-room-link {
+    width: min(520px, 100%);
+    min-height: 42px;
+    margin-top: 8px;
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--control-bg);
+    color: var(--text);
+}
+.match-players {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.match-player {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font-weight: 700;
+}
+.match-avatar { font-size: 22px; }
+[hidden] { display: none !important; }
 
 @media (max-width: 520px) {
     .leaderboard-section {

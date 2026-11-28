@@ -1,0 +1,9 @@
+(()=>{
+"use strict";
+const lobby=document.getElementById("penalty-lobby"),match=document.getElementById("penalty-match"),goal=document.getElementById("penalty-goal"),status=document.getElementById("penalty-status"),scoreEl=document.getElementById("penalty-score"),ball=document.getElementById("penalty-ball"),players=document.getElementById("penalty-players");
+let shots=0,score=[0,0],mode="bot";
+function tr(k,f){return window.JB_I18N?.t?window.JB_I18N.t(k,f):f}
+function renderPlayers(info){players.replaceChildren();[info.self,info.opponent].forEach(p=>{const e=document.createElement("div");e.className="match-player";e.innerHTML=`<span class="match-avatar">${p.avatar}</span><span>${p.name}${p.role==="owner"?" 👑 "+tr("ADMIN (OWNER)","ADMIN (OWNER)"):p.role==="admin"?" "+tr("ADMIN","ADMIN"):""}</span>`;players.append(e)})}
+goal.addEventListener("click",e=>{const b=e.target.closest("[data-zone]");if(!b||shots>=5)return;const zone=Number(b.dataset.zone),keeper=Math.floor(Math.random()*6);ball.classList.add("shot");setTimeout(()=>ball.classList.remove("shot"),650);const goaled=zone!==keeper;if(goaled)score[0]++;else score[1]++;shots++;status.textContent=goaled?tr("GOAL!","GOAL!"):tr("Saved!","Saved!");scoreEl.textContent=`${score[0]} – ${score[1]} (${tr("round","round")} ${shots}/5)`;window.JustBecauseSound?.play(goaled?"good":"bad");if(shots>=5){status.textContent=score[0]>=score[1]?tr("You win!","You win!"):tr("Opponent wins!","Opponent wins!");const record=score[0];localStorage.setItem("jb_penalty_shootout_score_"+mode,String(record));window.JustBecauseLeaderboard?.refresh();window.JustBecauseSupabase?.upsertScore("penalty-shootout",mode,"local",record)}});
+window.JustBecauseLobby.mount("penalty-shootout",lobby,info=>{lobby.hidden=true;match.hidden=false;mode=info.mode==="bot"?"bot":"online";renderPlayers(info);scoreEl.textContent="0 – 0 (0/5)"});
+})();

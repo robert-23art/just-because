@@ -1,6 +1,26 @@
 const DONATION_URL = "";
 
 const gameCards = [...document.querySelectorAll(".games-grid .game-card")];
+const gamesGrid = document.querySelector(".games-grid");
+if (gamesGrid) {
+    const onlineCards = [...gamesGrid.querySelectorAll('.game-card[data-category="online"]')];
+    const soloCards = [...gamesGrid.querySelectorAll('.game-card[data-category="singleplayer"]')];
+    const reference = soloCards[0] || null;
+    onlineCards.forEach(card => gamesGrid.insertBefore(card, reference));
+}
+document.querySelectorAll(".game-category-label").forEach(label => {
+    if (label.textContent.trim() === "Singleplayer") {
+        label.textContent = window.JB_I18N?.t
+            ? window.JB_I18N.t("Solo", "Solo")
+            : "Solo";
+    }
+});
+document.querySelectorAll('[data-category-filter="online"]').forEach(button => {
+    button.textContent = window.JB_I18N?.t("Online", "Online");
+});
+document.querySelectorAll('[data-category-filter="online"]').forEach(button => {
+    button.textContent = window.JB_I18N?.t("Online", "Online");
+});
 
 const heroActions = document.querySelector(".hero-actions");
 const randomButton = document.createElement("a");
@@ -129,5 +149,12 @@ categoryButtons.forEach(button => {
 });
 
 searchInput?.addEventListener("input", filterGames);
-window.addEventListener("jb:languagechange", filterGames);
+window.addEventListener("jb:languagechange", () => {
+    filterGames();
+    document.querySelectorAll(".game-category-label").forEach(label => {
+        if (["Singleplayer","Solo","Einzelspieler","Un jugador","Solo"].includes(label.textContent.trim())) {
+            label.textContent = window.JB_I18N?.t("Solo", "Solo");
+        }
+    });
+});
 filterGames();

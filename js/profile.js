@@ -1,6 +1,7 @@
 (() => {
     "use strict";
 
+    const ADMIN_SECRET_CODE = "JUST-BECAUSE-OWNER";
     const profileStorageKey = "jb_profile";
     const gameStats = [
         { id: "guess-color", label: "Guess the Color", prefix: "jb-color-score-" },
@@ -57,7 +58,10 @@
             friendCode: "",
             playedGames: [],
             dailyCompletedDates: [],
-            friends: []
+            friends: [],
+            role: "player",
+            isOwner: false,
+            isAdmin: false
         };
     }
 
@@ -75,7 +79,10 @@
                 friendCode: typeof parsed.friendCode === "string" && /^JB-[A-Z0-9]{4}$/.test(parsed.friendCode) ? parsed.friendCode : "",
                 playedGames: Array.isArray(parsed.playedGames) ? parsed.playedGames.filter(id => validGameIds.has(id)) : [],
                 dailyCompletedDates: Array.isArray(parsed.dailyCompletedDates) ? parsed.dailyCompletedDates.filter(date => typeof date === "string") : [],
-                friends: Array.isArray(parsed.friends) ? parsed.friends.filter(friend => friend && /^JB-[A-Z0-9]{4}$/.test(friend.code)) : []
+                friends: Array.isArray(parsed.friends) ? parsed.friends.filter(friend => friend && /^JB-[A-Z0-9]{4}$/.test(friend.code)) : [],
+                role: parsed.role === "owner" ? "owner" : parsed.role === "admin" ? "admin" : "player",
+                isOwner: parsed.isOwner === true || parsed.role === "owner",
+                isAdmin: parsed.isAdmin === true || parsed.role === "admin"
             };
         } catch {
             storageError = true;
@@ -88,6 +95,7 @@
             localStorage.setItem(profileStorageKey, JSON.stringify(profile));
             storageError = false;
             window.dispatchEvent(new CustomEvent("jb:profile-updated"));
+            window.JustBecauseSupabase?.syncProfile(profile);
             return true;
         } catch {
             storageError = true;
@@ -264,6 +272,14 @@
                     <h3 data-profile-friends-heading></h3>
                     <div class="profile-friends-list" id="profile-friends-list"></div>
                     <button class="profile-battle-button" type="button" disabled></button>
+                    <footer class="profile-dialog-footer" data-profile-version>
+                        just because. © 2026 · 1.0
+                    </footer>
+                    <form class="profile-owner-activation" data-profile-owner-form hidden>
+                        <label for="profile-owner-code"></label>
+                        <input id="profile-owner-code" type="password" autocomplete="off">
+                        <button type="submit" class="profile-primary-button" data-profile-owner-submit></button>
+                    </form>
                 </section>
             </div>`;
         document.body.append(dialog);
@@ -282,9 +298,46 @@
         dialog.querySelector("#profile-avatar-upload").addEventListener("change", uploadAvatar);
         dialog.querySelector("#profile-friends-list").addEventListener("click", event => {
             const removeButton = event.target.closest("[data-remove-friend]");
-            if (!removeButton) return;
-            profile.friends = profile.friends.filter(friend => friend.code !== removeButton.dataset.removeFriend);
+            if (removeButton) {
+                profile.friends = profile.friends.filter(friend => friend.code !== removeButton.dataset.removeFriend);
+                saveProfile();
+                renderModal();
+                return;
+            }
+            const roleButton = event.target.closest("[data-toggle-friend-admin]");
+            if (!roleButton || !profile.isOwner) return;
+            const friend = profile.friends.find(item => item.code === roleButton.dataset.toggleFriendAdmin);
+            if (!friend) return;
+            friend.role = friend.role === "admin" ? "player" : "admin";
+            friend.isAdmin = friend.role === "admin";
             saveProfile();
+            window.JustBecauseSupabase?.updateFriendRole(friend.code, friend.role);
+            renderModal();
+        });
+        let versionClicks = 0;
+        dialog.querySelector("[data-profile-version]").addEventListener("click", () => {
+            versionClicks++;
+            if (versionClicks === 5) {
+                dialog.querySelector("[data-profile-owner-form]").hidden = false;
+                versionClicks = 0;
+            }
+        });
+        dialog.querySelector("[data-profile-owner-form]").addEventListener("submit", event => {
+            event.preventDefault();
+            const input = dialog.querySelector("#profile-owner-code");
+            if (input.value !== ADMIN_SECRET_CODE) {
+                setMessage("The owner code is incorrect.");
+                input.value = "";
+                return;
+            }
+            profile.role = "owner";
+            profile.isOwner = true;
+            profile.isAdmin = false;
+            saveProfile();
+            window.JustBecauseSupabase?.syncProfile(profile);
+            dialog.querySelector("[data-profile-owner-form]").hidden = true;
+            input.value = "";
+            setMessage("ADMIN (OWNER) activated.");
             renderModal();
         });
         return dialog;
@@ -297,6 +350,12 @@
             if (!avatar || !label) return;
             avatar.replaceChildren(currentAvatarMarkup());
             label.textContent = profile.name === "Player" ? translate("Player") : profile.name;
+            if (profile.isOwner) {
+                const ownerBadge = document.createElement("span");
+                ownerBadge.className = "role-badge owner-badge header-owner-badge";
+                ownerBadge.textContent = "👑 " + translate("ADMIN (OWNER)", "ADMIN (OWNER)");
+                label.append(document.createTextNode(" "), ownerBadge);
+            }
             container.querySelector(".profile-trigger")?.setAttribute("aria-label", translate("Profile"));
         });
     }
@@ -489,6 +548,17 @@
             const details = document.createElement("div");
             const name = document.createElement("strong");
             name.textContent = friend.name || translate("Player {code}", "Player {code}", { code: friend.code });
+            if (friend.role === "owner" || friend.isOwner) {
+                const badge = document.createElement("span");
+                badge.className = "role-badge owner-badge";
+                badge.textContent = "👑 " + translate("ADMIN (OWNER)", "ADMIN (OWNER)");
+                name.append(document.createTextNode(" "), badge);
+            } else if (friend.role === "admin" || friend.isAdmin) {
+                const badge = document.createElement("span");
+                badge.className = "role-badge admin-badge";
+                badge.textContent = translate("ADMIN", "ADMIN");
+                name.append(document.createTextNode(" "), badge);
+            }
             const code = document.createElement("small");
             code.textContent = friend.code;
             details.append(name, code);
@@ -498,6 +568,16 @@
             remove.dataset.removeFriend = friend.code;
             remove.textContent = translate("Remove friend");
             card.append(avatar, details, remove);
+            if (profile.isOwner) {
+                const roleButton = document.createElement("button");
+                roleButton.type = "button";
+                roleButton.className = "profile-role-button";
+                roleButton.dataset.toggleFriendAdmin = friend.code;
+                roleButton.textContent = friend.role === "admin" || friend.isAdmin
+                    ? translate("Remove Admin", "Remove Admin")
+                    : translate("Make Admin", "Make Admin");
+                card.append(roleButton);
+            }
             list.append(card);
         }
     }
@@ -570,6 +650,7 @@
         invite.searchParams.set("addfriend", profile.friendCode);
         invite.searchParams.set("friendname", profile.name);
         invite.searchParams.set("friendavatar", avatarById.has(profile.avatar) ? profile.avatar : avatars[0].id);
+        invite.searchParams.set("friendrole", profile.role);
         return invite.href;
     }
 
@@ -628,7 +709,8 @@
                 return {
                     code: code.toUpperCase(),
                     name: invite.searchParams.get("friendname") || "",
-                    avatar: invite.searchParams.get("friendavatar") || ""
+                    avatar: invite.searchParams.get("friendavatar") || "",
+                    role: invite.searchParams.get("friendrole") || ""
                 };
             }
         } catch {
@@ -640,11 +722,12 @@
     function addFriend(event) {
         event.preventDefault();
         const input = document.querySelector("#profile-friend-input");
-        const added = addFriendDetails(parseFriendInvite(input.value));
-        if (added) input.value = "";
+        addFriendDetails(parseFriendInvite(input.value)).then(added => {
+            if (added) input.value = "";
+        });
     }
 
-    function addFriendDetails(invite) {
+    async function addFriendDetails(invite) {
         const code = invite.code.trim().toUpperCase();
         if (!/^JB-[A-Z0-9]{4}$/.test(code)) {
             setMessage("Enter a valid friend code or invite link.");
@@ -658,14 +741,26 @@
             setMessage("That player is already on your list.");
             return false;
         }
-        const name = typeof invite.name === "string" ? invite.name.trim().slice(0, 20) : "";
+        let player = null;
+        if (window.JustBecauseSupabase?.ready()) {
+            player = await window.JustBecauseSupabase.findPlayer(code);
+            if (!player) {
+                setMessage("That friend code does not exist.");
+                return false;
+            }
+        }
+        const name = typeof (player?.name || invite.name) === "string"
+            ? (player?.name || invite.name).trim().slice(0, 20)
+            : "";
         const avatar = avatarById.get(invite.avatar)?.emoji || "👤";
-        profile.friends.push({ code, name, avatar });
+        const role = player?.role === "owner" ? "owner" : player?.role === "admin" ? "admin" : invite.role === "owner" ? "owner" : invite.role === "admin" ? "admin" : "player";
+        profile.friends.push({ code, name, avatar, role, isOwner: role === "owner", isAdmin: role === "admin" });
         if (!saveProfile()) {
             profile.friends.pop();
             setMessage("Your profile could not be saved in this browser.");
             return false;
         }
+        window.JustBecauseSupabase?.createFriendship(profile.friendCode, code);
         if (name) {
             setMessage("Added {name} to your friends!", "Added {name} to your friends!", { name });
         } else {
@@ -755,6 +850,9 @@
     window.JustBecauseProfile = {
         recordGame,
         recordDailyChallenge,
+        getProfile() {
+            return readProfile();
+        },
         refresh() {
             profile = readProfile();
             updateTrigger();
@@ -767,6 +865,7 @@
             profile.friendCode = generateFriendCode();
             saveProfile();
         }
+        window.JustBecauseSupabase?.syncProfile(profile);
         document.querySelectorAll("[data-profile-switcher]").forEach(createSwitcher);
         createDialog();
         renderModal();
@@ -789,10 +888,11 @@
         addFriendDetails({
             code: inviteCode,
             name: params.get("friendname") || "",
-            avatar: params.get("friendavatar") || ""
+            avatar: params.get("friendavatar") || "",
+            role: params.get("friendrole") || ""
         });
         const cleanedUrl = new URL(location.href);
-        ["addfriend", "friendname", "friendavatar"].forEach(key => cleanedUrl.searchParams.delete(key));
+        ["addfriend", "friendname", "friendavatar", "friendrole"].forEach(key => cleanedUrl.searchParams.delete(key));
         history.replaceState(null, "", cleanedUrl.href);
     }
 
